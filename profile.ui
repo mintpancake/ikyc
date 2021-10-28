@@ -461,135 +461,55 @@
   <property name="font">
    <font>
     <family>Yu Gothic UI</family>
+    <weight>75</weight>
+    <bold>true</bold>
    </font>
   </property>
   <property name="windowTitle">
    <string>iKYC</string>
   </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="logo">
+   <widget class="QLabel" name="small_logo">
     <property name="geometry">
      <rect>
-      <x>400</x>
-      <y>90</y>
-      <width>401</width>
-      <height>401</height>
+      <x>30</x>
+      <y>30</y>
+      <width>151</width>
+      <height>151</height>
      </rect>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>resources/logo.png</pixmap>
+     <pixmap>resources/small_logo.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="loginButton">
+   <widget class="QLabel" name="faceTitleLabel">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>590</y>
-      <width>360</width>
+      <x>280</x>
+      <y>50</y>
+      <width>640</width>
       <height>60</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Yu Gothic UI</family>
-      <pointsize>12</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="cursor">
-     <cursorShape>ArrowCursor</cursorShape>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton{
-    background: rgb(0, 55, 128);
-    color: rgb(139, 229, 253);
-    border-radius: 5px;
-}
-QPushButton:hover{
-    background: rgb(0, 73, 168);
-    color: rgb(139, 229, 253);
-    border-radius: 5px;
-}
-QPushButton:pressed{
-    background: rgb(0, 55, 128);
-    color: rgb(139, 229, 253);
-    border-radius: 5px;
-}</string>
-    </property>
-    <property name="text">
-     <string>Face Login</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="leaveButton">
-    <property name="geometry">
-     <rect>
-      <x>420</x>
-      <y>680</y>
-      <width>360</width>
-      <height>60</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Yu Gothic UI</family>
-      <pointsize>12</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="cursor">
-     <cursorShape>ArrowCursor</cursorShape>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton{
-    background: rgb(245, 243, 251);
-    color: rgb(15, 22, 33);
-    border-radius: 5px;
-	border: 2px solid rgb(42, 61, 91)
-}
-QPushButton:hover{
-    background: rgb(231, 230, 237);
-    color: rgb(15, 22, 33);
-    border-radius: 5px;
-	border: 2px solid rgb(42, 61, 91)
-}
-QPushButton:pressed{
-    background: rgb(205, 203, 210);
-    color: rgb(15, 22, 33);
-    border-radius: 5px;
-	border: 2px solid rgb(42, 61, 91)
-}</string>
-    </property>
-    <property name="text">
-     <string>Leave</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="greetingLabel">
-    <property name="geometry">
-     <rect>
-      <x>420</x>
-      <y>490</y>
-      <width>361</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Yu Gothic UI</family>
-      <pointsize>20</pointsize>
+      <pointsize>24</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#003780;&quot;&gt;Good Morning!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#003780;&quot;&gt;My Profile&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>

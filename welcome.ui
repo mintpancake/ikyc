@@ -471,7 +471,7 @@
     <property name="geometry">
      <rect>
       <x>400</x>
-      <y>120</y>
+      <y>50</y>
       <width>401</width>
       <height>401</height>
      </rect>
@@ -490,7 +490,7 @@
     <property name="geometry">
      <rect>
       <x>420</x>
-      <y>620</y>
+      <y>550</y>
       <width>360</width>
       <height>60</height>
      </rect>
@@ -531,7 +531,7 @@ QPushButton:pressed{
     <property name="geometry">
      <rect>
       <x>420</x>
-      <y>710</y>
+      <y>640</y>
       <width>360</width>
       <height>60</height>
      </rect>
@@ -550,15 +550,15 @@ QPushButton:pressed{
     <property name="styleSheet">
      <string notr="true">QPushButton{
     background: rgb(245, 243, 251);
-    color: rgb(15, 22, 33);
+    color: rgb(0, 64, 148);
     border-radius: 5px;
-	border: 2px solid rgb(42, 61, 91)
+	border: 2px solid rgb(0, 64, 148)
 }
 QPushButton:hover{
     background: rgb(231, 230, 237);
-    color: rgb(15, 22, 33);
+    color: rgb(0, 64, 148);
     border-radius: 5px;
-	border: 2px solid rgb(42, 61, 91)
+	border: 2px solid rgb(0, 64, 148)
 }
 QPushButton:pressed{
     background: rgb(205, 203, 210);
@@ -575,7 +575,7 @@ QPushButton:pressed{
     <property name="geometry">
      <rect>
       <x>420</x>
-      <y>520</y>
+      <y>450</y>
       <width>361</width>
       <height>61</height>
      </rect>

@@ -20,7 +20,7 @@ Know Your Customer (iKYC) system with facial ID login function.
 * Start `Qt Designer` (normally located at `%INSTALL_PATH%\anaconda3\envs\3278\Lib\site-packages\qt5_applications\Qt\bin\designer.exe`).
 * Rename every added `QObject` for future identification. 
 * Customize styles with `styleSheet` under the `QWidget` property. 
-* Note that relative paths used in `styleSheet` does not take effect in `Qt Designer` but essentially works fine. 
+* Notice that relative paths used in `styleSheet` do not take effect in `Qt Designer` but essentially work fine. 
 #### Color policy
 * Themes:
   * `#8be5fd`

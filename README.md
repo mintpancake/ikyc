@@ -31,7 +31,7 @@ Know Your Customer (iKYC) system with facial ID login function.
   * Windows: `#f7f6fb`
   * Sections: `#ffffff`
 * Text: 
-  * Titles: `#2a3d5b`
+  * Titles: `##003780`
   * Main text: `#000000`
   * Non-essential text: `#646464`
 * Buttons:

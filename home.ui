@@ -485,7 +485,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>og-logo-livi.png</pixmap>
+     <pixmap>resources/logo.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -518,9 +518,9 @@
    <widget class="QLabel" name="lastLoginTimeLabel">
     <property name="geometry">
      <rect>
-      <x>950</x>
+      <x>880</x>
       <y>50</y>
-      <width>201</width>
+      <width>191</width>
       <height>61</height>
      </rect>
     </property>
@@ -536,7 +536,7 @@
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#646464;&quot;&gt;Last login time:&lt;br/&gt;12:01:23    01-01-1970&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
-     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QPushButton" name="profileButton">
@@ -562,21 +562,21 @@
     <property name="styleSheet">
      <string notr="true">QPushButton{
     background: rgb(121, 226, 255);
-    background-image : url(D:/Downloads/3278/profile.png);
+    background-image : url(resources/profile.png);
 	background-repeat: no-repeat;
 	background-position: center;
     border-radius: 75px;
 }
 QPushButton:hover{
     background: rgb(114, 215, 240);
-	background-image : url(D:/Downloads/3278/profile.png);
+	background-image : url(resources/profile.png);
 	background-repeat: no-repeat;
 	background-position: center;
     border-radius: 75px;
 }
 QPushButton:pressed{
     background: rgb(102, 192, 215);
-    background-image : url(D:/Downloads/3278/profile.png);
+    background-image : url(resources/profile.png);
 	background-repeat: no-repeat;
 	background-position: center;
     border-radius: 75px;
@@ -609,21 +609,21 @@ QPushButton:pressed{
     <property name="styleSheet">
      <string notr="true">QPushButton{
     background: rgb(71, 96, 137);
-    background-image : url(D:/Downloads/3278/history.png);
+    background-image : url(resources/history.png);
 	background-repeat: no-repeat;
 	background-position: center;
     border-radius: 75px;
 }
 QPushButton:hover{
     background: rgb(63, 86, 122);
-	background-image : url(D:/Downloads/3278/history.png);
+	background-image : url(resources/history.png);
 	background-repeat: no-repeat;
 	background-position: center;
     border-radius: 75px;
 }
 QPushButton:pressed{
     background: rgb(50, 68, 97);
-    background-image : url(D:/Downloads/3278/history.png);
+    background-image : url(resources/history.png);
 	background-repeat: no-repeat;
 	background-position: center;
     border-radius: 75px;
@@ -656,21 +656,21 @@ QPushButton:pressed{
     <property name="styleSheet">
      <string notr="true">QPushButton{
     background: rgb(65, 124, 252);
-    background-image : url(D:/Downloads/3278/transfer.png);
+    background-image : url(resources/transfer.png);
 	background-repeat: no-repeat;
 	background-position: center;
     border-radius: 75px;
 }
 QPushButton:hover{
     background: rgb(61, 117, 237);
-	background-image : url(D:/Downloads/3278/transfer.png);
+	background-image : url(resources/transfer.png);
 	background-repeat: no-repeat;
 	background-position: center;
     border-radius: 75px;
 }
 QPushButton:pressed{
     background: rgb(55, 105, 212);
-    background-image : url(D:/Downloads/3278/transfer.png);
+    background-image : url(resources/transfer.png);
 	background-repeat: no-repeat;
 	background-position: center;
     border-radius: 75px;
@@ -703,21 +703,21 @@ QPushButton:pressed{
     <property name="styleSheet">
      <string notr="true">QPushButton{
     background: rgb(51, 235, 215);
-    background-image : url(D:/Downloads/3278/account.png);
+    background-image : url(resources/account.png);
 	background-repeat: no-repeat;
 	background-position: center;
     border-radius: 75px;
 }
 QPushButton:hover{
     background: rgb(47, 220, 200);
-	background-image : url(D:/Downloads/3278/account.png);
+	background-image : url(resources/account.png);
 	background-repeat: no-repeat;
 	background-position: center;
     border-radius: 75px;
 }
 QPushButton:pressed{
     background: rgb(42, 195, 177);
-    background-image : url(D:/Downloads/3278/account.png);
+    background-image : url(resources/account.png);
 	background-repeat: no-repeat;
 	background-position: center;
     border-radius: 75px;
@@ -1123,12 +1123,12 @@ QScrollBar::sub-line:vertical {
      </layout>
     </widget>
    </widget>
-   <widget class="QLabel" name="FriendLabel">
+   <widget class="QLabel" name="recentLabel">
     <property name="geometry">
      <rect>
       <x>550</x>
       <y>160</y>
-      <width>150</width>
+      <width>251</width>
       <height>41</height>
      </rect>
     </property>
@@ -1141,13 +1141,13 @@ QScrollBar::sub-line:vertical {
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#2a3d5b;&quot;&gt;Friends&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#2a3d5b;&quot;&gt;Recent Transactions&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
     </property>
    </widget>
-   <widget class="QLabel" name="FriendLabel_2">
+   <widget class="QLabel" name="loginHistoryLabel">
     <property name="geometry">
      <rect>
       <x>890</x>
@@ -1470,6 +1470,53 @@ QScrollBar::sub-line:vertical {
       </item>
      </layout>
     </widget>
+   </widget>
+   <widget class="QPushButton" name="logoutButton">
+    <property name="geometry">
+     <rect>
+      <x>1090</x>
+      <y>50</y>
+      <width>60</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+    background: rgb(42, 61, 91);
+    background-image : url(resources/logout.png);
+	background-repeat: no-repeat;
+	background-position: center;
+    border-radius: 30px;
+}
+QPushButton:hover{
+    background: rgb(71, 96, 137);
+	background-image : url(resources/logout.png);
+	background-repeat: no-repeat;
+	background-position: center;
+    border-radius: 30px;
+}
+QPushButton:pressed{
+    background: rgb(42, 61, 91);
+    background-image : url(resources/logout.png);
+	background-repeat: no-repeat;
+	background-position: center;
+    border-radius: 30px;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
    </widget>
   </widget>
  </widget>

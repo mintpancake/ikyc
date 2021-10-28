@@ -593,6 +593,53 @@ QPushButton:pressed{
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+   <widget class="QPushButton" name="logoutButton">
+    <property name="geometry">
+     <rect>
+      <x>1090</x>
+      <y>50</y>
+      <width>60</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+    background: rgb(42, 61, 91);
+    background-image : url(resources/logout.png);
+	background-repeat: no-repeat;
+	background-position: center;
+    border-radius: 30px;
+}
+QPushButton:hover{
+    background: rgb(71, 96, 137);
+	background-image : url(resources/logout.png);
+	background-repeat: no-repeat;
+	background-position: center;
+    border-radius: 30px;
+}
+QPushButton:pressed{
+    background: rgb(42, 61, 91);
+    background-image : url(resources/logout.png);
+	background-repeat: no-repeat;
+	background-position: center;
+    border-radius: 30px;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>

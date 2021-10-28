@@ -464,28 +464,9 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>liviBank</string>
+   <string>iKYC</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="small_logo">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>30</y>
-      <width>81</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>resources/logo.png</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-   </widget>
    <widget class="QPushButton" name="verifyButton">
     <property name="geometry">
      <rect>
@@ -508,18 +489,18 @@
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
-    background: rgb(42, 61, 91);
-    color: rgb(52, 234, 217);
+    background: rgb(0, 55, 128);
+    color: rgb(139, 229, 253);
     border-radius: 5px;
 }
 QPushButton:hover{
-    background: rgb(71, 96, 137);
-    color: rgb(52, 234, 217);
+    background: rgb(0, 73, 168);
+    color: rgb(139, 229, 253);
     border-radius: 5px;
 }
 QPushButton:pressed{
-    background: rgb(42, 61, 91);
-    color: rgb(52, 234, 217);
+    background: rgb(0, 55, 128);
+    color: rgb(139, 229, 253);
     border-radius: 5px;
 }</string>
     </property>
@@ -587,7 +568,7 @@ QPushButton:pressed{
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#2a3d5b;&quot;&gt;Face Verification&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#003780;&quot;&gt;Face Verification&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -615,21 +596,21 @@ QPushButton:pressed{
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
-    background: rgb(42, 61, 91);
+    background: rgb(0, 55, 128);
     background-image : url(resources/logout.png);
 	background-repeat: no-repeat;
 	background-position: center;
     border-radius: 30px;
 }
 QPushButton:hover{
-    background: rgb(71, 96, 137);
+    background: rgb(0, 73, 168);
 	background-image : url(resources/logout.png);
 	background-repeat: no-repeat;
 	background-position: center;
     border-radius: 30px;
 }
 QPushButton:pressed{
-    background: rgb(42, 61, 91);
+    background: rgb(0, 55, 128);
     background-image : url(resources/logout.png);
 	background-repeat: no-repeat;
 	background-position: center;
@@ -638,6 +619,25 @@ QPushButton:pressed{
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="small_logo">
+    <property name="geometry">
+     <rect>
+      <x>-60</x>
+      <y>-190</y>
+      <width>391</width>
+      <height>391</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>resources/small_logo.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>

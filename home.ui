@@ -466,7 +466,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>liviBank</string>
+   <string>iKYC</string>
   </property>
   <property name="autoFillBackground">
    <bool>false</bool>
@@ -475,17 +475,17 @@
    <widget class="QLabel" name="small_logo">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>30</y>
-      <width>81</width>
-      <height>81</height>
+      <x>-60</x>
+      <y>-190</y>
+      <width>391</width>
+      <height>391</height>
      </rect>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>resources/logo.png</pixmap>
+     <pixmap>resources/small_logo.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -494,8 +494,8 @@
    <widget class="QLabel" name="homeTitleLabel">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>49</y>
+      <x>190</x>
+      <y>50</y>
       <width>491</width>
       <height>61</height>
      </rect>
@@ -509,7 +509,7 @@
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#2a3d5b;&quot;&gt;Welcome back, Luo Ping!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#003780;&quot;&gt;Welcome back, Luo Ping!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -561,25 +561,25 @@
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
-    background: rgb(121, 226, 255);
+    background: rgb(51, 235, 215);
     background-image : url(resources/profile.png);
 	background-repeat: no-repeat;
 	background-position: center;
-    border-radius: 75px;
+    border-radius: 55px;
 }
 QPushButton:hover{
-    background: rgb(114, 215, 240);
+    background: rgb(47, 220, 200);
 	background-image : url(resources/profile.png);
 	background-repeat: no-repeat;
 	background-position: center;
-    border-radius: 75px;
+    border-radius: 55px;
 }
 QPushButton:pressed{
-    background: rgb(102, 192, 215);
+    background: rgb(42, 195, 177);
     background-image : url(resources/profile.png);
 	background-repeat: no-repeat;
 	background-position: center;
-    border-radius: 75px;
+    border-radius: 55px;
 }</string>
     </property>
     <property name="text">
@@ -612,21 +612,21 @@ QPushButton:pressed{
     background-image : url(resources/history.png);
 	background-repeat: no-repeat;
 	background-position: center;
-    border-radius: 75px;
+    border-radius: 55px;
 }
 QPushButton:hover{
     background: rgb(63, 86, 122);
 	background-image : url(resources/history.png);
 	background-repeat: no-repeat;
 	background-position: center;
-    border-radius: 75px;
+    border-radius: 55px;
 }
 QPushButton:pressed{
     background: rgb(50, 68, 97);
     background-image : url(resources/history.png);
 	background-repeat: no-repeat;
 	background-position: center;
-    border-radius: 75px;
+    border-radius: 55px;
 }</string>
     </property>
     <property name="text">
@@ -659,21 +659,21 @@ QPushButton:pressed{
     background-image : url(resources/transfer.png);
 	background-repeat: no-repeat;
 	background-position: center;
-    border-radius: 75px;
+    border-radius: 55px;
 }
 QPushButton:hover{
     background: rgb(61, 117, 237);
 	background-image : url(resources/transfer.png);
 	background-repeat: no-repeat;
 	background-position: center;
-    border-radius: 75px;
+    border-radius: 55px;
 }
 QPushButton:pressed{
     background: rgb(55, 105, 212);
     background-image : url(resources/transfer.png);
 	background-repeat: no-repeat;
 	background-position: center;
-    border-radius: 75px;
+    border-radius: 55px;
 }</string>
     </property>
     <property name="text">
@@ -702,25 +702,25 @@ QPushButton:pressed{
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
-    background: rgb(51, 235, 215);
+    background: rgb(139, 229, 253);
     background-image : url(resources/account.png);
 	background-repeat: no-repeat;
 	background-position: center;
-    border-radius: 75px;
+    border-radius: 55px;
 }
 QPushButton:hover{
-    background: rgb(47, 220, 200);
+    background: rgb(131, 217, 238);
 	background-image : url(resources/account.png);
 	background-repeat: no-repeat;
 	background-position: center;
-    border-radius: 75px;
+    border-radius: 55px;
 }
 QPushButton:pressed{
-    background: rgb(42, 195, 177);
+    background: rgb(117, 194, 213);
     background-image : url(resources/account.png);
 	background-repeat: no-repeat;
 	background-position: center;
-    border-radius: 75px;
+    border-radius: 55px;
 }</string>
     </property>
     <property name="text">
@@ -745,7 +745,7 @@ QPushButton:pressed{
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#2a3d5b;&quot;&gt;My Profile&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#003780;&quot;&gt;My Profile&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -769,7 +769,7 @@ QPushButton:pressed{
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#2a3d5b;&quot;&gt;My Accounts&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#003780;&quot;&gt;My Accounts&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -793,7 +793,7 @@ QPushButton:pressed{
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#2a3d5b;&quot;&gt;Transfer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#003780;&quot;&gt;Transfer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -817,7 +817,7 @@ QPushButton:pressed{
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#2a3d5b;&quot;&gt;Transaction&lt;br/&gt;History&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#2a3d5b;&quot;&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#003780;&quot;&gt;Transaction&lt;br/&gt;History&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#003780;&quot;&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -851,24 +851,23 @@ QScrollBar:vertical {
 }
 QScrollBar::handle:vertical {
     background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-    stop: 0 rgb(52, 234, 217), stop: 0.5 rgb(52, 234, 217), stop:1 rgb(52, 234, 217));
+    stop: 0 rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253), stop:1 rgb(139, 229, 253));
     min-height: 0px;
 }
 QScrollBar::add-line:vertical {
     background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-    stop: 0 rgb(52, 234, 217), stop: 0.5 rgb(52, 234, 217),  stop:1 rgb(52, 234, 217));
+    stop: 0 rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253),  stop:1 rgb(139, 229, 253));
     height: 0px;
     subcontrol-position: bottom;
     subcontrol-origin: margin;
 }
 QScrollBar::sub-line:vertical {
     background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-    stop: 0  rgb(52, 234, 217), stop: 0.5 rgb(52, 234, 217),  stop:1 rgb(52, 234, 217));
+    stop: 0  rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253),  stop:1 rgb(139, 229, 253));
     height: 0 px;
     subcontrol-position: top;
     subcontrol-origin: margin;
-}
-</string>
+}</string>
     </property>
     <property name="verticalScrollBarPolicy">
      <enum>Qt::ScrollBarAsNeeded</enum>
@@ -1141,7 +1140,7 @@ QScrollBar::sub-line:vertical {
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#2a3d5b;&quot;&gt;Recent Transactions&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#003780;&quot;&gt;Recent Transfer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -1165,7 +1164,7 @@ QScrollBar::sub-line:vertical {
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#1c293d;&quot;&gt;Login History&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#003780;&quot;&gt;Login History&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -1199,19 +1198,19 @@ QScrollBar:vertical {
 }
 QScrollBar::handle:vertical {
     background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-    stop: 0 rgb(52, 234, 217), stop: 0.5 rgb(52, 234, 217), stop:1 rgb(52, 234, 217));
+    stop: 0 rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253), stop:1 rgb(139, 229, 253));
     min-height: 0px;
 }
 QScrollBar::add-line:vertical {
     background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-    stop: 0 rgb(52, 234, 217), stop: 0.5 rgb(52, 234, 217),  stop:1 rgb(52, 234, 217));
+    stop: 0 rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253),  stop:1 rgb(139, 229, 253));
     height: 0px;
     subcontrol-position: bottom;
     subcontrol-origin: margin;
 }
 QScrollBar::sub-line:vertical {
     background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-    stop: 0  rgb(52, 234, 217), stop: 0.5 rgb(52, 234, 217),  stop:1 rgb(52, 234, 217));
+    stop: 0  rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253),  stop:1 rgb(139, 229, 253));
     height: 0 px;
     subcontrol-position: top;
     subcontrol-origin: margin;
@@ -1493,21 +1492,21 @@ QScrollBar::sub-line:vertical {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
-    background: rgb(42, 61, 91);
+    background: rgb(0, 55, 128);
     background-image : url(resources/logout.png);
 	background-repeat: no-repeat;
 	background-position: center;
     border-radius: 30px;
 }
 QPushButton:hover{
-    background: rgb(61, 89, 131);
+    background: rgb(0, 73, 168);
 	background-image : url(resources/logout.png);
 	background-repeat: no-repeat;
 	background-position: center;
     border-radius: 30px;
 }
 QPushButton:pressed{
-    background: rgb(42, 61, 91);
+    background: rgb(0, 55, 128);
     background-image : url(resources/logout.png);
 	background-repeat: no-repeat;
 	background-position: center;

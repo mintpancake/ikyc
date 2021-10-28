@@ -464,16 +464,16 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>liviBank</string>
+   <string>iKYC</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="logo">
     <property name="geometry">
      <rect>
-      <x>470</x>
-      <y>170</y>
-      <width>261</width>
-      <height>261</height>
+      <x>400</x>
+      <y>90</y>
+      <width>401</width>
+      <height>401</height>
      </rect>
     </property>
     <property name="text">
@@ -481,6 +481,9 @@
     </property>
     <property name="pixmap">
      <pixmap>resources/logo.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="loginButton">
@@ -505,18 +508,18 @@
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
-    background: rgb(42, 61, 91);
-    color: rgb(52, 234, 217);
+    background: rgb(0, 55, 128);
+    color: rgb(139, 229, 253);
     border-radius: 5px;
 }
 QPushButton:hover{
-    background: rgb(71, 96, 137);
-    color: rgb(52, 234, 217);
+    background: rgb(0, 73, 168);
+    color: rgb(139, 229, 253);
     border-radius: 5px;
 }
 QPushButton:pressed{
-    background: rgb(42, 61, 91);
-    color: rgb(52, 234, 217);
+    background: rgb(0, 55, 128);
+    color: rgb(139, 229, 253);
     border-radius: 5px;
 }</string>
     </property>
@@ -574,19 +577,19 @@ QPushButton:pressed{
       <x>420</x>
       <y>490</y>
       <width>361</width>
-      <height>51</height>
+      <height>61</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Yu Gothic UI</family>
-      <pointsize>16</pointsize>
+      <pointsize>20</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#2a3d5b;&quot;&gt;Good Morning!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#003780;&quot;&gt;Good Morning!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>

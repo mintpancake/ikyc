@@ -508,17 +508,17 @@
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
-    background: #003780;
+    background: #004094;
     color: rgb(139, 229, 253);
     border-radius: 5px;
 }
 QPushButton:hover{
-    background: rgb(0, 73, 168);
+    background: rgb(0, 71, 163);
     color: rgb(139, 229, 253);
     border-radius: 5px;
 }
 QPushButton:pressed{
-    background: rgb(0, 55, 128);
+    background: #004094;
     color: rgb(139, 229, 253);
     border-radius: 5px;
 }</string>
@@ -555,16 +555,16 @@ QPushButton:pressed{
 	border: 2px solid #003780
 }
 QPushButton:hover{
-    background: rgb(231, 230, 237);
-    color: rgb(0, 64, 148);
+    background: rgb(235, 233, 241);
+    color: #003780;
     border-radius: 5px;
-	border: 2px solid rgb(0, 64, 148)
+	border: 2px solid #003780;
 }
 QPushButton:pressed{
-    background: rgb(205, 203, 210);
-    color: rgb(15, 22, 33);
+    background: rgb(226, 224, 231);
+    color: #003780;
     border-radius: 5px;
-	border: 2px solid rgb(42, 61, 91)
+	border: 2px solid #003780;
 }</string>
     </property>
     <property name="text">

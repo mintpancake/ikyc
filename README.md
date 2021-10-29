@@ -24,24 +24,24 @@ Know Your Customer (iKYC) system with facial ID login function.
 * Notice that relative paths used in `styleSheet` do not take effect in `Qt Designer` but essentially work fine. 
 #### Color policy
 * Themes:
-  * `#8be5fd`
-  * `#004094`
+  * `#8be5fd` (light blue in logo)
+  * `#004094` (dark blue in logo)
   * More TBD...
 * Backgrounds:
-  * Windows: `#f7f6fb`
-  * Sections: `#ffffff`
+  * Windows: `#f7f6fb` (grey white)
+  * Sections: `#ffffff` (white)
 * Text: 
-  * Titles: `#003780`
-  * Main text: `#000000`
-  * Non-essential text: `#646464`
+  * Titles: `#003780` (darker blue)
+  * Main text: `#000000` (black)
+  * Non-essential text: `#646464` (grey black)
 * Buttons:
   * Light-color buttons: 
     * Normal: `HSV(hue, saturation, value)`
-    * Hover: `HSV(hue, saturation, value - 15)`
-    * Pressed: `HSV(hue, saturation, value - 40)`
+    * Hover: `HSV(hue, saturation, value - 10)`
+    * Pressed: `HSV(hue, saturation, value - 20)`
   * Dark-color buttons: 
     * Normal: `HSV(hue, saturation, value)`
-    * Hover: `HSV(hue, saturation, value + 40)`
+    * Hover: `HSV(hue, saturation, value + 15)`
     * Pressed: `HSV(hue, saturation, value)`
 ### Converting from `.ui` to `.py`
 1. `conda activate 3278`

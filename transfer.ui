@@ -495,9 +495,9 @@
     <property name="geometry">
      <rect>
       <x>190</x>
-      <y>50</y>
+      <y>40</y>
       <width>491</width>
-      <height>61</height>
+      <height>91</height>
      </rect>
     </property>
     <property name="font">
@@ -509,7 +509,7 @@
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#003780;&quot;&gt;Welcome back, Luo Ping!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:36pt; color:#003780;&quot;&gt;Transfer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -543,7 +543,7 @@
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>210</y>
+      <y>330</y>
       <width>150</width>
       <height>150</height>
      </rect>
@@ -684,7 +684,7 @@ QPushButton:pressed{
     <property name="geometry">
      <rect>
       <x>310</x>
-      <y>210</y>
+      <y>410</y>
       <width>150</width>
       <height>150</height>
      </rect>
@@ -730,10 +730,10 @@ QPushButton:pressed{
    <widget class="QLabel" name="profileLabel">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>370</y>
-      <width>150</width>
-      <height>40</height>
+      <x>110</x>
+      <y>200</y>
+      <width>551</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="font">
@@ -745,34 +745,10 @@ QPushButton:pressed{
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#003780;&quot;&gt;My Profile&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:20pt; color:#003780;&quot;&gt;Please enter the payee's user ID:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="accountLabel">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>370</y>
-      <width>150</width>
-      <height>40</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Yu Gothic UI</family>
-      <pointsize>15</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#003780;&quot;&gt;My Accounts&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="transferLabel">
@@ -1286,6 +1262,21 @@ QPushButton:pressed{
      <string/>
     </property>
    </widget>
+   <zorder>small_logo</zorder>
+   <zorder>homeTitleLabel</zorder>
+   <zorder>lastLoginTimeLabel</zorder>
+   <zorder>profileButton</zorder>
+   <zorder>historyButton</zorder>
+   <zorder>transferButton</zorder>
+   <zorder>accountButton</zorder>
+   <zorder>transferLabel</zorder>
+   <zorder>historyLabel</zorder>
+   <zorder>scrollArea</zorder>
+   <zorder>recentLabel</zorder>
+   <zorder>loginHistoryLabel</zorder>
+   <zorder>scrollArea_2</zorder>
+   <zorder>logoutButton</zorder>
+   <zorder>profileLabel</zorder>
   </widget>
  </widget>
  <resources/>

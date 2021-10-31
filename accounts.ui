@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>iKYC</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background: #f7f6fb</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <widget class="QLabel" name="logoLabel">
+    <property name="geometry">
+     <rect>
+      <x>-60</x>
+      <y>-190</y>
+      <width>391</width>
+      <height>391</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>resources/small_logo.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="titleLabel">
+    <property name="geometry">
+     <rect>
+      <x>375</x>
+      <y>80</y>
+      <width>400</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>24</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #003780; background:None; text-align: center;</string>
+    </property>
+    <property name="text">
+     <string>My Accounts</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QWidget" name="depositWidget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>250</y>
+      <width>200</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {border: 3px solid; border-color: #003780;border-radius:100px; background: white}
+
+QWidget:hover{background-color: rgb(235, 233, 241);
+}</string>
+    </property>
+    <widget class="QLabel" name="depositLabel">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>30</y>
+       <width>100</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: None; color: #003780; text-align: center; background:None</string>
+     </property>
+     <property name="text">
+      <string>Deposit</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="depositAmountLabel">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>80</y>
+       <width>200</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic</family>
+       <pointsize>18</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="accessibleName">
+      <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ui version=&quot;4.0&quot;&gt;
+ &lt;widget name=&quot;__qt_fake_top_level&quot;&gt;
+  &lt;widget class=&quot;QLabel&quot; name=&quot;label_7&quot;&gt;
+   &lt;property name=&quot;geometry&quot;&gt;
+    &lt;rect&gt;
+     &lt;x&gt;0&lt;/x&gt;
+     &lt;y&gt;80&lt;/y&gt;
+     &lt;width&gt;200&lt;/width&gt;
+     &lt;height&gt;40&lt;/height&gt;
+    &lt;/rect&gt;
+   &lt;/property&gt;
+   &lt;property name=&quot;font&quot;&gt;
+    &lt;font&gt;
+     &lt;family&gt;Yu Gothic&lt;/family&gt;
+     &lt;pointsize&gt;22&lt;/pointsize&gt;
+     &lt;weight&gt;50&lt;/weight&gt;
+     &lt;bold&gt;false&lt;/bold&gt;
+    &lt;/font&gt;
+   &lt;/property&gt;
+   &lt;property name=&quot;styleSheet&quot;&gt;
+    &lt;string notr=&quot;true&quot;&gt;border:None;background:None&lt;/string&gt;
+   &lt;/property&gt;
+   &lt;property name=&quot;text&quot;&gt;
+    &lt;string&gt;$10,000&lt;/string&gt;
+   &lt;/property&gt;
+   &lt;property name=&quot;alignment&quot;&gt;
+    &lt;set&gt;Qt::AlignCenter&lt;/set&gt;
+   &lt;/property&gt;
+  &lt;/widget&gt;
+ &lt;/widget&gt;
+ &lt;resources/&gt;
+&lt;/ui&gt;
+</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:None;background:None</string>
+     </property>
+     <property name="text">
+      <string>$10,000</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="CNYWidget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>850</x>
+      <y>250</y>
+      <width>200</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {border: 3px solid; border-color: #003780;border-radius:100px; background: white}
+
+QWidget:hover{background-color: rgb(235, 233, 241);
+}</string>
+    </property>
+    <widget class="QLabel" name="cnyLabel">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>30</y>
+       <width>100</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: None; color: #003780; text-align: center; background:None</string>
+     </property>
+     <property name="text">
+      <string>CNY</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="cnyAmountLabel">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>80</y>
+       <width>200</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic</family>
+       <pointsize>18</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="accessibleName">
+      <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ui version=&quot;4.0&quot;&gt;
+ &lt;widget name=&quot;__qt_fake_top_level&quot;&gt;
+  &lt;widget class=&quot;QLabel&quot; name=&quot;label_7&quot;&gt;
+   &lt;property name=&quot;geometry&quot;&gt;
+    &lt;rect&gt;
+     &lt;x&gt;0&lt;/x&gt;
+     &lt;y&gt;80&lt;/y&gt;
+     &lt;width&gt;200&lt;/width&gt;
+     &lt;height&gt;40&lt;/height&gt;
+    &lt;/rect&gt;
+   &lt;/property&gt;
+   &lt;property name=&quot;font&quot;&gt;
+    &lt;font&gt;
+     &lt;family&gt;Yu Gothic&lt;/family&gt;
+     &lt;pointsize&gt;22&lt;/pointsize&gt;
+     &lt;weight&gt;50&lt;/weight&gt;
+     &lt;bold&gt;false&lt;/bold&gt;
+    &lt;/font&gt;
+   &lt;/property&gt;
+   &lt;property name=&quot;styleSheet&quot;&gt;
+    &lt;string notr=&quot;true&quot;&gt;border:None;background:None&lt;/string&gt;
+   &lt;/property&gt;
+   &lt;property name=&quot;text&quot;&gt;
+    &lt;string&gt;$10,000&lt;/string&gt;
+   &lt;/property&gt;
+   &lt;property name=&quot;alignment&quot;&gt;
+    &lt;set&gt;Qt::AlignCenter&lt;/set&gt;
+   &lt;/property&gt;
+  &lt;/widget&gt;
+ &lt;/widget&gt;
+ &lt;resources/&gt;
+&lt;/ui&gt;
+</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:None;background:None</string>
+     </property>
+     <property name="text">
+      <string>￥10,000</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="USDWidget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>250</y>
+      <width>200</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {border: 3px solid; border-color: #003780;border-radius:100px; background: white}
+
+QWidget:hover{background-color: rgb(235, 233, 241);
+}</string>
+    </property>
+    <widget class="QLabel" name="usdLabel">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>30</y>
+       <width>100</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: None; color: #003780; text-align: center; background:None</string>
+     </property>
+     <property name="text">
+      <string>USD</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="usdAmountLabel">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>80</y>
+       <width>200</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic</family>
+       <pointsize>18</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="accessibleName">
+      <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ui version=&quot;4.0&quot;&gt;
+ &lt;widget name=&quot;__qt_fake_top_level&quot;&gt;
+  &lt;widget class=&quot;QLabel&quot; name=&quot;label_7&quot;&gt;
+   &lt;property name=&quot;geometry&quot;&gt;
+    &lt;rect&gt;
+     &lt;x&gt;0&lt;/x&gt;
+     &lt;y&gt;80&lt;/y&gt;
+     &lt;width&gt;200&lt;/width&gt;
+     &lt;height&gt;40&lt;/height&gt;
+    &lt;/rect&gt;
+   &lt;/property&gt;
+   &lt;property name=&quot;font&quot;&gt;
+    &lt;font&gt;
+     &lt;family&gt;Yu Gothic&lt;/family&gt;
+     &lt;pointsize&gt;22&lt;/pointsize&gt;
+     &lt;weight&gt;50&lt;/weight&gt;
+     &lt;bold&gt;false&lt;/bold&gt;
+    &lt;/font&gt;
+   &lt;/property&gt;
+   &lt;property name=&quot;styleSheet&quot;&gt;
+    &lt;string notr=&quot;true&quot;&gt;border:None;background:None&lt;/string&gt;
+   &lt;/property&gt;
+   &lt;property name=&quot;text&quot;&gt;
+    &lt;string&gt;$10,000&lt;/string&gt;
+   &lt;/property&gt;
+   &lt;property name=&quot;alignment&quot;&gt;
+    &lt;set&gt;Qt::AlignCenter&lt;/set&gt;
+   &lt;/property&gt;
+  &lt;/widget&gt;
+ &lt;/widget&gt;
+ &lt;resources/&gt;
+&lt;/ui&gt;
+</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:None;background:None</string>
+     </property>
+     <property name="text">
+      <string>$10,000</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="HKDWidge" native="true">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>250</y>
+      <width>200</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {border: 3px solid; border-color: #003780;border-radius:100px; background: white}
+
+QWidget:hover{background-color: rgb(235, 233, 241);
+}</string>
+    </property>
+    <widget class="QLabel" name="hkdLabel">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>30</y>
+       <width>100</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: None; color: #003780; text-align: center; background:None</string>
+     </property>
+     <property name="text">
+      <string>HKD</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="hkdAmountLabel">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>80</y>
+       <width>200</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic</family>
+       <pointsize>18</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:None;background:None</string>
+     </property>
+     <property name="text">
+      <string>$10,000</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>950</x>
+      <y>510</y>
+      <width>100</width>
+      <height>100</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{background:#004094; background-image : url(resources/back.png); background-repeat: no-repeat; background-position: center; border-radius: 50px;}
+
+QPushButton:hover {
+background-color:rgb(0, 71, 163);
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -236,7 +236,7 @@ class Ui_MainWindow(object):
 
     def show_camera(self):
         flag, self.image = self.cap.read()
-        show = show = cv2.resize(self.image, (600, 450))
+        show = cv2.resize(self.image, (600, 450))
         show = cv2.cvtColor(show, cv2.COLOR_BGR2RGB)
         showImage = QtGui.QImage(show.data, show.shape[1], show.shape[0], QtGui.QImage.Format_RGB888)
         self.camera.setPixmap(QtGui.QPixmap.fromImage(showImage))

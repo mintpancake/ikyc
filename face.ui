@@ -103,9 +103,9 @@
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>255</red>
-        <green>255</green>
-        <blue>255</blue>
+        <red>247</red>
+        <green>246</green>
+        <blue>251</blue>
        </color>
       </brush>
      </colorrole>
@@ -249,9 +249,9 @@
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>255</red>
-        <green>255</green>
-        <blue>255</blue>
+        <red>247</red>
+        <green>246</green>
+        <blue>251</blue>
        </color>
       </brush>
      </colorrole>
@@ -466,6 +466,11 @@
   <property name="windowTitle">
    <string>iKYC</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow{
+	background-color: rgb(247, 246, 251);
+}</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="verifyButton">
     <property name="geometry">
@@ -520,8 +525,6 @@ QPushButton:pressed{
     <property name="styleSheet">
      <string notr="true">QLabel{
     background: rgb(189, 189, 189);
-	border: 3px solid rgb(42, 61, 91);
-    border-radius: 200px;
 }</string>
     </property>
     <property name="text">
@@ -593,7 +596,7 @@ QPushButton:pressed{
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="leaveButton">
+   <widget class="QPushButton" name="backButton">
     <property name="geometry">
      <rect>
       <x>420</x>
@@ -637,6 +640,33 @@ QPushButton:pressed{
      <string>Back</string>
     </property>
    </widget>
+   <widget class="QLabel" name="cameraMask">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>80</y>
+      <width>600</width>
+      <height>600</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+    background: rgba(255, 255, 255, 0);
+	border: 100px solid rgb(247, 246, 251);
+    border-radius: 300px;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <zorder>camera</zorder>
+   <zorder>cameraMask</zorder>
+   <zorder>verifyButton</zorder>
+   <zorder>hintLabel</zorder>
+   <zorder>faceTitleLabel</zorder>
+   <zorder>small_logo</zorder>
+   <zorder>backButton</zorder>
   </widget>
  </widget>
  <resources/>

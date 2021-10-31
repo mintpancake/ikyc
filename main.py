@@ -11,6 +11,7 @@ HEIGHT = 800
 
 WELCOME = 0
 FACE = 1
+HOME = 2
 
 
 def switch_to(idx):
@@ -89,7 +90,23 @@ class FaceWindow(QMainWindow):
 
     def verify(self):
         self.stop()
-        # TODO: image is in self.image
+        user_id = -1
+        # TODO: use self.image to get user_id
+        user_id = -1
+        if user_id != -1:
+            homeWin = HomeWindow(user_id)
+            mainWin.addWidget(homeWin)
+            switch_to(HOME)
+        else:
+            self.hintLabel.setText(
+                '<html><head/><body><p align="center"><span style=" font-weight:600; color:#646464;">Unrecognized</span><span style=" font-weight:600; color:#646464;"><br/></span><span style=" color:#646464;">Please adjust your posture and try again</span></p></body></html>'
+            )
+            self.start()
+
+
+class HomeWindow(QMainWindow):
+    def __init__(self, user_id):
+        super(HomeWindow, self).__init__()
 
 
 if __name__ == "__main__":

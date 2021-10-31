@@ -660,6 +660,26 @@ QPushButton:pressed{
      <string/>
     </property>
    </widget>
+   <widget class="QLabel" name="cameraBorder">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>180</y>
+      <width>400</width>
+      <height>400</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+    background: rgba(255, 255, 255, 0);
+	border: 3px solid rgb(0, 55, 128);
+    border-radius: 200px;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
    <zorder>camera</zorder>
    <zorder>cameraMask</zorder>
    <zorder>verifyButton</zorder>
@@ -667,6 +687,7 @@ QPushButton:pressed{
    <zorder>faceTitleLabel</zorder>
    <zorder>small_logo</zorder>
    <zorder>backButton</zorder>
+   <zorder>cameraBorder</zorder>
   </widget>
  </widget>
  <resources/>

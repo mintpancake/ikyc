@@ -9,9 +9,7 @@ Know Your Customer (iKYC) system with facial ID login function.
 ### Configuration procedures (with `anaconda3`)
 1. `conda create -n 3278 python=3.8`
 2. `conda activate 3278`
-3. `pip install pyqt5`
-4. `pip install pyqt5-tools`
-5. `pip install opencv-python`
+3. `pip install -r requirements.txt`
 ## Development guidelines
 ### Documentations
 * https://www.figma.com/file/gKQlpgou7UHzjYl5jCZPiS/Customer-Journey

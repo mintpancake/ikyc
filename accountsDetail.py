@@ -24,6 +24,46 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
         self.logoLabel = QtWidgets.QLabel(self.centralwidget)
         self.logoLabel.setGeometry(QtCore.QRect(-60, -190, 391, 391))
+        self.logoLabel.setStyleSheet("QScrollBar::handle:vertical {\n"
+"    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
+"    stop: 0 rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253), stop:1 rgb(139, 229, 253));\n"
+"    min-height: 0px;\n"
+"}\n"
+"QScrollBar::add-line:vertical {\n"
+"    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
+"    stop: 0 rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253),  stop:1 rgb(139, 229, 253));\n"
+"    height: 0px;\n"
+"    subcontrol-position: bottom;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"QScrollBar::sub-line:vertical {\n"
+"    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
+"    stop: 0  rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253),  stop:1 rgb(139, 229, 253));\n"
+"    height: 0 px;\n"
+"    subcontrol-position: top;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:horizon {\n"
+"    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
+"    stop: 0 rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253), stop:1 rgb(139, 229, 253));\n"
+"    min-height: 0px;\n"
+"}\n"
+"QScrollBar::add-line:horizon {\n"
+"    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
+"    stop: 0 rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253),  stop:1 rgb(139, 229, 253));\n"
+"    height: 0px;\n"
+"    subcontrol-position: bottom;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"QScrollBar::sub-line:horizon {\n"
+"    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
+"    stop: 0  rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253),  stop:1 rgb(139, 229, 253));\n"
+"    height: 0 px;\n"
+"    subcontrol-position: top;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"")
         self.logoLabel.setText("")
         self.logoLabel.setPixmap(QtGui.QPixmap("resources/small_logo.png"))
         self.logoLabel.setScaledContents(True)
@@ -50,24 +90,78 @@ class Ui_MainWindow(object):
         self.pushButton.setText("")
         self.pushButton.setObjectName("pushButton")
         self.tableWidget = QtWidgets.QTableWidget(self.centralwidget)
-        self.tableWidget.setGeometry(QtCore.QRect(80, 240, 500, 191))
+        self.tableWidget.setGeometry(QtCore.QRect(80, 240, 591, 191))
         font = QtGui.QFont()
         font.setFamily("Yu Gothic UI")
         font.setPointSize(12)
         self.tableWidget.setFont(font)
-        self.tableWidget.setStyleSheet("background:white")
+        self.tableWidget.setStyleSheet("QWidget{\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border: 0px;\n"
+"}\n"
+"QScrollBar:vertical {       \n"
+"    background:transparent;\n"
+"    width:10px;\n"
+"    margin:0px 0px 0px 0px;\n"
+"}\n"
+"QScrollBar::handle:vertical {\n"
+"    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
+"    stop: 0 rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253), stop:1 rgb(139, 229, 253));\n"
+"    min-height: 0px;\n"
+"}\n"
+"QScrollBar::add-line:vertical {\n"
+"    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
+"    stop: 0 rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253),  stop:1 rgb(139, 229, 253));\n"
+"    height: 0px;\n"
+"    subcontrol-position: bottom;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"QScrollBar::sub-line:vertical {\n"
+"    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
+"    stop: 0  rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253),  stop:1 rgb(139, 229, 253));\n"
+"    height: 0 px;\n"
+"    subcontrol-position: top;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"\n"
+"\n"
+"QScrollBar:horizontal {       \n"
+"    background:transparent;\n"
+"    height:10px;\n"
+"    margin:0px 0px 0px 0px;\n"
+"}\n"
+"QScrollBar::handle:horizontal {\n"
+"    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
+"    stop: 0 rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253), stop:1 rgb(139, 229, 253));\n"
+"    min-width: 0px;\n"
+"}\n"
+"QScrollBar::add-line:horizontal {\n"
+"    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
+"    stop: 0 rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253),  stop:1 rgb(139, 229, 253));\n"
+"    width: 0px;\n"
+"    subcontrol-position: right;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"QScrollBar::sub-line:horizontal {\n"
+"    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
+"    stop: 0  rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253),  stop:1 rgb(139, 229, 253));\n"
+"    width: 0 px;\n"
+"    subcontrol-position: left;\n"
+"    subcontrol-origin: margin;\n"
+"}")
         self.tableWidget.setHorizontalScrollMode(QtWidgets.QAbstractItemView.ScrollPerItem)
+        self.tableWidget.setShowGrid(True)
+        self.tableWidget.setGridStyle(QtCore.Qt.SolidLine)
+        self.tableWidget.setWordWrap(True)
+        self.tableWidget.setRowCount(5)
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setColumnCount(5)
-        self.tableWidget.setRowCount(4)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setVerticalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setVerticalHeaderItem(1, item)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setVerticalHeaderItem(2, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(3, item)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
@@ -98,6 +192,9 @@ class Ui_MainWindow(object):
         self.tableWidget.setItem(1, 3, item)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setItem(1, 4, item)
+        self.tableWidget.horizontalHeader().setDefaultSectionSize(113)
+        self.tableWidget.verticalHeader().setDefaultSectionSize(38)
+        self.tableWidget.verticalHeader().setMinimumSectionSize(21)
         self.HKDWidge = QtWidgets.QWidget(self.centralwidget)
         self.HKDWidge.setGeometry(QtCore.QRect(800, 230, 200, 200))
         self.HKDWidge.setStyleSheet("QWidget {border: 3px solid; border-color: #003780;border-radius:100px; background: white}\n"
@@ -126,16 +223,69 @@ class Ui_MainWindow(object):
         self.hkdAmountLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.hkdAmountLabel.setObjectName("hkdAmountLabel")
         self.tableWidget_2 = QtWidgets.QTableWidget(self.centralwidget)
-        self.tableWidget_2.setGeometry(QtCore.QRect(80, 500, 500, 191))
+        self.tableWidget_2.setGeometry(QtCore.QRect(80, 500, 591, 191))
         font = QtGui.QFont()
         font.setFamily("Yu Gothic UI")
         font.setPointSize(12)
         self.tableWidget_2.setFont(font)
-        self.tableWidget_2.setStyleSheet("background:white")
+        self.tableWidget_2.setStyleSheet("QWidget{\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border: 0px;\n"
+"}\n"
+"QScrollBar:vertical {       \n"
+"    background:transparent;\n"
+"    width:10px;\n"
+"    margin:0px 0px 0px 0px;\n"
+"}\n"
+"QScrollBar::handle:vertical {\n"
+"    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
+"    stop: 0 rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253), stop:1 rgb(139, 229, 253));\n"
+"    min-height: 0px;\n"
+"}\n"
+"QScrollBar::add-line:vertical {\n"
+"    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
+"    stop: 0 rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253),  stop:1 rgb(139, 229, 253));\n"
+"    height: 0px;\n"
+"    subcontrol-position: bottom;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"QScrollBar::sub-line:vertical {\n"
+"    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
+"    stop: 0  rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253),  stop:1 rgb(139, 229, 253));\n"
+"    height: 0 px;\n"
+"    subcontrol-position: top;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"\n"
+"\n"
+"QScrollBar:horizontal {       \n"
+"    background:transparent;\n"
+"    height:10px;\n"
+"    margin:0px 0px 0px 0px;\n"
+"}\n"
+"QScrollBar::handle:horizontal {\n"
+"    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
+"    stop: 0 rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253), stop:1 rgb(139, 229, 253));\n"
+"    min-width: 0px;\n"
+"}\n"
+"QScrollBar::add-line:horizontal {\n"
+"    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
+"    stop: 0 rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253),  stop:1 rgb(139, 229, 253));\n"
+"    width: 0px;\n"
+"    subcontrol-position: right;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"QScrollBar::sub-line:horizontal {\n"
+"    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
+"    stop: 0  rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253),  stop:1 rgb(139, 229, 253));\n"
+"    width: 0 px;\n"
+"    subcontrol-position: left;\n"
+"    subcontrol-origin: margin;\n"
+"}")
         self.tableWidget_2.setHorizontalScrollMode(QtWidgets.QAbstractItemView.ScrollPerItem)
+        self.tableWidget_2.setRowCount(5)
         self.tableWidget_2.setObjectName("tableWidget_2")
         self.tableWidget_2.setColumnCount(5)
-        self.tableWidget_2.setRowCount(4)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget_2.setVerticalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
@@ -174,13 +324,109 @@ class Ui_MainWindow(object):
         self.tableWidget_2.setItem(1, 3, item)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget_2.setItem(1, 4, item)
-        self.comboBox = QtWidgets.QComboBox(self.centralwidget)
-        self.comboBox.setGeometry(QtCore.QRect(80, 190, 104, 26))
-        self.comboBox.setObjectName("comboBox")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
+        self.tableWidget_2.horizontalHeader().setDefaultSectionSize(114)
+        self.tableWidget_2.verticalHeader().setDefaultSectionSize(38)
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(80, 200, 181, 31))
+        font = QtGui.QFont()
+        font.setPointSize(25)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label.setFont(font)
+        self.label.setObjectName("label")
+        self.label_2 = QtWidgets.QLabel(self.centralwidget)
+        self.label_2.setGeometry(QtCore.QRect(80, 460, 181, 31))
+        font = QtGui.QFont()
+        font.setPointSize(25)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_2.setFont(font)
+        self.label_2.setObjectName("label_2")
+        self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_2.setGeometry(QtCore.QRect(80, 730, 113, 32))
+        self.pushButton_2.setStyleSheet("QPushButton{\n"
+"    background: rgb(245, 243, 251);\n"
+"    color: #003780;\n"
+"    border-radius: 5px;\n"
+"    border: 2px solid #003780\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background: rgb(235, 233, 241);\n"
+"    color: #003780;\n"
+"    border-radius: 5px;\n"
+"    border: 2px solid #003780;\n"
+"}\n"
+"QPushButton:pressed{\n"
+"    background: rgb(226, 224, 231);\n"
+"    color: #003780;\n"
+"    border-radius: 5px;\n"
+"    border: 2px solid #003780;\n"
+"}")
+        self.pushButton_2.setAutoDefault(False)
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_3.setGeometry(QtCore.QRect(240, 730, 113, 32))
+        self.pushButton_3.setStyleSheet("QPushButton{\n"
+"    background: rgb(245, 243, 251);\n"
+"    color: #003780;\n"
+"    border-radius: 5px;\n"
+"    border: 2px solid #003780\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background: rgb(235, 233, 241);\n"
+"    color: #003780;\n"
+"    border-radius: 5px;\n"
+"    border: 2px solid #003780;\n"
+"}\n"
+"QPushButton:pressed{\n"
+"    background: rgb(226, 224, 231);\n"
+"    color: #003780;\n"
+"    border-radius: 5px;\n"
+"    border: 2px solid #003780;\n"
+"}")
+        self.pushButton_3.setObjectName("pushButton_3")
+        self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_4.setGeometry(QtCore.QRect(400, 730, 113, 32))
+        self.pushButton_4.setStyleSheet("QPushButton{\n"
+"    background: rgb(245, 243, 251);\n"
+"    color: #003780;\n"
+"    border-radius: 5px;\n"
+"    border: 2px solid #003780\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background: rgb(235, 233, 241);\n"
+"    color: #003780;\n"
+"    border-radius: 5px;\n"
+"    border: 2px solid #003780;\n"
+"}\n"
+"QPushButton:pressed{\n"
+"    background: rgb(226, 224, 231);\n"
+"    color: #003780;\n"
+"    border-radius: 5px;\n"
+"    border: 2px solid #003780;\n"
+"}")
+        self.pushButton_4.setObjectName("pushButton_4")
+        self.pushButton_5 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_5.setGeometry(QtCore.QRect(560, 730, 113, 32))
+        self.pushButton_5.setStyleSheet("QPushButton{\n"
+"    background: rgb(245, 243, 251);\n"
+"    color: #003780;\n"
+"    border-radius: 5px;\n"
+"    border: 2px solid #003780\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background: rgb(235, 233, 241);\n"
+"    color: #003780;\n"
+"    border-radius: 5px;\n"
+"    border: 2px solid #003780;\n"
+"}\n"
+"QPushButton:pressed{\n"
+"    background: rgb(226, 224, 231);\n"
+"    color: #003780;\n"
+"    border-radius: 5px;\n"
+"    border: 2px solid #003780;\n"
+"}")
+        self.pushButton_5.setObjectName("pushButton_5")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -190,6 +436,7 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "iKYC"))
         self.titleLabel.setText(_translate("MainWindow", "HKD Account"))
+        self.tableWidget.setSortingEnabled(False)
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "ID"))
         item = self.tableWidget.horizontalHeaderItem(1)
@@ -262,10 +509,12 @@ class Ui_MainWindow(object):
         item = self.tableWidget_2.item(1, 4)
         item.setText(_translate("MainWindow", "Joe"))
         self.tableWidget_2.setSortingEnabled(__sortingEnabled)
-        self.comboBox.setItemText(0, _translate("MainWindow", "Current"))
-        self.comboBox.setItemText(1, _translate("MainWindow", "Deposit"))
-        self.comboBox.setItemText(2, _translate("MainWindow", "USD"))
-        self.comboBox.setItemText(3, _translate("MainWindow", "RMB"))
+        self.label.setText(_translate("MainWindow", "Remittance"))
+        self.label_2.setText(_translate("MainWindow", "Received"))
+        self.pushButton_2.setText(_translate("MainWindow", "Current"))
+        self.pushButton_3.setText(_translate("MainWindow", "Deposit"))
+        self.pushButton_4.setText(_translate("MainWindow", "USD"))
+        self.pushButton_5.setText(_translate("MainWindow", "RMB"))
 
 
 if __name__ == "__main__":

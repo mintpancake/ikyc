@@ -34,6 +34,48 @@
       <height>391</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QScrollBar::handle:vertical {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+    stop: 0 rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253), stop:1 rgb(139, 229, 253));
+    min-height: 0px;
+}
+QScrollBar::add-line:vertical {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+    stop: 0 rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253),  stop:1 rgb(139, 229, 253));
+    height: 0px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+QScrollBar::sub-line:vertical {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+    stop: 0  rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253),  stop:1 rgb(139, 229, 253));
+    height: 0 px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::handle:horizon {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+    stop: 0 rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253), stop:1 rgb(139, 229, 253));
+    min-height: 0px;
+}
+QScrollBar::add-line:horizon {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+    stop: 0 rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253),  stop:1 rgb(139, 229, 253));
+    height: 0px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+QScrollBar::sub-line:horizon {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+    stop: 0  rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253),  stop:1 rgb(139, 229, 253));
+    height: 0 px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+</string>
+    </property>
     <property name="text">
      <string/>
     </property>
@@ -99,7 +141,7 @@ background-color:rgb(0, 71, 163);
      <rect>
       <x>80</x>
       <y>240</y>
-      <width>500</width>
+      <width>591</width>
       <height>191</height>
      </rect>
     </property>
@@ -110,11 +152,88 @@ background-color:rgb(0, 71, 163);
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background:white</string>
+     <string notr="true">QWidget{
+    background-color: rgb(255, 255, 255);
+    border: 0px;
+}
+QScrollBar:vertical {       
+    background:transparent;
+    width:10px;
+    margin:0px 0px 0px 0px;
+}
+QScrollBar::handle:vertical {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+    stop: 0 rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253), stop:1 rgb(139, 229, 253));
+    min-height: 0px;
+}
+QScrollBar::add-line:vertical {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+    stop: 0 rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253),  stop:1 rgb(139, 229, 253));
+    height: 0px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+QScrollBar::sub-line:vertical {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+    stop: 0  rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253),  stop:1 rgb(139, 229, 253));
+    height: 0 px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+
+
+QScrollBar:horizontal {       
+    background:transparent;
+    height:10px;
+    margin:0px 0px 0px 0px;
+}
+QScrollBar::handle:horizontal {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+    stop: 0 rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253), stop:1 rgb(139, 229, 253));
+    min-width: 0px;
+}
+QScrollBar::add-line:horizontal {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+    stop: 0 rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253),  stop:1 rgb(139, 229, 253));
+    width: 0px;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+QScrollBar::sub-line:horizontal {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+    stop: 0  rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253),  stop:1 rgb(139, 229, 253));
+    width: 0 px;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}</string>
     </property>
     <property name="horizontalScrollMode">
      <enum>QAbstractItemView::ScrollPerItem</enum>
     </property>
+    <property name="showGrid">
+     <bool>true</bool>
+    </property>
+    <property name="gridStyle">
+     <enum>Qt::SolidLine</enum>
+    </property>
+    <property name="sortingEnabled">
+     <bool>false</bool>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+    <property name="rowCount">
+     <number>5</number>
+    </property>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>113</number>
+    </attribute>
+    <attribute name="verticalHeaderDefaultSectionSize">
+     <number>38</number>
+    </attribute>
+    <attribute name="verticalHeaderMinimumSectionSize">
+     <number>21</number>
+    </attribute>
     <row>
      <property name="text">
       <string/>
@@ -130,11 +249,8 @@ background-color:rgb(0, 71, 163);
       <string/>
      </property>
     </row>
-    <row>
-     <property name="text">
-      <string/>
-     </property>
-    </row>
+    <row/>
+    <row/>
     <column>
      <property name="text">
       <string>ID</string>
@@ -284,7 +400,7 @@ background-color:rgb(0, 71, 163);
      <rect>
       <x>80</x>
       <y>500</y>
-      <width>500</width>
+      <width>591</width>
       <height>191</height>
      </rect>
     </property>
@@ -295,11 +411,73 @@ background-color:rgb(0, 71, 163);
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background:white</string>
+     <string notr="true">QWidget{
+    background-color: rgb(255, 255, 255);
+    border: 0px;
+}
+QScrollBar:vertical {       
+    background:transparent;
+    width:10px;
+    margin:0px 0px 0px 0px;
+}
+QScrollBar::handle:vertical {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+    stop: 0 rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253), stop:1 rgb(139, 229, 253));
+    min-height: 0px;
+}
+QScrollBar::add-line:vertical {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+    stop: 0 rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253),  stop:1 rgb(139, 229, 253));
+    height: 0px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+QScrollBar::sub-line:vertical {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+    stop: 0  rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253),  stop:1 rgb(139, 229, 253));
+    height: 0 px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+
+
+QScrollBar:horizontal {       
+    background:transparent;
+    height:10px;
+    margin:0px 0px 0px 0px;
+}
+QScrollBar::handle:horizontal {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+    stop: 0 rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253), stop:1 rgb(139, 229, 253));
+    min-width: 0px;
+}
+QScrollBar::add-line:horizontal {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+    stop: 0 rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253),  stop:1 rgb(139, 229, 253));
+    width: 0px;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+QScrollBar::sub-line:horizontal {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+    stop: 0  rgb(139, 229, 253), stop: 0.5 rgb(139, 229, 253),  stop:1 rgb(139, 229, 253));
+    width: 0 px;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}</string>
     </property>
     <property name="horizontalScrollMode">
      <enum>QAbstractItemView::ScrollPerItem</enum>
     </property>
+    <property name="rowCount">
+     <number>5</number>
+    </property>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>114</number>
+    </attribute>
+    <attribute name="verticalHeaderDefaultSectionSize">
+     <number>38</number>
+    </attribute>
     <row>
      <property name="text">
       <string/>
@@ -320,6 +498,7 @@ background-color:rgb(0, 71, 163);
       <string/>
      </property>
     </row>
+    <row/>
     <column>
      <property name="text">
       <string>ID</string>
@@ -400,35 +579,180 @@ background-color:rgb(0, 71, 163);
      </property>
     </item>
    </widget>
-   <widget class="QComboBox" name="comboBox">
+   <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>190</y>
-      <width>104</width>
-      <height>26</height>
+      <y>200</y>
+      <width>181</width>
+      <height>31</height>
      </rect>
     </property>
-    <item>
-     <property name="text">
-      <string>Current</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Deposit</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>USD</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>RMB</string>
-     </property>
-    </item>
+    <property name="font">
+     <font>
+      <pointsize>25</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Remittance</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>460</y>
+      <width>181</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>25</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Received</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>730</y>
+      <width>113</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+    background: rgb(245, 243, 251);
+    color: #003780;
+    border-radius: 5px;
+	border: 2px solid #003780
+}
+QPushButton:hover{
+    background: rgb(235, 233, 241);
+    color: #003780;
+    border-radius: 5px;
+	border: 2px solid #003780;
+}
+QPushButton:pressed{
+    background: rgb(226, 224, 231);
+    color: #003780;
+    border-radius: 5px;
+	border: 2px solid #003780;
+}</string>
+    </property>
+    <property name="text">
+     <string>Current</string>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>730</y>
+      <width>113</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+    background: rgb(245, 243, 251);
+    color: #003780;
+    border-radius: 5px;
+	border: 2px solid #003780
+}
+QPushButton:hover{
+    background: rgb(235, 233, 241);
+    color: #003780;
+    border-radius: 5px;
+	border: 2px solid #003780;
+}
+QPushButton:pressed{
+    background: rgb(226, 224, 231);
+    color: #003780;
+    border-radius: 5px;
+	border: 2px solid #003780;
+}</string>
+    </property>
+    <property name="text">
+     <string>Deposit</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_4">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>730</y>
+      <width>113</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+    background: rgb(245, 243, 251);
+    color: #003780;
+    border-radius: 5px;
+	border: 2px solid #003780
+}
+QPushButton:hover{
+    background: rgb(235, 233, 241);
+    color: #003780;
+    border-radius: 5px;
+	border: 2px solid #003780;
+}
+QPushButton:pressed{
+    background: rgb(226, 224, 231);
+    color: #003780;
+    border-radius: 5px;
+	border: 2px solid #003780;
+}</string>
+    </property>
+    <property name="text">
+     <string>USD</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_5">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>730</y>
+      <width>113</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+    background: rgb(245, 243, 251);
+    color: #003780;
+    border-radius: 5px;
+	border: 2px solid #003780
+}
+QPushButton:hover{
+    background: rgb(235, 233, 241);
+    color: #003780;
+    border-radius: 5px;
+	border: 2px solid #003780;
+}
+QPushButton:pressed{
+    background: rgb(226, 224, 231);
+    color: #003780;
+    border-radius: 5px;
+	border: 2px solid #003780;
+}</string>
+    </property>
+    <property name="text">
+     <string>RMB</string>
+    </property>
    </widget>
   </widget>
  </widget>

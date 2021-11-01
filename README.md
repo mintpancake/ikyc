@@ -56,7 +56,8 @@ Know Your Customer (iKYC) system with facial ID login function.
 * Already implemented by `switch_to(idx)` in `main.py`
 1. `from PyQt5.QtWidgets import QStackedWidget`
 2. `exampleWidget = QStackedWidget()`
-3. `exampleWidget.addWidget(exampleWindow1)`
-4. `exampleWidget.addWidget(exampleWindow2)`
+3. `exampleWidget.addWidget(exampleWindow)`
+4. `exampleWidget.insertWidget(exampleIdx, exampleWindow)`
 5. `exampleWidget.setCurrentIndex(exampleIdx)`
+6. `exampleWidget.removeWidget(exampleWindow)`
 #### To be continued...

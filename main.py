@@ -18,7 +18,7 @@ def switch_to(idx):
     if mainWin.currentIndex() == FACE:
         faceWin.stop()
     if idx == FACE:
-        faceWin.start()
+        faceWin.restart()
 
     mainWin.setCurrentIndex(idx)
 
@@ -67,6 +67,12 @@ class FaceWindow(QMainWindow):
         self.backButton.clicked.connect(lambda: switch_to(WELCOME))
         self.verifyButton.clicked.connect(self.verify)
 
+    def restart(self):
+        self.hintLabel.setText(
+            '<html><head/><body><p><span style=" color:#646464;">Please keep your face displayed in the circle and click </span><span style=" font-weight:600; color:#646464;">Verify</span></p></body></html>'
+        )
+        self.start()
+
     def start(self):
         self.cam.open(self.CAM_NUM, cv2.CAP_DSHOW)
         self.timer.start(30)
@@ -107,6 +113,7 @@ class FaceWindow(QMainWindow):
 class HomeWindow(QMainWindow):
     def __init__(self, user_id):
         super(HomeWindow, self).__init__()
+        loadUi('home.ui', self)
 
 
 if __name__ == "__main__":
@@ -122,8 +129,8 @@ if __name__ == "__main__":
     mainWin.setWindowTitle('iKYC')
     mainWin.setWindowIcon(QtGui.QIcon('resources/small_logo.png'))
 
-    mainWin.addWidget(welcomeWin)
-    mainWin.addWidget(faceWin)
+    mainWin.insertWidget(WELCOME, welcomeWin)
+    mainWin.insertWidget(FACE, faceWin)
 
     mainWin.show()
     sys.exit(app.exec_())

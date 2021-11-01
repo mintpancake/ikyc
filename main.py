@@ -15,33 +15,53 @@ HOME = 2
 
 
 def switch_to(idx):
-    if mainWin.currentIndex() == FACE:
-        faceWin.stop()
-    if idx == FACE:
-        faceWin.restart()
+    currentWin = mainWin.currentWidget()
+    currentWin.deactivate()
+    mainWin.removeWidget(currentWin)
+    mainWin.addWidget(winList[idx])
+    mainWin.currentWidget().activate()
+    # if mainWin.currentIndex() == FACE:
+    #     faceWin.stop()
+    # if idx == FACE:
+    #     faceWin.restart()
+    #
+    # mainWin.setCurrentIndex(idx)
 
-    mainWin.setCurrentIndex(idx)
+
+class StackedWindow(QMainWindow):
+    def __init__(self):
+        super(StackedWindow, self).__init__()
+
+    def activate(self):
+        pass
+
+    def deactivate(self):
+        pass
 
 
-class WelcomeWindow(QMainWindow):
+class WelcomeWindow(StackedWindow):
     def __init__(self):
         super(WelcomeWindow, self).__init__()
         loadUi("welcome.ui", self)
         self.slot_init()
-        self.set_greeting(time.localtime())
+        self.set_greeting()
 
     def slot_init(self):
         self.loginButton.clicked.connect(lambda: switch_to(FACE))
         self.leaveButton.clicked.connect(lambda: exit(0))
 
-    def set_greeting(self, time):
-        if time.tm_hour < 6:
+    def activate(self):
+        self.set_greeting()
+
+    def set_greeting(self):
+        current_time = time.localtime()
+        if current_time.tm_hour < 6:
             self.greetingLabel.setText(
                 "<html><head/><body><p><span style=\" color:#003780;\">Good Night!</span></p></body></html>")
-        elif time.tm_hour < 12:
+        elif current_time.tm_hour < 12:
             self.greetingLabel.setText(
                 "<html><head/><body><p><span style=\" color:#003780;\">Good Morning!</span></p></body></html>")
-        elif time.tm_hour < 18:
+        elif current_time.tm_hour < 18:
             self.greetingLabel.setText(
                 "<html><head/><body><p><span style=\" color:#003780;\">Good Afternoon!</span></p></body></html>")
         else:
@@ -49,7 +69,7 @@ class WelcomeWindow(QMainWindow):
                 "<html><head/><body><p><span style=\" color:#003780;\">Good Evening!</span></p></body></html>")
 
 
-class FaceWindow(QMainWindow):
+class FaceWindow(StackedWindow):
     def __init__(self):
         super(FaceWindow, self).__init__()
         loadUi("face.ui", self)
@@ -67,11 +87,14 @@ class FaceWindow(QMainWindow):
         self.backButton.clicked.connect(lambda: switch_to(WELCOME))
         self.verifyButton.clicked.connect(self.verify)
 
-    def restart(self):
+    def activate(self):
         self.hintLabel.setText(
             '<html><head/><body><p><span style=" color:#646464;">Please keep your face displayed in the circle and click </span><span style=" font-weight:600; color:#646464;">Verify</span></p></body></html>'
         )
         self.start()
+
+    def deactivate(self):
+        self.stop()
 
     def start(self):
         self.cam.open(self.CAM_NUM, cv2.CAP_DSHOW)
@@ -110,7 +133,7 @@ class FaceWindow(QMainWindow):
             self.start()
 
 
-class HomeWindow(QMainWindow):
+class HomeWindow(StackedWindow):
     def __init__(self, user_id):
         super(HomeWindow, self).__init__()
         loadUi('home.ui', self)
@@ -119,18 +142,17 @@ class HomeWindow(QMainWindow):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
 
-    welcomeWin = WelcomeWindow()
-    faceWin = FaceWindow()
+    winList = [WelcomeWindow(), FaceWindow()]
 
     mainWin = QStackedWidget()
-
     mainWin.setFixedWidth(WIDTH)
     mainWin.setFixedHeight(HEIGHT)
     mainWin.setWindowTitle('iKYC')
     mainWin.setWindowIcon(QtGui.QIcon('resources/small_logo.png'))
 
-    mainWin.insertWidget(WELCOME, welcomeWin)
-    mainWin.insertWidget(FACE, faceWin)
+    mainWin.addWidget(winList[WELCOME])
+    # mainWin.insertWidget(WELCOME, welcomeWin)
+    # mainWin.insertWidget(FACE, faceWin)
 
     mainWin.show()
     sys.exit(app.exec_())

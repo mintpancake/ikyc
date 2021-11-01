@@ -46,18 +46,17 @@ Know Your Customer (iKYC) system with facial ID login function.
 1. `conda activate 3278`
 2. `pyuic5 -x example.ui -o example.py`
 ### Coding
-#### Loading `.ui` into `QMainWindow`
-1. Include `from PyQt5.uic import loadUi`
-2. Call `loadUi("example.ui", self)` in the constructor of a `QMainWindow`
+#### Creating windows
+1. Create a subclass of the `StackedWindow` class.
+2. Initiate the window
+   1. `loadUi("example.ui", self)`
+   2. Connect the slots (see below)
+   3. Override `activate()` and `deactivate()` if necessary (for switching windows)
 #### Initiating slots (for sending signals)
 * `self.exampleButton.clicked.connect(exampleFunc)` or
 * `self.exampleButton.clicked.connect(lambda: exampleFunc(exampleArgs))`
 #### Switching windows
-* Already implemented by `switch_to(idx)` in `main.py`
-1. `from PyQt5.QtWidgets import QStackedWidget`
-2. `exampleWidget = QStackedWidget()`
-3. `exampleWidget.addWidget(exampleWindow)`
-4. `exampleWidget.insertWidget(exampleIdx, exampleWindow)`
-5. `exampleWidget.setCurrentIndex(exampleIdx)`
-6. `exampleWidget.removeWidget(exampleWindow)`
+1. `winList.append(ExampleWindow())` (optional) 
+2. `switch_to(idx)`, where `idx` should be predefined as a constant
+* Caution: Do not create duplicate windows! 
 #### To be continued...

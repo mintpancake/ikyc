@@ -563,9 +563,9 @@ QPushButton:pressed{
    <widget class="QLabel" name="transferTitleLabel">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>30</y>
-      <width>491</width>
+      <x>150</x>
+      <y>20</y>
+      <width>601</width>
       <height>91</height>
      </rect>
     </property>
@@ -578,7 +578,7 @@ QPushButton:pressed{
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:36pt; color:#003780;&quot;&gt;Transfer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:36pt; color:#003780;&quot;&gt;Transaction History&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>

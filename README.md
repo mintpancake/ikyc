@@ -21,12 +21,11 @@ Know Your Customer (iKYC) system with facial ID login function.
 * Fix the window size  to `1200 x 800` and delete the menu bar and the status bar. 
 * Rename every added `QObject` for future identification. 
 * Customize styles with `styleSheet` under the `QWidget` property. 
-* Notice that relative paths used in `styleSheet` do not take effect in `Qt Designer` but essentially work fine. 
+  * Notice that relative paths used in `styleSheet` do not take effect in `Qt Designer` but essentially work fine. 
 #### Color policy
 * Themes:
   * `#8be5fd` (light blue in logo)
   * `#004094` (dark blue in logo)
-  * More TBD...
 * Backgrounds:
   * Windows: `#f7f6fb` (grey white)
   * Sections: `#ffffff` (white)
@@ -43,8 +42,21 @@ Know Your Customer (iKYC) system with facial ID login function.
     * Normal: `HSV(hue, saturation, value)`
     * Hover: `HSV(hue, saturation, value + 15)`
     * Pressed: `HSV(hue, saturation, value)`
-### Converting from `.ui` to `.py`
+### Converting from `.ui` to `.py` (not necessary for coding)
 1. `conda activate 3278`
 2. `pyuic5 -x example.ui -o example.py`
 ### Coding
-* TBD...
+#### Loading `.ui` into `QMainWindow`
+1. Include `from PyQt5.uic import loadUi`
+2. Call `loadUi("example.ui", self)` in the constructor of a `QMainWindow`
+#### Initiating slots (for sending signals)
+* `self.exampleButton.clicked.connect(exampleFunc)` or
+* `self.exampleButton.clicked.connect(lambda: exampleFunc(exampleArgs))`
+#### Switching windows
+* Already implemented by `switch_to(idx)` in `main.py`
+1. `from PyQt5.QtWidgets import QStackedWidget`
+2. `exampleWidget = QStackedWidget()`
+3. `exampleWidget.addWidget(exampleWindow1)`
+4. `exampleWidget.addWidget(exampleWindow2)`
+5. `exampleWidget.setCurrentIndex(exampleIdx)`
+#### To be continued...

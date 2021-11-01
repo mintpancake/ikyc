@@ -1,3 +1,4 @@
+import pickle
 import sys
 import time
 
@@ -8,6 +9,8 @@ from PyQt5.uic import loadUi
 
 WIDTH = 1200
 HEIGHT = 800
+
+CONF = 50
 
 WELCOME = 0
 FACE = 1
@@ -68,11 +71,19 @@ class FaceWindow(StackedWindow):
         super(FaceWindow, self).__init__()
         loadUi("face.ui", self)
 
+        self.user_id = -1
+        self.image = None
         self.timer = QtCore.QTimer()
         self.CAM_NUM = 0
-        self.cam = cv2.VideoCapture()
+        self.cap = cv2.VideoCapture()
 
-        self.image = None
+        self.recognizer = cv2.face.LBPHFaceRecognizer_create()
+        self.recognizer.read("train.yml")
+        self.labels = {"user_id": 1}
+        with open("labels.pickle", "rb") as f:
+            self.labels = pickle.load(f)
+            self.labels = {v: k for k, v in self.labels.items()}
+        self.face_cascade = cv2.CascadeClassifier('haarcascade/haarcascade_frontalface_default.xml')
 
         self.slot_init()
 
@@ -85,21 +96,22 @@ class FaceWindow(StackedWindow):
         self.hintLabel.setText(
             '<html><head/><body><p><span style=" color:#646464;">Please keep your face displayed in the circle and click </span><span style=" font-weight:600; color:#646464;">Verify</span></p></body></html>'
         )
+        self.user_id = -1
         self.start()
 
     def deactivate(self):
         self.stop()
 
     def start(self):
-        self.cam.open(self.CAM_NUM, cv2.CAP_DSHOW)
-        self.timer.start(30)
+        self.cap.open(self.CAM_NUM, cv2.CAP_DSHOW)
+        self.timer.start(50)
 
     def stop(self):
         self.timer.stop()
-        self.cam.release()
+        self.cap.release()
 
     def display(self):
-        flag, self.image = self.cam.read()
+        flag, self.image = self.cap.read()
         h, w = self.image.shape[:2]
         l = int((w - h) / 2)
         square_image = self.image[:, l:l + h]
@@ -111,13 +123,19 @@ class FaceWindow(StackedWindow):
         pixmap = QtGui.QPixmap.fromImage(show_image)
         self.camera.setPixmap(pixmap)
 
+        if self.user_id == -1:
+            gray = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
+            faces = self.face_cascade.detectMultiScale(gray, scaleFactor=1.5, minNeighbors=3)
+            for (x, y, w, h) in faces:
+                roi_gray = gray[y:y + h, x:x + w]
+                id_, conf = self.recognizer.predict(roi_gray)
+                if conf >= CONF:
+                    self.user_id = self.labels[id_]
+
     def verify(self):
         self.stop()
-        user_id = -1
-        # TODO: use self.image to get user_id
-        user_id = 10086
-        if user_id != -1:
-            winList.append(HomeWindow(user_id))
+        if self.user_id != -1:
+            winList.append(HomeWindow(self.user_id))
             switch_to(HOME)
         else:
             self.hintLabel.setText(

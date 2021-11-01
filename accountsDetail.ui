@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1200</width>
-    <height>800</height>
+    <height>769</height>
    </rect>
   </property>
   <property name="font">
@@ -211,47 +211,6 @@ background-color:rgb(0, 71, 163);
      </property>
     </item>
    </widget>
-   <widget class="QTableWidget" name="tableWidget_2">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>480</y>
-      <width>500</width>
-      <height>191</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Yu Gothic UI</family>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <column>
-     <property name="text">
-      <string>ID</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Transaction Time</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Amount</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Currency</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Payer</string>
-     </property>
-    </column>
-   </widget>
    <widget class="QWidget" name="HKDWidge" native="true">
     <property name="geometry">
      <rect>
@@ -319,6 +278,157 @@ background-color:rgb(0, 71, 163);
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
+   </widget>
+   <widget class="QTableWidget" name="tableWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>500</y>
+      <width>500</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:white</string>
+    </property>
+    <property name="horizontalScrollMode">
+     <enum>QAbstractItemView::ScrollPerItem</enum>
+    </property>
+    <row>
+     <property name="text">
+      <string/>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string/>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string/>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string/>
+     </property>
+    </row>
+    <column>
+     <property name="text">
+      <string>ID</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Transaction Time</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Amount</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Currency</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Payer</string>
+     </property>
+    </column>
+    <item row="0" column="0">
+     <property name="text">
+      <string>0</string>
+     </property>
+    </item>
+    <item row="0" column="1">
+     <property name="text">
+      <string>2021-10-24-21-00-04
+
+</string>
+     </property>
+    </item>
+    <item row="0" column="2">
+     <property name="text">
+      <string>100</string>
+     </property>
+    </item>
+    <item row="0" column="3">
+     <property name="text">
+      <string>HKD</string>
+     </property>
+    </item>
+    <item row="0" column="4">
+     <property name="text">
+      <string>Rick</string>
+     </property>
+    </item>
+    <item row="1" column="0">
+     <property name="text">
+      <string>1</string>
+     </property>
+    </item>
+    <item row="1" column="1">
+     <property name="text">
+      <string>2021-10-24-21-00-04
+
+</string>
+     </property>
+    </item>
+    <item row="1" column="2">
+     <property name="text">
+      <string>50</string>
+     </property>
+    </item>
+    <item row="1" column="3">
+     <property name="text">
+      <string>HKD</string>
+     </property>
+    </item>
+    <item row="1" column="4">
+     <property name="text">
+      <string>Joe</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="comboBox">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>200</y>
+      <width>104</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Current</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Deposit</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>USD</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>RMB</string>
+     </property>
+    </item>
    </widget>
   </widget>
  </widget>

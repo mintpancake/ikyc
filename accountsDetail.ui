@@ -47,16 +47,16 @@
    <widget class="QLabel" name="titleLabel">
     <property name="geometry">
      <rect>
-      <x>375</x>
-      <y>80</y>
-      <width>400</width>
-      <height>70</height>
+      <x>370</x>
+      <y>50</y>
+      <width>541</width>
+      <height>101</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Yu Gothic UI</family>
-      <pointsize>24</pointsize>
+      <pointsize>39</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -263,7 +263,7 @@ background-color:rgb(0, 71, 163);
      <property name="font">
       <font>
        <family>Yu Gothic</family>
-       <pointsize>18</pointsize>
+       <pointsize>32</pointsize>
        <weight>50</weight>
        <bold>false</bold>
       </font>
@@ -397,6 +397,36 @@ background-color:rgb(0, 71, 163);
     <item row="1" column="4">
      <property name="text">
       <string>Joe</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="comboBox">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>190</y>
+      <width>104</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Current</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Deposit</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>USD</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>RMB</string>
      </property>
     </item>
    </widget>

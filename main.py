@@ -20,12 +20,6 @@ def switch_to(idx):
     mainWin.removeWidget(currentWin)
     mainWin.addWidget(winList[idx])
     mainWin.currentWidget().activate()
-    # if mainWin.currentIndex() == FACE:
-    #     faceWin.stop()
-    # if idx == FACE:
-    #     faceWin.restart()
-    #
-    # mainWin.setCurrentIndex(idx)
 
 
 class StackedWindow(QMainWindow):
@@ -121,10 +115,9 @@ class FaceWindow(StackedWindow):
         self.stop()
         user_id = -1
         # TODO: use self.image to get user_id
-        user_id = -1
+        user_id = 10086
         if user_id != -1:
-            homeWin = HomeWindow(user_id)
-            mainWin.addWidget(homeWin)
+            winList.append(HomeWindow(user_id))
             switch_to(HOME)
         else:
             self.hintLabel.setText(
@@ -137,6 +130,24 @@ class HomeWindow(StackedWindow):
     def __init__(self, user_id):
         super(HomeWindow, self).__init__()
         loadUi('home.ui', self)
+        self.user_id = user_id
+        self.slot_init()
+        self.get_data()
+        self.set_content()
+
+    def slot_init(self):
+        self.logoutButton.clicked.connect(lambda: switch_to(WELCOME))
+
+    def get_data(self):
+        pass
+
+    def set_content(self):
+        self.homeTitleLabel.setText(
+            f'<html><head/><body><p><span style=" color:#003780;">Welcome back, {self.user_id}!</span></p></body></html>')
+
+    def activate(self):
+        self.get_data()
+        self.set_content()
 
 
 if __name__ == "__main__":
@@ -149,10 +160,7 @@ if __name__ == "__main__":
     mainWin.setFixedHeight(HEIGHT)
     mainWin.setWindowTitle('iKYC')
     mainWin.setWindowIcon(QtGui.QIcon('resources/small_logo.png'))
-
     mainWin.addWidget(winList[WELCOME])
-    # mainWin.insertWidget(WELCOME, welcomeWin)
-    # mainWin.insertWidget(FACE, faceWin)
 
     mainWin.show()
     sys.exit(app.exec_())

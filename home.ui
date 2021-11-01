@@ -103,9 +103,9 @@
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>255</red>
-        <green>255</green>
-        <blue>255</blue>
+        <red>247</red>
+        <green>246</green>
+        <blue>251</blue>
        </color>
       </brush>
      </colorrole>
@@ -249,9 +249,9 @@
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>255</red>
-        <green>255</green>
-        <blue>255</blue>
+        <red>247</red>
+        <green>246</green>
+        <blue>251</blue>
        </color>
       </brush>
      </colorrole>
@@ -470,6 +470,11 @@
   </property>
   <property name="autoFillBackground">
    <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow{
+	background-color: rgb(247, 246, 251);
+}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="small_logo">

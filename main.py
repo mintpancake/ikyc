@@ -15,6 +15,11 @@ CONF = 50
 WELCOME = 0
 FACE = 1
 HOME = 2
+PROFILE = 3
+ACCOUNT = 4
+TRANSFER = 5
+TRANSACTION = 6
+ACCOUNT_DETAIL = 7
 
 
 def switch_to(idx):
@@ -135,7 +140,7 @@ class FaceWindow(StackedWindow):
     def verify(self):
         self.stop()
         if self.user_id != -1:
-            winList.append(HomeWindow(self.user_id))
+            winList[HOME] = HomeWindow(self.user_id)
             switch_to(HOME)
         else:
             self.hintLabel.setText(
@@ -171,7 +176,7 @@ class HomeWindow(StackedWindow):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
 
-    winList = [WelcomeWindow(), FaceWindow()]
+    winList = [WelcomeWindow(), FaceWindow(), None, None, None, None, None]
 
     mainWin = QStackedWidget()
     mainWin.setFixedWidth(WIDTH)

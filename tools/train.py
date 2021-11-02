@@ -48,7 +48,7 @@ for root, dirs, files in os.walk(image_dir):
 # labels.pickle store the dict of labels.
 # {name: id}  
 # id starts from 0
-with open("labels.pickle", "wb") as f:
+with open("../labels.pickle", "wb") as f:
     pickle.dump(label_ids, f)
 
 # Train the recognizer and save the trained model.

@@ -3,7 +3,8 @@ import sys
 import time
 
 import cv2
-from PyQt5 import QtCore, QtGui
+import mysql.connector
+from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QApplication, QStackedWidget
 from PyQt5.uic import loadUi
 
@@ -50,7 +51,7 @@ class WelcomeWindow(StackedWindow):
 
     def slot_init(self):
         self.loginButton.clicked.connect(lambda: switch_to(FACE))
-        self.leaveButton.clicked.connect(lambda: exit(0))
+        self.leaveButton.clicked.connect(self.leave)
 
     def activate(self):
         self.set_greeting()
@@ -69,6 +70,11 @@ class WelcomeWindow(StackedWindow):
         else:
             self.greetingLabel.setText(
                 "<html><head/><body><p><span style=\" color:#003780;\">Good Evening!</span></p></body></html>")
+
+    def leave(self):
+        cursor.close()
+        conn.close()
+        exit(0)
 
 
 class FaceWindow(StackedWindow):
@@ -128,6 +134,9 @@ class FaceWindow(StackedWindow):
         pixmap = QtGui.QPixmap.fromImage(show_image)
         self.camera.setPixmap(pixmap)
 
+        # TODO: for debug
+        self.user_id = 1
+
         if self.user_id == -1:
             gray = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
             faces = self.face_cascade.detectMultiScale(gray, scaleFactor=1.5, minNeighbors=3)
@@ -154,26 +163,76 @@ class HomeWindow(StackedWindow):
         super(HomeWindow, self).__init__()
         loadUi('home.ui', self)
         self.user_id = user_id
+        self.name = ''
+        self.last_login_time = ''
+        self.login_history = []
+        self.login_history_labels = []
         self.slot_init()
-        self.get_data()
-        self.set_content()
+        # TODO: for debug
+        # self.update_login_time()
 
     def slot_init(self):
         self.logoutButton.clicked.connect(lambda: switch_to(WELCOME))
 
+    def create_label(self):
+        new_label = QtWidgets.QLabel(self.historyScrollAreaWidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(new_label.sizePolicy().hasHeightForWidth())
+        new_label.setSizePolicy(sizePolicy)
+        new_label.setMinimumSize(QtCore.QSize(0, 40))
+        font = QtGui.QFont()
+        font.setFamily("Yu Gothic UI")
+        font.setPointSize(12)
+        new_label.setFont(font)
+        return new_label
+
     def get_data(self):
-        pass
+        sql = "SELECT name FROM User WHERE user_id='%s'" % self.user_id
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        self.name = result[0][0]
+
+        sql = "SELECT login_time FROM Login WHERE user_id='%s' ORDER BY login_time DESC" % self.user_id
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        self.last_login_time = result[1][0]
+        self.login_history = result
 
     def set_content(self):
         self.homeTitleLabel.setText(
-            f'<html><head/><body><p><span style=" color:#003780;">Welcome back, {self.user_id}!</span></p></body></html>')
+            f'<html><head/><body><p><span style=" color:#003780;">Welcome back, {self.name}!</span></p></body></html>')
+        self.lastLoginTimeLabel.setText(
+            f'<html><head/><body><p><span style=" font-size:12pt; color:#646464;">Last login time:<br/>{self.last_login_time}</span></p></body></html>')
+        for i, history in enumerate(self.login_history):
+            label = self.create_label()
+            label.setText(f'<html><head/><body><p>{history[0]}</p></body></html>')
+            self.verticalLayout_4.insertWidget(i, label)
+            self.login_history_labels.append(label)
 
     def activate(self):
         self.get_data()
         self.set_content()
 
+    def update_login_time(self):
+        now = time.localtime()
+        year = str(now.tm_year).zfill(4)
+        mon = str(now.tm_mon).zfill(2)
+        mday = str(now.tm_mday).zfill(2)
+        hour = str(now.tm_hour).zfill(2)
+        min = str(now.tm_min).zfill(2)
+        sec = str(now.tm_sec).zfill(2)
+        now_str = f'{year}-{mon}-{mday}-{hour}-{min}-{sec}'
+        sql = "INSERT INTO Login VALUES (%s, %s)"
+        val = (self.user_id, now_str)
+        cursor.execute(sql, val)
+        conn.commit()
+
 
 if __name__ == "__main__":
+    conn = mysql.connector.connect(host="localhost", user="root", passwd="123456", database="ikyc")
+    cursor = conn.cursor()
     app = QApplication(sys.argv)
 
     winList = [WelcomeWindow(), FaceWindow(), None, None, None, None, None]

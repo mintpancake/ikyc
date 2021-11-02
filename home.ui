@@ -523,9 +523,9 @@
    <widget class="QLabel" name="lastLoginTimeLabel">
     <property name="geometry">
      <rect>
-      <x>880</x>
+      <x>870</x>
       <y>50</y>
-      <width>191</width>
+      <width>201</width>
       <height>61</height>
      </rect>
     </property>
@@ -538,7 +538,7 @@
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#646464;&quot;&gt;Last login time:&lt;br/&gt;12:01:23    01-01-1970&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#646464;&quot;&gt;Last login time:&lt;br/&gt;1970-01-01-00-00-00&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -828,7 +828,7 @@ QPushButton:pressed{
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QScrollArea" name="scrollArea">
+   <widget class="QScrollArea" name="loanScrollArea">
     <property name="geometry">
      <rect>
       <x>540</x>
@@ -880,7 +880,7 @@ QScrollBar::sub-line:vertical {
     <property name="widgetResizable">
      <bool>true</bool>
     </property>
-    <widget class="QWidget" name="friendScrollAreaWidget">
+    <widget class="QWidget" name="loanScrollAreaWidget">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -894,34 +894,12 @@ QScrollBar::sub-line:vertical {
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QLabel" name="label">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0f1621;&quot;&gt;Alice &lt;br&gt;(3035600000)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
+       <widget class="QListWidget" name="loanListWidget"/>
       </item>
      </layout>
     </widget>
    </widget>
-   <widget class="QLabel" name="recentLabel">
+   <widget class="QLabel" name="loanLabel">
     <property name="geometry">
      <rect>
       <x>550</x>
@@ -939,7 +917,7 @@ QScrollBar::sub-line:vertical {
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#003780;&quot;&gt;Recent Transfer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#003780;&quot;&gt;Loan&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -948,7 +926,7 @@ QScrollBar::sub-line:vertical {
    <widget class="QLabel" name="loginHistoryLabel">
     <property name="geometry">
      <rect>
-      <x>890</x>
+      <x>880</x>
       <y>160</y>
       <width>171</width>
       <height>41</height>
@@ -969,7 +947,7 @@ QScrollBar::sub-line:vertical {
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
     </property>
    </widget>
-   <widget class="QScrollArea" name="scrollArea_2">
+   <widget class="QScrollArea" name="historyScrollArea">
     <property name="geometry">
      <rect>
       <x>870</x>
@@ -1022,13 +1000,13 @@ QScrollBar::sub-line:vertical {
     <property name="widgetResizable">
      <bool>true</bool>
     </property>
-    <widget class="QWidget" name="friendScrollAreaWidget_4">
+    <widget class="QWidget" name="historyScrollAreaWidget">
      <property name="geometry">
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>260</width>
-       <height>631</height>
+       <width>281</width>
+       <height>501</height>
       </rect>
      </property>
      <property name="autoFillBackground">
@@ -1036,210 +1014,7 @@ QScrollBar::sub-line:vertical {
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_4">
       <item>
-       <widget class="QLabel" name="label_26">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Guo Ruo Xuan&lt;br&gt;(12:00:00 01-01-1970)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_27">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Guo Ruo Xuan&lt;br&gt;(12:00:00 01-01-1970)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_28">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Guo Ruo Xuan&lt;br&gt;(12:00:00 01-01-1970)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_30">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Guo Ruo Xuan&lt;br&gt;(12:00:00 01-01-1970)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_31">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Guo Ruo Xuan&lt;br&gt;(12:00:00 01-01-1970)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_32">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Guo Ruo Xuan&lt;br&gt;(12:00:00 01-01-1970)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_33">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Guo Ruo Xuan&lt;br&gt;(12:00:00 01-01-1970)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_34">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Guo Ruo Xuan&lt;br&gt;(12:00:00 01-01-1970)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
+       <widget class="QListWidget" name="historyListWidget"/>
       </item>
      </layout>
     </widget>

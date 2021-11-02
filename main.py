@@ -135,7 +135,7 @@ class FaceWindow(StackedWindow):
     def verify(self):
         self.stop()
         if self.user_id != -1:
-            winList.append(HomeWindow(self.user_id))
+            winList[HOME] = HomeWindow(self.user_id)
             switch_to(HOME)
         else:
             self.hintLabel.setText(
@@ -171,7 +171,7 @@ class HomeWindow(StackedWindow):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
 
-    winList = [WelcomeWindow(), FaceWindow()]
+    winList = [WelcomeWindow(), FaceWindow(), None]
 
     mainWin = QStackedWidget()
     mainWin.setFixedWidth(WIDTH)

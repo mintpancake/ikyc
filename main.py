@@ -205,7 +205,7 @@ class HomeWindow(StackedWindow):
             f'<html><head/><body><p><span style=" color:#003780;">Welcome back, {self.name}!</span></p></body></html>')
         self.lastLoginTimeLabel.setText(
             f'<html><head/><body><p><span style=" font-size:12pt; color:#646464;">Last login time:<br/>{self.last_login_time}</span></p></body></html>')
-        for i, history in enumerate(self.login_history):
+        for i, history in enumerate(self.login_history[1:]):
             label = self.create_label()
             label.setText(f'<html><head/><body><p>{history[0]}</p></body></html>')
             self.verticalLayout_4.insertWidget(i, label)

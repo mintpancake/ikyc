@@ -591,7 +591,7 @@ QPushButton:pressed{
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="historyButton">
+   <widget class="QPushButton" name="transactionButton">
     <property name="geometry">
      <rect>
       <x>310</x>
@@ -917,7 +917,7 @@ QScrollBar::sub-line:vertical {
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#003780;&quot;&gt;Loan&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#003780;&quot;&gt;Loans&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -1064,6 +1064,53 @@ QPushButton:pressed{
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="loanButton">
+    <property name="geometry">
+     <rect>
+      <x>615</x>
+      <y>660</y>
+      <width>131</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+    background: rgb(139, 229, 253);
+	background-repeat: no-repeat;
+	background-position: center;
+    border-radius: 15px;
+	color:rgb(0, 55, 128);
+}
+QPushButton:hover{
+    background: rgb(133, 221, 243);
+	background-repeat: no-repeat;
+	background-position: center;
+    border-radius: 15px;
+	color:rgb(0, 55, 128);
+}
+QPushButton:pressed{
+    background: rgb(128, 212, 233);
+	background-repeat: no-repeat;
+	background-position: center;
+    border-radius: 15px;
+	color:rgb(0, 55, 128);
+}</string>
+    </property>
+    <property name="text">
+     <string>View Details</string>
     </property>
    </widget>
   </widget>

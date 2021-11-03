@@ -20,7 +20,10 @@ PROFILE = 3
 ACCOUNT = 4
 TRANSFER = 5
 TRANSACTION = 6
-ACCOUNT_DETAIL = 7
+LOAN = 7
+ACCOUNT_DETAIL = 8
+APPLY_LOAN = 9
+PAY_LOAN = 10
 
 
 def switch_to(idx):
@@ -149,7 +152,13 @@ class FaceWindow(StackedWindow):
     def verify(self):
         self.stop()
         if self.user_id != -1:
+            # TODO
             winList[HOME] = HomeWindow(self.user_id)
+            winList[PROFILE] = ProfileWindow(self.user_id)
+            winList[ACCOUNT] = AccountWindow(self.user_id)
+            winList[TRANSFER] = TransferWindow(self.user_id)
+            winList[TRANSACTION] = TransactionWindow(self.user_id)
+            # winList[LOAN] = LoanWindow(self.user_id)
             switch_to(HOME)
         else:
             self.hintLabel.setText(
@@ -173,6 +182,12 @@ class HomeWindow(StackedWindow):
 
     def slot_init(self):
         self.logoutButton.clicked.connect(lambda: switch_to(WELCOME))
+        # TODO
+        self.profileButton.clicked.connect(lambda: switch_to(PROFILE))
+        self.accountButton.clicked.connect(lambda: switch_to(ACCOUNT))
+        self.transferButton.clicked.connect(lambda: switch_to(TRANSFER))
+        self.transactionButton.clicked.connect(lambda: switch_to(TRANSACTION))
+        # self.loanButton.clicked.connect(lambda: switch_to(LOAN))
 
     def create_label(self):
         new_label = QtWidgets.QLabel(self.historyScrollAreaWidget)
@@ -230,12 +245,47 @@ class HomeWindow(StackedWindow):
         conn.commit()
 
 
+class ProfileWindow(StackedWindow):
+    def __init__(self, user_id):
+        super(ProfileWindow, self).__init__()
+        loadUi('profile.ui', self)
+        self.user_id = user_id
+
+
+class AccountWindow(StackedWindow):
+    def __init__(self, user_id):
+        super(AccountWindow, self).__init__()
+        loadUi('accounts.ui', self)
+        self.user_id = user_id
+
+
+class TransferWindow(StackedWindow):
+    def __init__(self, user_id):
+        super(TransferWindow, self).__init__()
+        loadUi('transfer.ui', self)
+        self.user_id = user_id
+
+
+class TransactionWindow(StackedWindow):
+    def __init__(self, user_id):
+        super(TransactionWindow, self).__init__()
+        loadUi('transaction.ui', self)
+        self.user_id = user_id
+
+
+class LoanWindow(StackedWindow):
+    def __init__(self, user_id):
+        super(LoanWindow, self).__init__()
+        loadUi('loan.ui', self)
+        self.user_id = user_id
+
+
 if __name__ == "__main__":
     conn = mysql.connector.connect(host="localhost", user="root", passwd="123456", database="ikyc")
     cursor = conn.cursor()
     app = QApplication(sys.argv)
 
-    winList = [WelcomeWindow(), FaceWindow(), None, None, None, None, None]
+    winList = [WelcomeWindow(), FaceWindow(), None, None, None, None, None, None, None, None, None]
 
     mainWin = QStackedWidget()
     mainWin.setFixedWidth(WIDTH)

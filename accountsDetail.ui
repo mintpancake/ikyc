@@ -116,7 +116,7 @@ QScrollBar::sub-line:horizon {
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="backButton">
     <property name="geometry">
      <rect>
       <x>850</x>
@@ -136,7 +136,7 @@ background-color:rgb(0, 71, 163);
      <string/>
     </property>
    </widget>
-   <widget class="QTableWidget" name="tableWidget">
+   <widget class="QTableWidget" name="remittanceTable">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -228,11 +228,11 @@ QScrollBar::sub-line:horizontal {
     <attribute name="horizontalHeaderDefaultSectionSize">
      <number>113</number>
     </attribute>
-    <attribute name="verticalHeaderDefaultSectionSize">
-     <number>38</number>
-    </attribute>
     <attribute name="verticalHeaderMinimumSectionSize">
      <number>21</number>
+    </attribute>
+    <attribute name="verticalHeaderDefaultSectionSize">
+     <number>38</number>
     </attribute>
     <row>
      <property name="text">
@@ -395,7 +395,7 @@ QScrollBar::sub-line:horizontal {
      </property>
     </widget>
    </widget>
-   <widget class="QTableWidget" name="tableWidget_2">
+   <widget class="QTableWidget" name="receivedTable">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -579,7 +579,7 @@ QScrollBar::sub-line:horizontal {
      </property>
     </item>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="remittanceLabel">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -599,7 +599,7 @@ QScrollBar::sub-line:horizontal {
      <string>Remittance</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="receivedLabel">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -619,7 +619,7 @@ QScrollBar::sub-line:horizontal {
      <string>Received</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="HKDButton">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -649,13 +649,13 @@ QPushButton:pressed{
 }</string>
     </property>
     <property name="text">
-     <string>Current</string>
+     <string>HKD</string>
     </property>
     <property name="autoDefault">
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="depositButton">
     <property name="geometry">
      <rect>
       <x>240</x>
@@ -688,7 +688,7 @@ QPushButton:pressed{
      <string>Deposit</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="USDButton">
     <property name="geometry">
      <rect>
       <x>400</x>
@@ -721,7 +721,7 @@ QPushButton:pressed{
      <string>USD</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_5">
+   <widget class="QPushButton" name="CNYButton">
     <property name="geometry">
      <rect>
       <x>560</x>
@@ -751,7 +751,7 @@ QPushButton:pressed{
 }</string>
     </property>
     <property name="text">
-     <string>RMB</string>
+     <string>CNY</string>
     </property>
    </widget>
   </widget>

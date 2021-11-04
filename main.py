@@ -92,11 +92,11 @@ class FaceWindow(StackedWindow):
         self.cap = cv2.VideoCapture()
 
         self.recognizer = cv2.face.LBPHFaceRecognizer_create()
-        self.recognizer.read("train.yml")
+        #self.recognizer.read("train.yml")
         self.labels = {"user_id": 1}
-        with open("labels.pickle", "rb") as f:
-            self.labels = pickle.load(f)
-            self.labels = {v: k for k, v in self.labels.items()}
+        #with open("labels.pickle", "rb") as f:
+        #    self.labels = pickle.load(f)
+        #    self.labels = {v: k for k, v in self.labels.items()}
         self.face_cascade = cv2.CascadeClassifier('haarcascade/haarcascade_frontalface_default.xml')
 
         self.slot_init()
@@ -181,7 +181,7 @@ class HomeWindow(StackedWindow):
         self.loan_labels = []
         self.slot_init()
         # TODO: for debug
-        # self.update_login_time()
+        self.update_login_time()
 
     def slot_init(self):
         self.logoutButton.clicked.connect(lambda: switch_to(WELCOME))
@@ -309,10 +309,55 @@ class AccountWindow(StackedWindow):
         self.user_id = user_id
 
         self.slot_init()
+        self.get_data()
 
     def slot_init(self):
         self.backButton.clicked.connect(lambda: switch_to(HOME))
+        self.HKDButton.clicked.connect(self.hkd_clicked)
+        self.depositButton.clicked.connect(self.deposit_clicked)
+        self.USDButton.clicked.connect(self.usd_clicked)
+        self.CNYButton.clicked.connect(self.cny_clicked)
 
+    def get_data(self):
+        sql = "SELECT user_id, account_id, balance FROM account WHERE user_id='%s' ORDER BY account_id" % self.user_id
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        hkd_balance = result[0][2]
+        deposit_balance = result[1][2]
+        usd_balance = result[2][2]
+        cny_balance = result[3][2]
+        self.HKDButton.setText("$"+str(hkd_balance))
+        self.depositButton.setText("$"+str(deposit_balance))
+        self.USDButton.setText("$"+str(usd_balance))
+        self.CNYButton.setText("￥"+str(cny_balance))
+
+    def hkd_clicked(self):
+        winList[ACCOUNT_DETAIL] = AccountDetailWindow(self.user_id,1)
+        switch_to(ACCOUNT_DETAIL)
+    
+    def deposit_clicked(self):
+        winList[ACCOUNT_DETAIL] = AccountDetailWindow(self.user_id,2)
+        switch_to(ACCOUNT_DETAIL)
+    
+    def usd_clicked(self):
+        winList[ACCOUNT_DETAIL] = AccountDetailWindow(self.user_id,3)
+        switch_to(ACCOUNT_DETAIL)
+    
+    def cny_clicked(self):
+        winList[ACCOUNT_DETAIL] = AccountDetailWindow(self.user_id,4)
+        switch_to(ACCOUNT_DETAIL)
+
+class AccountDetailWindow(StackedWindow):
+    def __init__(self, user_id, account_id):
+        super(AccountDetailWindow, self).__init__()
+        loadUi('accountsDetail.ui', self)
+        self.user_id = user_id
+        self.account_id = account_id
+
+        self.slot_init()
+
+    def slot_init(self):
+        self.backButton.clicked.connect(lambda: switch_to(ACCOUNT))
 
 class TransferWindow(StackedWindow):
     def __init__(self, user_id):
@@ -404,7 +449,7 @@ class LoanWindow(StackedWindow):
 
 
 if __name__ == "__main__":
-    conn = mysql.connector.connect(host="localhost", user="root", passwd="123456", database="ikyc")
+    conn = mysql.connector.connect(host="localhost", user="root", passwd="tamnjam", database="project")  # Modify if needed
     cursor = conn.cursor()
     app = QApplication(sys.argv)
 

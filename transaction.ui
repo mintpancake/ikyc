@@ -551,7 +551,7 @@ QPushButton:pressed{
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QScrollArea" name="scrollArea_2">
+   <widget class="QScrollArea" name="outscrollArea">
     <property name="geometry">
      <rect>
       <x>200</x>
@@ -604,12 +604,12 @@ QScrollBar::sub-line:vertical {
     <property name="widgetResizable">
      <bool>true</bool>
     </property>
-    <widget class="QWidget" name="friendScrollAreaWidget_4">
+    <widget class="QWidget" name="outScrollAreaWidget">
      <property name="geometry">
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>801</width>
+       <width>790</width>
        <height>675</height>
       </rect>
      </property>
@@ -618,7 +618,7 @@ QScrollBar::sub-line:vertical {
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_4">
       <item>
-       <widget class="QLabel" name="recentLabel">
+       <widget class="QLabel" name="outLabel">
         <property name="font">
          <font>
           <family>Yu Gothic UI</family>
@@ -628,7 +628,7 @@ QScrollBar::sub-line:vertical {
          </font>
         </property>
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#003780;&quot;&gt;Recent Transfer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#003780;&quot;&gt;Transfer Out&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -844,7 +844,7 @@ QScrollBar::sub-line:vertical {
      </layout>
     </widget>
    </widget>
-   <widget class="QScrollArea" name="scrollArea_3">
+   <widget class="QScrollArea" name="inScrollArea">
     <property name="geometry">
      <rect>
       <x>200</x>
@@ -897,12 +897,12 @@ QScrollBar::sub-line:vertical {
     <property name="widgetResizable">
      <bool>true</bool>
     </property>
-    <widget class="QWidget" name="friendScrollAreaWidget_5">
+    <widget class="QWidget" name="inScrollAreaWidget">
      <property name="geometry">
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>801</width>
+       <width>790</width>
        <height>675</height>
       </rect>
      </property>
@@ -911,7 +911,7 @@ QScrollBar::sub-line:vertical {
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_5">
       <item>
-       <widget class="QLabel" name="recentLabel_2">
+       <widget class="QLabel" name="inLabel">
         <property name="font">
          <font>
           <family>Yu Gothic UI</family>
@@ -921,7 +921,7 @@ QScrollBar::sub-line:vertical {
          </font>
         </property>
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#003780;&quot;&gt;Recent Transfer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#003780;&quot;&gt;Transfer In&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -1157,8 +1157,8 @@ QScrollBar::sub-line:vertical {
     </property>
    </widget>
    <zorder>backButton</zorder>
-   <zorder>scrollArea_2</zorder>
-   <zorder>scrollArea_3</zorder>
+   <zorder>outscrollArea</zorder>
+   <zorder>inScrollArea</zorder>
    <zorder>logoLabel</zorder>
    <zorder>transferTitleLabel</zorder>
   </widget>

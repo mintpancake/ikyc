@@ -48,7 +48,7 @@ UNLOCK TABLES;
 # Create TABLE 'LoginTime'
 CREATE TABLE `LoginTime` (
   `user_id` int NOT NULL,
-  `login_time` varchar(50) NOT NULL,
+  `login_time` DATETIME NOT NULL,
   FOREIGN KEY (user_id) REFERENCES User(user_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -56,14 +56,14 @@ CREATE TABLE `LoginTime` (
 
 LOCK TABLES `LoginTime` WRITE;
 /*!40000 ALTER TABLE `LoginTime` DISABLE KEYS */;
-INSERT INTO `LoginTime` VALUES (1, '2021-10-24-10-28-36');
-INSERT INTO `LoginTime` VALUES (2, '2021-10-24-12-10-54');
-INSERT INTO `LoginTime` VALUES (3, '2021-10-24-15-47-02');
-INSERT INTO `LoginTime` VALUES (4, '2021-10-24-16-03-21');
-INSERT INTO `LoginTime` VALUES (5, '2021-10-24-20-58-33');
-INSERT INTO `LoginTime` VALUES (3, '2021-10-25-09-15-27');
-INSERT INTO `LoginTime` VALUES (2, '2021-10-27-22-52-51');
-INSERT INTO `LoginTime` VALUES (5, '2021-10-28-19-43-09');
+INSERT INTO `LoginTime` VALUES (1, '2021-10-24 10:28:36');
+INSERT INTO `LoginTime` VALUES (2, '2021-10-24 12:10:54');
+INSERT INTO `LoginTime` VALUES (3, '2021-10-24 15:47:02');
+INSERT INTO `LoginTime` VALUES (4, '2021-10-24 16:03:21');
+INSERT INTO `LoginTime` VALUES (5, '2021-10-24 20:58:33');
+INSERT INTO `LoginTime` VALUES (3, '2021-10-25 09:15:27');
+INSERT INTO `LoginTime` VALUES (2, '2021-10-27 22:52:51');
+INSERT INTO `LoginTime` VALUES (5, '2021-10-28 19:43:09');
 /*!40000 ALTER TABLE `LoginTime` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -110,7 +110,7 @@ CREATE TABLE `Transaction` (
   `to_account` int NOT NULL,
   `current_type` varchar(10) NOT NULL,
   `amount` int NOT NULL,
-  `transaction_time` varchar(50) NOT NULL,
+  `transaction_time` DATETIME NOT NULL,
 
   PRIMARY KEY (transaction_id),
   FOREIGN KEY (from_user) REFERENCES User(user_id),
@@ -120,17 +120,17 @@ CREATE TABLE `Transaction` (
 
 LOCK TABLES `Transaction` WRITE;
 /*!40000 ALTER TABLE `Transaction` DISABLE KEYS */;
-INSERT INTO `Transaction` VALUES (1, 4, 1, 1, 1, 'HKD', 200, '2021-10-24-16-05-33');
-INSERT INTO `Transaction` VALUES (2, 5, 3, 1, 2, 'HKD', 1000, '2021-10-24-21-00-04');
-INSERT INTO `Transaction` VALUES (3, 2, 1, 1, 1, 'HKD', 50, '2021-10-27-22-52-51');
-INSERT INTO `Transaction` VALUES (4, 1, 3, 1, 1, 'HKD', 200, '2021-10-20-19-05-30');
-INSERT INTO `Transaction` VALUES (5, 2, 5, 4, 4, 'CNY', 200, '2021-10-21-09-05-04');
-INSERT INTO `Transaction` VALUES (6, 4, 3, 1, 1, 'HKD', 50, '2021-10-29-10-15-30');
-INSERT INTO `Transaction` VALUES (7, 4, 1, 3, 3, 'USD', 150, '2021-10-14-15-45-19');
-INSERT INTO `Transaction` VALUES (8, 5, 3, 1, 1, 'HKD', 500, '2021-10-24-18-05-33');
-INSERT INTO `Transaction` VALUES (9, 1, 5, 4, 4, 'CNY', 500, '2021-09-28-06-15-30');
-INSERT INTO `Transaction` VALUES (10, 2, 3, 1, 1, 'HKD', 500, '2021-10-13-08-05-34');
-INSERT INTO `Transaction` VALUES (11, 3, 1, 3, 3, 'USD', 20, '2021-10-30-06-25-39');
+INSERT INTO `Transaction` VALUES (1, 4, 1, 1, 1, 'HKD', 200, '2021-10-24 16:05:33');
+INSERT INTO `Transaction` VALUES (2, 5, 3, 1, 2, 'HKD', 1000, '2021-10-24 21:00:04');
+INSERT INTO `Transaction` VALUES (3, 2, 1, 1, 1, 'HKD', 50, '2021-10-27 22:52:51');
+INSERT INTO `Transaction` VALUES (4, 1, 3, 1, 1, 'HKD', 200, '2021-10-20 19:05:30');
+INSERT INTO `Transaction` VALUES (5, 2, 5, 4, 4, 'CNY', 200, '2021-10-21 09:05:04');
+INSERT INTO `Transaction` VALUES (6, 4, 3, 1, 1, 'HKD', 50, '2021-10-29 10:15:30');
+INSERT INTO `Transaction` VALUES (7, 4, 1, 3, 3, 'USD', 150, '2021-10-14 15:45:19');
+INSERT INTO `Transaction` VALUES (8, 5, 3, 1, 1, 'HKD', 500, '2021-10-24 18:05:33');
+INSERT INTO `Transaction` VALUES (9, 1, 5, 4, 4, 'CNY', 500, '2021-09-28 06:15:30');
+INSERT INTO `Transaction` VALUES (10, 2, 3, 1, 1, 'HKD', 500, '2021-10-13 08:05:34');
+INSERT INTO `Transaction` VALUES (11, 3, 1, 3, 3, 'USD', 20, '2021-10-30 06:25:39');
 
 
 /*!40000 ALTER TABLE `Transaction` ENABLE KEYS */;
@@ -141,7 +141,7 @@ CREATE TABLE `Loan` (
   `user_id` int NOT NULL,
   `loan_id` int NOT NULL,
   `loan_amount` int NOT NULL,
-  `due_data` varchar(50) NOT NULL ,
+  `due_date` DATE NOT NULL ,
   PRIMARY KEY (loan_id),
   FOREIGN KEY (user_id) REFERENCES User(user_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

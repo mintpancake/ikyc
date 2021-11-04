@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1200</width>
-    <height>769</height>
+    <height>800</height>
    </rect>
   </property>
   <property name="font">
@@ -114,26 +114,6 @@ QScrollBar::sub-line:horizon {
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="backButton">
-    <property name="geometry">
-     <rect>
-      <x>850</x>
-      <y>540</y>
-      <width>100</width>
-      <height>100</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton{background:#004094; background-image : url(resources/back.png); background-repeat: no-repeat; background-position: center; border-radius: 50px;}
-
-QPushButton:hover {
-background-color:rgb(0, 71, 163);
-}</string>
-    </property>
-    <property name="text">
-     <string/>
     </property>
    </widget>
    <widget class="QTableWidget" name="remittanceTable">
@@ -752,6 +732,53 @@ QPushButton:pressed{
     </property>
     <property name="text">
      <string>CNY</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="backButton">
+    <property name="geometry">
+     <rect>
+      <x>930</x>
+      <y>650</y>
+      <width>200</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+    background: #004094;
+    background-image : url(resources/back.png);
+	background-repeat: no-repeat;
+	background-position: center;
+    border-radius: 100px;
+}
+QPushButton:hover{
+    background: rgb(0, 71, 163);
+	background-image : url(resources/back.png);
+	background-repeat: no-repeat;
+	background-position: center;
+    border-radius: 100px;
+}
+QPushButton:pressed{
+    background: #004094;
+    background-image : url(resources/back.png);
+	background-repeat: no-repeat;
+	background-position: center;
+    border-radius: 100px;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
   </widget>

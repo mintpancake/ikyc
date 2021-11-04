@@ -103,9 +103,9 @@
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>255</red>
-        <green>255</green>
-        <blue>255</blue>
+        <red>247</red>
+        <green>246</green>
+        <blue>251</blue>
        </color>
       </brush>
      </colorrole>
@@ -249,9 +249,9 @@
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>255</red>
-        <green>255</green>
-        <blue>255</blue>
+        <red>247</red>
+        <green>246</green>
+        <blue>251</blue>
        </color>
       </brush>
      </colorrole>
@@ -471,6 +471,11 @@
   <property name="autoFillBackground">
    <bool>false</bool>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow{
+	background-color: rgb(247, 246, 251);
+}</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="small_logo">
     <property name="geometry">
@@ -515,11 +520,11 @@
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="profileButton">
+   <widget class="QPushButton" name="transferButton">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>590</y>
+      <x>150</x>
+      <y>630</y>
       <width>150</width>
       <height>71</height>
      </rect>
@@ -565,8 +570,8 @@ QPushButton:pressed{
    <widget class="QLabel" name="profileLabel">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>220</y>
+      <x>130</x>
+      <y>260</y>
       <width>121</width>
       <height>50</height>
      </rect>
@@ -586,13 +591,13 @@ QPushButton:pressed{
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QScrollArea" name="scrollArea_2">
+   <widget class="QScrollArea" name="transferScrollArea">
     <property name="geometry">
      <rect>
       <x>640</x>
-      <y>180</y>
+      <y>230</y>
       <width>451</width>
-      <height>511</height>
+      <height>481</height>
      </rect>
     </property>
     <property name="font">
@@ -639,13 +644,13 @@ QScrollBar::sub-line:vertical {
     <property name="widgetResizable">
      <bool>true</bool>
     </property>
-    <widget class="QWidget" name="friendScrollAreaWidget_4">
+    <widget class="QWidget" name="transferScrollAreaWidget">
      <property name="geometry">
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>441</width>
-       <height>675</height>
+       <width>451</width>
+       <height>481</height>
       </rect>
      </property>
      <property name="autoFillBackground">
@@ -653,233 +658,12 @@ QScrollBar::sub-line:vertical {
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_4">
       <item>
-       <widget class="QLabel" name="recentLabel">
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>16</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#003780;&quot;&gt;Recent Transfer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_26">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;1 Guo Ruo Xuan 12:00:00 01-01-1970 HKD600&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_27">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;1 Guo Ruo Xuan 12:00:00 01-01-1970 HKD600&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_28">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;1 Guo Ruo Xuan 12:00:00 01-01-1970 HKD600&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_30">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;1 Guo Ruo Xuan 12:00:00 01-01-1970 HKD600&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_31">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;1 Guo Ruo Xuan 12:00:00 01-01-1970 HKD600&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_32">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;1 Guo Ruo Xuan 12:00:00 01-01-1970 HKD600&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_33">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;1 Guo Ruo Xuan 12:00:00 01-01-1970 HKD600&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_34">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;1 Guo Ruo Xuan 12:00:00 01-01-1970 HKD600&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
+       <widget class="QListWidget" name="listWidget"/>
       </item>
      </layout>
     </widget>
    </widget>
-   <widget class="QPushButton" name="logoutButton">
+   <widget class="QPushButton" name="backButton">
     <property name="geometry">
      <rect>
       <x>1090</x>
@@ -926,11 +710,11 @@ QPushButton:pressed{
      <string/>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="idEdit">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>220</y>
+      <x>280</x>
+      <y>260</y>
       <width>240</width>
       <height>50</height>
      </rect>
@@ -952,7 +736,7 @@ QPushButton:pressed{
 }</string>
     </property>
     <property name="text">
-     <string>1</string>
+     <string/>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -961,8 +745,8 @@ QPushButton:pressed{
    <widget class="QLabel" name="profileLabel_2">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>340</y>
+      <x>100</x>
+      <y>380</y>
       <width>151</width>
       <height>50</height>
      </rect>
@@ -985,8 +769,8 @@ QPushButton:pressed{
    <widget class="QComboBox" name="accountBox">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>340</y>
+      <x>280</x>
+      <y>380</y>
       <width>231</width>
       <height>50</height>
      </rect>
@@ -1037,8 +821,8 @@ QPushButton:pressed{
    <widget class="QLabel" name="profileLabel_3">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>460</y>
+      <x>120</x>
+      <y>500</y>
       <width>131</width>
       <height>51</height>
      </rect>
@@ -1058,11 +842,11 @@ QPushButton:pressed{
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
+   <widget class="QLineEdit" name="amountEdit">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>460</y>
+      <x>280</x>
+      <y>500</y>
       <width>240</width>
       <height>50</height>
      </rect>
@@ -1084,17 +868,17 @@ QPushButton:pressed{
 }</string>
     </property>
     <property name="text">
-     <string>666</string>
+     <string/>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="profileButton_2">
+   <widget class="QPushButton" name="clearButton">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>590</y>
+      <x>340</x>
+      <y>630</y>
       <width>150</width>
       <height>71</height>
      </rect>
@@ -1131,14 +915,14 @@ QPushButton:pressed{
 }</string>
     </property>
     <property name="text">
-     <string>Cancel</string>
+     <string>Clear</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>460</x>
-      <y>340</y>
+      <x>450</x>
+      <y>380</y>
       <width>72</width>
       <height>50</height>
      </rect>
@@ -1153,19 +937,44 @@ QPushButton:pressed{
      <string/>
     </property>
    </widget>
+   <widget class="QLabel" name="recentLabel">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>180</y>
+      <width>419</width>
+      <height>37</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>16</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#003780;&quot;&gt;Recent Transfer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+    </property>
+   </widget>
    <zorder>label</zorder>
    <zorder>small_logo</zorder>
    <zorder>transferTitleLabel</zorder>
-   <zorder>profileButton</zorder>
-   <zorder>scrollArea_2</zorder>
-   <zorder>logoutButton</zorder>
+   <zorder>transferButton</zorder>
+   <zorder>transferScrollArea</zorder>
+   <zorder>backButton</zorder>
    <zorder>profileLabel</zorder>
-   <zorder>lineEdit</zorder>
+   <zorder>idEdit</zorder>
    <zorder>profileLabel_2</zorder>
    <zorder>accountBox</zorder>
    <zorder>profileLabel_3</zorder>
-   <zorder>lineEdit_2</zorder>
-   <zorder>profileButton_2</zorder>
+   <zorder>amountEdit</zorder>
+   <zorder>clearButton</zorder>
+   <zorder>recentLabel</zorder>
   </widget>
  </widget>
  <resources/>

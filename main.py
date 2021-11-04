@@ -175,7 +175,10 @@ class HomeWindow(StackedWindow):
         self.name = ''
         self.last_login_time = ''
         self.login_history = []
+        # TODO
+        self.loans = [('1000', '2020-01-01'), ('555', '2020-01-02')]
         self.login_history_labels = []
+        self.loan_labels = []
         self.slot_init()
         # TODO: for debug
         # self.update_login_time()
@@ -189,14 +192,14 @@ class HomeWindow(StackedWindow):
         self.transactionButton.clicked.connect(lambda: switch_to(TRANSACTION))
         # self.loanButton.clicked.connect(lambda: switch_to(LOAN))
 
-    def create_label(self):
+    def create_label(self, height):
         new_label = QtWidgets.QLabel(self.historyScrollAreaWidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(new_label.sizePolicy().hasHeightForWidth())
         new_label.setSizePolicy(sizePolicy)
-        new_label.setMinimumSize(QtCore.QSize(0, 40))
+        new_label.setMinimumSize(QtCore.QSize(0, height))
         font = QtGui.QFont()
         font.setFamily("Yu Gothic UI")
         font.setPointSize(12)
@@ -215,16 +218,34 @@ class HomeWindow(StackedWindow):
         self.last_login_time = result[1][0]
         self.login_history = result
 
+        # TODO: get loans
+        # sql = "" % self.user_id
+        # cursor.execute(sql)
+        # result = cursor.fetchall()
+        # self.loans = result
+
     def set_content(self):
         self.homeTitleLabel.setText(
             f'<html><head/><body><p><span style=" color:#003780;">Welcome back, {self.name}!</span></p></body></html>')
         self.lastLoginTimeLabel.setText(
             f'<html><head/><body><p><span style=" font-size:12pt; color:#646464;">Last login time:<br/>{self.last_login_time}</span></p></body></html>')
+        for label in self.login_history_labels:
+            self.verticalLayout_4.removeWidget(label)
+        self.login_history_labels = []
+        for label in self.loan_labels:
+            self.verticalLayout.removeWidget(label)
+        self.loan_labels = []
         for i, history in enumerate(self.login_history[1:]):
-            label = self.create_label()
+            label = self.create_label(height=40)
             label.setText(f'<html><head/><body><p>{history[0]}</p></body></html>')
             self.verticalLayout_4.insertWidget(i, label)
             self.login_history_labels.append(label)
+        for i, loan in enumerate(self.loans):
+            label = self.create_label(height=70)
+            label.setText(
+                f'<html><head/><body><p><span style=" font-weight:600;">Amount:</span> HKD {loan[0]}<br/><span style=" font-weight:600;">Due Date:</span> {loan[1]}</p></body></html>')
+            self.verticalLayout.insertWidget(i, label)
+            self.loan_labels.append(label)
 
     def activate(self):
         self.get_data()
@@ -250,6 +271,35 @@ class ProfileWindow(StackedWindow):
         super(ProfileWindow, self).__init__()
         loadUi('profile.ui', self)
         self.user_id = user_id
+        self.name = ''
+        self.last_login_time = ''
+        self.slot_init()
+
+    def slot_init(self):
+        self.backButton.clicked.connect(lambda: switch_to(HOME))
+
+    def activate(self):
+        self.get_data()
+        self.set_content()
+
+    def get_data(self):
+        sql = "SELECT name FROM User WHERE user_id='%s'" % self.user_id
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        self.name = result[0][0]
+
+        sql = "SELECT login_time FROM Login WHERE user_id='%s' ORDER BY login_time DESC" % self.user_id
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        self.last_login_time = result[1][0]
+
+    def set_content(self):
+        self.uid_value.setText(
+            f'<html><head/><body><p><span style=" font-size:22pt; font-weight:400; color:#476089;">{self.user_id}</span></p></body></html>')
+        self.name_value.setText(
+            f'<html><head/><body><p><span style=" font-size:22pt; font-weight:400; color:#476089;">{self.name}</span></p></body></html>')
+        self.log_value.setText(
+            f'<html><head/><body><p><span style=" font-size:22pt; font-weight:400; color:#476089;">{self.last_login_time}</span></p></body></html>')
 
 
 class AccountWindow(StackedWindow):
@@ -258,12 +308,80 @@ class AccountWindow(StackedWindow):
         loadUi('accounts.ui', self)
         self.user_id = user_id
 
+        self.slot_init()
+
+    def slot_init(self):
+        self.backButton.clicked.connect(lambda: switch_to(HOME))
+
 
 class TransferWindow(StackedWindow):
     def __init__(self, user_id):
         super(TransferWindow, self).__init__()
         loadUi('transfer.ui', self)
+        self.idEdit.setValidator(QtGui.QIntValidator())
+        self.amountEdit.setValidator(QtGui.QIntValidator())
         self.user_id = user_id
+        self.to_id = -1
+        self.account = ''
+        self.amount = 0
+        # TODO
+        self.transfers = [('apple', 'banana'), ('cat', 'dog')]
+        self.transfer_labels = []
+        self.slot_init()
+
+    def slot_init(self):
+        self.backButton.clicked.connect(lambda: switch_to(HOME))
+        self.clearButton.clicked.connect(self.clear)
+        self.transferButton.clicked.connect(self.transfer)
+
+    def activate(self):
+        self.get_data()
+        self.set_content()
+
+    def create_label(self, height):
+        new_label = QtWidgets.QLabel(self.transferScrollAreaWidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(new_label.sizePolicy().hasHeightForWidth())
+        new_label.setSizePolicy(sizePolicy)
+        new_label.setMinimumSize(QtCore.QSize(0, height))
+        font = QtGui.QFont()
+        font.setFamily("Yu Gothic UI")
+        font.setPointSize(12)
+        new_label.setFont(font)
+        return new_label
+
+    def get_data(self):
+        pass
+        # TODO: get transfers
+        # sql = "" % self.user_id
+        # cursor.execute(sql)
+        # result = cursor.fetchall()
+        # self.transfers = result
+
+    def set_content(self):
+        for label in self.transfer_labels:
+            self.verticalLayout_4.removeWidget(label)
+        self.transfer_labels = []
+        for i, transfer in enumerate(self.transfers):
+            label = self.create_label(height=40)
+            label.setText(f'<html><head/><body><p>{transfer[0]} {transfer[1]}</p></body></html>')
+            self.verticalLayout_4.insertWidget(i, label)
+            self.transfer_labels.append(label)
+
+    def clear(self):
+        self.idEdit.setText('')
+        self.accountBox.setCurrentIndex(0)
+        self.amountEdit.setText('')
+
+    def transfer(self):
+        self.to_id = int(self.idEdit.text().zfill(1))
+        self.account = self.accountBox.currentText()
+        self.amount = int(self.amountEdit.text().zfill(1))
+        # TODO: Do more on transfer
+        self.clear()
+        self.activate()
 
 
 class TransactionWindow(StackedWindow):
@@ -271,6 +389,11 @@ class TransactionWindow(StackedWindow):
         super(TransactionWindow, self).__init__()
         loadUi('transaction.ui', self)
         self.user_id = user_id
+
+        self.slot_init()
+
+    def slot_init(self):
+        self.backButton.clicked.connect(lambda: switch_to(HOME))
 
 
 class LoanWindow(StackedWindow):

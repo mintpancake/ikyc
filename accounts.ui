@@ -69,7 +69,7 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="BackButton">
+   <widget class="QPushButton" name="backButton">
     <property name="geometry">
      <rect>
       <x>930</x>
@@ -363,7 +363,7 @@ QPushButton:pressed{
    <zorder>CNYButton</zorder>
    <zorder>logoLabel</zorder>
    <zorder>titleLabel</zorder>
-   <zorder>BackButton</zorder>
+   <zorder>backButton</zorder>
    <zorder>HKDButton</zorder>
    <zorder>HKDLabel</zorder>
    <zorder>depositButton</zorder>

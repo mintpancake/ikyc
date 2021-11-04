@@ -232,16 +232,16 @@ class Ui_MainWindow(object):
 "}")
         self.profileButton.setText("")
         self.profileButton.setObjectName("profileButton")
-        self.historyButton = QtWidgets.QPushButton(self.centralwidget)
-        self.historyButton.setGeometry(QtCore.QRect(310, 480, 150, 150))
+        self.transactionButton = QtWidgets.QPushButton(self.centralwidget)
+        self.transactionButton.setGeometry(QtCore.QRect(310, 480, 150, 150))
         font = QtGui.QFont()
         font.setFamily("Yu Gothic UI")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.historyButton.setFont(font)
-        self.historyButton.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
-        self.historyButton.setStyleSheet("QPushButton{\n"
+        self.transactionButton.setFont(font)
+        self.transactionButton.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
+        self.transactionButton.setStyleSheet("QPushButton{\n"
 "    background: rgb(71, 96, 137);\n"
 "    background-image : url(resources/history.png);\n"
 "    background-repeat: no-repeat;\n"
@@ -262,8 +262,8 @@ class Ui_MainWindow(object):
 "    background-position: center;\n"
 "    border-radius: 55px;\n"
 "}")
-        self.historyButton.setText("")
-        self.historyButton.setObjectName("historyButton")
+        self.transactionButton.setText("")
+        self.transactionButton.setObjectName("transactionButton")
         self.transferButton = QtWidgets.QPushButton(self.centralwidget)
         self.transferButton.setGeometry(QtCore.QRect(80, 480, 150, 150))
         font = QtGui.QFont()
@@ -412,6 +412,9 @@ class Ui_MainWindow(object):
         self.loanScrollAreaWidget.setObjectName("loanScrollAreaWidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.loanScrollAreaWidget)
         self.verticalLayout.setObjectName("verticalLayout")
+        self.AAAAAAAAA = QtWidgets.QLabel(self.loanScrollAreaWidget)
+        self.AAAAAAAAA.setObjectName("AAAAAAAAA")
+        self.verticalLayout.addWidget(self.AAAAAAAAA)
         self.loanListWidget = QtWidgets.QListWidget(self.loanScrollAreaWidget)
         self.loanListWidget.setObjectName("loanListWidget")
         self.verticalLayout.addWidget(self.loanListWidget)
@@ -517,6 +520,37 @@ class Ui_MainWindow(object):
 "}")
         self.logoutButton.setText("")
         self.logoutButton.setObjectName("logoutButton")
+        self.loanButton = QtWidgets.QPushButton(self.centralwidget)
+        self.loanButton.setGeometry(QtCore.QRect(615, 660, 131, 31))
+        font = QtGui.QFont()
+        font.setFamily("Yu Gothic UI")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.loanButton.setFont(font)
+        self.loanButton.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
+        self.loanButton.setStyleSheet("QPushButton{\n"
+"    background: rgb(139, 229, 253);\n"
+"    background-repeat: no-repeat;\n"
+"    background-position: center;\n"
+"    border-radius: 15px;\n"
+"    color:rgb(0, 55, 128);\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background: rgb(133, 221, 243);\n"
+"    background-repeat: no-repeat;\n"
+"    background-position: center;\n"
+"    border-radius: 15px;\n"
+"    color:rgb(0, 55, 128);\n"
+"}\n"
+"QPushButton:pressed{\n"
+"    background: rgb(128, 212, 233);\n"
+"    background-repeat: no-repeat;\n"
+"    background-position: center;\n"
+"    border-radius: 15px;\n"
+"    color:rgb(0, 55, 128);\n"
+"}")
+        self.loanButton.setObjectName("loanButton")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -531,8 +565,10 @@ class Ui_MainWindow(object):
         self.accountLabel.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" color:#003780;\">My Accounts</span></p></body></html>"))
         self.transferLabel.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" color:#003780;\">Transfer</span></p></body></html>"))
         self.historyLabel.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" color:#003780;\">Transaction<br/>History</span></p><p><span style=\" color:#003780;\"><br/></span></p></body></html>"))
-        self.loanLabel.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" color:#003780;\">Loan</span></p></body></html>"))
+        self.AAAAAAAAA.setText(_translate("MainWindow", "TextLabel"))
+        self.loanLabel.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" color:#003780;\">Loans</span></p></body></html>"))
         self.loginHistoryLabel.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" color:#003780;\">Login History</span></p></body></html>"))
+        self.loanButton.setText(_translate("MainWindow", "View Details"))
 
 
 if __name__ == "__main__":

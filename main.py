@@ -369,8 +369,8 @@ class TransferWindow(StackedWindow):
     def __init__(self, user_id):
         super(TransferWindow, self).__init__()
         loadUi('transfer.ui', self)
-        self.idEdit.setValidator(QtGui.QIntValidator())
-        self.amountEdit.setValidator(QtGui.QIntValidator())
+        self.idEdit.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("[0-9]*")))
+        self.amountEdit.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("[1-9][0-9]*")))
         self.user_id = user_id
         self.to_id = -1
         self.account = ''

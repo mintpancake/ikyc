@@ -360,9 +360,53 @@ class AccountDetailWindow(StackedWindow):
 
     def slot_init(self):
         self.backButton.clicked.connect(lambda: switch_to(ACCOUNT))
+        self.HKDButton.clicked.connect(self.hkd_clicked)
+        self.depositButton.clicked.connect(self.deposit_clicked)
+        self.USDButton.clicked.connect(self.usd_clicked)
+        self.CNYButton.clicked.connect(self.cny_clicked)
+
+        if (self.account_id==1):
+            self.titleLabel.setText('HKD Account')
+        elif(self.account_id==2):
+            self.titleLabel.setText('Deposit Account')
+        elif(self.account_id==3):
+            self.titleLabel.setText('USD Account')
+        elif(self.account_id==4):
+            self.titleLabel.setText('CNY Account')
+        
+        self.remittanceTable.setShowGrid(False)
+        self.receivedTable.setShowGrid(False)
+        self.remittanceTable.verticalHeader().setVisible(False)
+        self.receivedTable.verticalHeader().setVisible(False)
 
     def activate(self):
-        pass
+        self.get_data()
+
+    def get_data(self):
+        sql = "SELECT balance FROM account WHERE user_id='"+str(self.user_id)+"' AND account_id='"+str(self.account_id)+"'"
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        balance = result[0][0]
+        if self.account_id==4:
+            self.balanceAmountLabel.setText("￥"+str(balance))
+        else:
+            self.balanceAmountLabel.setText("$"+str(balance))
+
+    def hkd_clicked(self):
+        winList[ACCOUNT_DETAIL] = AccountDetailWindow(self.user_id, 1)
+        switch_to(ACCOUNT_DETAIL)
+
+    def deposit_clicked(self):
+        winList[ACCOUNT_DETAIL] = AccountDetailWindow(self.user_id, 2)
+        switch_to(ACCOUNT_DETAIL)
+
+    def usd_clicked(self):
+        winList[ACCOUNT_DETAIL] = AccountDetailWindow(self.user_id, 3)
+        switch_to(ACCOUNT_DETAIL)
+
+    def cny_clicked(self):
+        winList[ACCOUNT_DETAIL] = AccountDetailWindow(self.user_id, 4)
+        switch_to(ACCOUNT_DETAIL)
 
 
 class TransferWindow(StackedWindow):
@@ -455,7 +499,7 @@ class LoanWindow(StackedWindow):
 
 
 if __name__ == "__main__":
-    conn = mysql.connector.connect(host="localhost", user="root", passwd="123456",
+    conn = mysql.connector.connect(host="localhost", user="root", passwd="tamnjam",
                                    database="project")  # Modify if needed
     cursor = conn.cursor()
     app = QApplication(sys.argv)

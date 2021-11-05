@@ -1655,7 +1655,7 @@ QDateTimeEdit::drop-down {
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="backButton_2">
+   <widget class="QPushButton" name="backButton">
     <property name="geometry">
      <rect>
       <x>970</x>
@@ -1728,7 +1728,7 @@ QPushButton:pressed{
    <zorder>toDate_2</zorder>
    <zorder>fromDate_2</zorder>
    <zorder>TimeLabel_8</zorder>
-   <zorder>backButton_2</zorder>
+   <zorder>backButton</zorder>
   </widget>
  </widget>
  <resources/>

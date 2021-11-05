@@ -1,6 +1,6 @@
 import mysql.connector
 
-conn = mysql.connector.connect(host="localhost", user="root", passwd="123456", database="ikyc")
+conn = mysql.connector.connect(host="localhost", user="root", passwd="123456", database="project")
 cursor = conn.cursor()
 
 # sql = "INSERT INTO Login VALUES (%s, %s)"
@@ -8,11 +8,7 @@ cursor = conn.cursor()
 # cursor.execute(sql, val)
 # conn.commit()
 
-sql = "SELECT * FROM Login"
+sql = "SELECT login_time FROM LoginTime WHERE user_id='%s' ORDER BY login_time DESC" % 1
 cursor.execute(sql)
 result = cursor.fetchall()
-print(result)
-
-sql = "DELETE FROM Login WHERE login_time = '2021-11-3-0-16-13'"
-cursor.execute(sql)
-conn.commit()
+print(result[1][0])

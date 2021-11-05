@@ -139,31 +139,30 @@ class FaceWindow(StackedWindow):
         # TODO: for debug
         self.user_id = 1
 
-        if self.user_id == -1:
-            gray = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
-            faces = self.face_cascade.detectMultiScale(gray, scaleFactor=1.5, minNeighbors=3)
-            for (x, y, w, h) in faces:
-                roi_gray = gray[y:y + h, x:x + w]
-                id_, conf = self.recognizer.predict(roi_gray)
-                if conf >= CONF:
-                    self.user_id = self.labels[id_]
+        # if self.user_id == -1:
+        #     gray = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
+        #     faces = self.face_cascade.detectMultiScale(gray, scaleFactor=1.5, minNeighbors=3)
+        #     for (x, y, w, h) in faces:
+        #         roi_gray = gray[y:y + h, x:x + w]
+        #         id_, conf = self.recognizer.predict(roi_gray)
+        #         if conf >= CONF:
+        #             self.user_id = self.labels[id_]
 
     def verify(self):
-        self.stop()
         if self.user_id != -1:
             # TODO
+            self.stop()
             winList[HOME] = HomeWindow(self.user_id)
             winList[PROFILE] = ProfileWindow(self.user_id)
             winList[ACCOUNT] = AccountWindow(self.user_id)
             winList[TRANSFER] = TransferWindow(self.user_id)
             winList[TRANSACTION] = TransactionWindow(self.user_id)
-            # winList[LOAN] = LoanWindow(self.user_id)
+            winList[LOAN] = LoanWindow(self.user_id)
             switch_to(HOME)
         else:
             self.hintLabel.setText(
                 '<html><head/><body><p align="center"><span style=" font-weight:600; color:#646464;">Unrecognized</span><span style=" font-weight:600; color:#646464;"><br/></span><span style=" color:#646464;">Please adjust your posture and try again</span></p></body></html>'
             )
-            self.start()
 
 
 class HomeWindow(StackedWindow):
@@ -173,12 +172,11 @@ class HomeWindow(StackedWindow):
         self.user_id = user_id
         self.name = ''
         self.last_login_time = ''
-        self.login_history = []ss
+        self.login_history = []
         self.loans = []
         self.login_history_labels = []
         self.loan_labels = []
         self.slot_init()
-        # TODO: for debug
         self.update_login_time()
 
     def slot_init(self):
@@ -188,7 +186,7 @@ class HomeWindow(StackedWindow):
         self.accountButton.clicked.connect(lambda: switch_to(ACCOUNT))
         self.transferButton.clicked.connect(lambda: switch_to(TRANSFER))
         self.transactionButton.clicked.connect(lambda: switch_to(TRANSACTION))
-        # self.loanButton.clicked.connect(lambda: switch_to(LOAN))
+        self.loanButton.clicked.connect(lambda: switch_to(LOAN))
 
     def create_label(self, height):
         new_label = QtWidgets.QLabel(self.historyScrollAreaWidget)
@@ -210,17 +208,16 @@ class HomeWindow(StackedWindow):
         result = cursor.fetchall()
         self.name = result[0][0]
 
-        sql = "SELECT login_time FROM Login WHERE user_id='%s' ORDER BY login_time DESC" % self.user_id
+        sql = "SELECT login_time FROM LoginTime WHERE user_id='%s' ORDER BY login_time DESC" % self.user_id
         cursor.execute(sql)
         result = cursor.fetchall()
         self.last_login_time = result[1][0]
         self.login_history = result
 
         # TODO: get loans
-        # sql = "" % self.user_id
-        # cursor.execute(sql)
-        # result = cursor.fetchall()
-        # self.loans = result
+        sql = "SELECT loan_id, loan_amount, due_date FROM Loan WHERE user_id='%s' ORDER BY due_date DESC" % self.user_id
+        cursor.execute(sql)
+        self.loans = cursor.fetchall()
 
     def set_content(self):
         self.homeTitleLabel.setText(
@@ -241,7 +238,7 @@ class HomeWindow(StackedWindow):
         for i, loan in enumerate(self.loans):
             label = self.create_label(height=70)
             label.setText(
-                f'<html><head/><body><p><span style=" font-weight:600;">Amount:</span> HKD {loan[0]}<br/><span style=" font-weight:600;">Due Date:</span> {loan[1]}</p></body></html>')
+                f'<html><head/><body><p><span style=" font-weight:600;">Amount:</span> HKD {loan[1]}<br/><span style=" font-weight:600;">Due Date:</span> {loan[2]}</p></body></html>')
             self.verticalLayout.insertWidget(i, label)
             self.loan_labels.append(label)
 
@@ -257,8 +254,8 @@ class HomeWindow(StackedWindow):
         hour = str(now.tm_hour).zfill(2)
         min = str(now.tm_min).zfill(2)
         sec = str(now.tm_sec).zfill(2)
-        now_str = f'{year}-{mon}-{mday}-{hour}-{min}-{sec}'
-        sql = "INSERT INTO Login VALUES (%s, %s)"
+        now_str = f'{year}-{mon}-{mday} {hour}:{min}:{sec}'
+        sql = "INSERT INTO LoginTime VALUES (%s, %s)"
         val = (self.user_id, now_str)
         cursor.execute(sql, val)
         conn.commit()
@@ -286,7 +283,7 @@ class ProfileWindow(StackedWindow):
         result = cursor.fetchall()
         self.name = result[0][0]
 
-        sql = "SELECT login_time FROM Login WHERE user_id='%s' ORDER BY login_time DESC" % self.user_id
+        sql = "SELECT login_time FROM LoginTime WHERE user_id='%s' ORDER BY login_time DESC" % self.user_id
         cursor.execute(sql)
         result = cursor.fetchall()
         self.last_login_time = result[1][0]
@@ -364,15 +361,15 @@ class AccountDetailWindow(StackedWindow):
         self.USDButton.clicked.connect(self.usd_clicked)
         self.CNYButton.clicked.connect(self.cny_clicked)
 
-        if (self.account_id==1):
+        if (self.account_id == 1):
             self.titleLabel.setText('HKD Account')
-        elif(self.account_id==2):
+        elif (self.account_id == 2):
             self.titleLabel.setText('Deposit Account')
-        elif(self.account_id==3):
+        elif (self.account_id == 3):
             self.titleLabel.setText('USD Account')
-        elif(self.account_id==4):
+        elif (self.account_id == 4):
             self.titleLabel.setText('CNY Account')
-        
+
         self.remittanceTable.setShowGrid(False)
         self.receivedTable.setShowGrid(False)
         self.remittanceTable.verticalHeader().setVisible(False)
@@ -382,14 +379,15 @@ class AccountDetailWindow(StackedWindow):
         self.get_data()
 
     def get_data(self):
-        sql = "SELECT balance FROM account WHERE user_id='"+str(self.user_id)+"' AND account_id='"+str(self.account_id)+"'"
+        sql = "SELECT balance FROM account WHERE user_id='" + str(self.user_id) + "' AND account_id='" + str(
+            self.account_id) + "'"
         cursor.execute(sql)
         result = cursor.fetchall()
         balance = result[0][0]
-        if self.account_id==4:
-            self.balanceAmountLabel.setText("￥"+str(balance))
+        if self.account_id == 4:
+            self.balanceAmountLabel.setText("￥" + str(balance))
         else:
-            self.balanceAmountLabel.setText("$"+str(balance))
+            self.balanceAmountLabel.setText("$" + str(balance))
 
     def hkd_clicked(self):
         winList[ACCOUNT_DETAIL] = AccountDetailWindow(self.user_id, 1)
@@ -493,12 +491,12 @@ class TransactionWindow(StackedWindow):
 class LoanWindow(StackedWindow):
     def __init__(self, user_id):
         super(LoanWindow, self).__init__()
-        loadUi('loan.ui', self)
+        loadUi('loanHome.ui', self)
         self.user_id = user_id
 
 
 if __name__ == "__main__":
-    conn = mysql.connector.connect(host="localhost", user="root", passwd="tamnjam",
+    conn = mysql.connector.connect(host="localhost", user="root", passwd="123456",
                                    database="project")  # Modify if needed
     cursor = conn.cursor()
     app = QApplication(sys.argv)

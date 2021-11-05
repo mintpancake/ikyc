@@ -173,9 +173,8 @@ class HomeWindow(StackedWindow):
         self.user_id = user_id
         self.name = ''
         self.last_login_time = ''
-        self.login_history = []
-        # TODO
-        self.loans = [('1000', '2020-01-01'), ('555', '2020-01-02')]
+        self.login_history = []ss
+        self.loans = []
         self.login_history_labels = []
         self.loan_labels = []
         self.slot_init()

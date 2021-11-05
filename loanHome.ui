@@ -682,7 +682,7 @@ QPushButton:pressed{
     <property name="geometry">
      <rect>
       <x>680</x>
-      <y>280</y>
+      <y>270</y>
       <width>200</width>
       <height>200</height>
      </rect>
@@ -755,7 +755,7 @@ QPushButton:pressed{
    <widget class="QLabel" name="ProfileTitleLabel_4">
     <property name="geometry">
      <rect>
-      <x>710</x>
+      <x>690</x>
       <y>470</y>
       <width>181</width>
       <height>110</height>

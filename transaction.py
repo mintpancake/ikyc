@@ -175,38 +175,6 @@ class Ui_MainWindow(object):
         MainWindow.setAutoFillBackground(False)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.backButton = QtWidgets.QPushButton(self.centralwidget)
-        self.backButton.setGeometry(QtCore.QRect(930, 650, 200, 200))
-        font = QtGui.QFont()
-        font.setFamily("Yu Gothic UI")
-        font.setPointSize(12)
-        font.setBold(True)
-        font.setWeight(75)
-        self.backButton.setFont(font)
-        self.backButton.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
-        self.backButton.setStyleSheet("QPushButton{\n"
-"    background: #004094;\n"
-"    background-image : url(resources/back.png);\n"
-"    background-repeat: no-repeat;\n"
-"    background-position: center;\n"
-"    border-radius: 100px;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    background: rgb(0, 71, 163);\n"
-"    background-image : url(resources/back.png);\n"
-"    background-repeat: no-repeat;\n"
-"    background-position: center;\n"
-"    border-radius: 100px;\n"
-"}\n"
-"QPushButton:pressed{\n"
-"    background: #004094;\n"
-"    background-image : url(resources/back.png);\n"
-"    background-repeat: no-repeat;\n"
-"    background-position: center;\n"
-"    border-radius: 100px;\n"
-"}")
-        self.backButton.setText("")
-        self.backButton.setObjectName("backButton")
         self.transferTitleLabel = QtWidgets.QLabel(self.centralwidget)
         self.transferTitleLabel.setGeometry(QtCore.QRect(190, 20, 601, 91))
         font = QtGui.QFont()
@@ -844,7 +812,38 @@ class Ui_MainWindow(object):
         self.TimeLabel_8.setFont(font)
         self.TimeLabel_8.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.TimeLabel_8.setObjectName("TimeLabel_8")
-        self.backButton.raise_()
+        self.backButton_2 = QtWidgets.QPushButton(self.centralwidget)
+        self.backButton_2.setGeometry(QtCore.QRect(970, 660, 131, 131))
+        font = QtGui.QFont()
+        font.setFamily("Yu Gothic UI")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.backButton_2.setFont(font)
+        self.backButton_2.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
+        self.backButton_2.setStyleSheet("QPushButton{\n"
+"    background: #004094;\n"
+"    background-image : url(resources/back.png);\n"
+"    background-repeat: no-repeat;\n"
+"    background-position: center;\n"
+"    border-radius: 65px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background: rgb(0, 71, 163);\n"
+"    background-image : url(resources/back.png);\n"
+"    background-repeat: no-repeat;\n"
+"    background-position: center;\n"
+"    border-radius: 65px;\n"
+"}\n"
+"QPushButton:pressed{\n"
+"    background: #004094;\n"
+"    background-image : url(resources/back.png);\n"
+"    background-repeat: no-repeat;\n"
+"    background-position: center;\n"
+"    border-radius: 65px;\n"
+"}")
+        self.backButton_2.setText("")
+        self.backButton_2.setObjectName("backButton_2")
         self.outscrollArea.raise_()
         self.inScrollArea.raise_()
         self.logoLabel.raise_()
@@ -871,6 +870,7 @@ class Ui_MainWindow(object):
         self.toDate_2.raise_()
         self.fromDate_2.raise_()
         self.TimeLabel_8.raise_()
+        self.backButton_2.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)

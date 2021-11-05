@@ -322,7 +322,7 @@ class Ui_MainWindow(object):
         self.amount.setAlignment(QtCore.Qt.AlignCenter)
         self.amount.setObjectName("amount")
         self.profileLabel_4 = QtWidgets.QLabel(self.centralwidget)
-        self.profileLabel_4.setGeometry(QtCore.QRect(270, 450, 671, 51))
+        self.profileLabel_4.setGeometry(QtCore.QRect(250, 450, 671, 51))
         font = QtGui.QFont()
         font.setFamily("Yu Gothic UI")
         font.setPointSize(15)

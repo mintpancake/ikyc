@@ -475,53 +475,6 @@
    <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="backButton">
-    <property name="geometry">
-     <rect>
-      <x>930</x>
-      <y>650</y>
-      <width>200</width>
-      <height>200</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Yu Gothic UI</family>
-      <pointsize>12</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="cursor">
-     <cursorShape>ArrowCursor</cursorShape>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton{
-    background: #004094;
-    background-image : url(resources/back.png);
-	background-repeat: no-repeat;
-	background-position: center;
-    border-radius: 100px;
-}
-QPushButton:hover{
-    background: rgb(0, 71, 163);
-	background-image : url(resources/back.png);
-	background-repeat: no-repeat;
-	background-position: center;
-    border-radius: 100px;
-}
-QPushButton:pressed{
-    background: #004094;
-    background-image : url(resources/back.png);
-	background-repeat: no-repeat;
-	background-position: center;
-    border-radius: 100px;
-}</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
    <widget class="QLabel" name="transferTitleLabel">
     <property name="geometry">
      <rect>
@@ -1702,7 +1655,53 @@ QDateTimeEdit::drop-down {
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <zorder>backButton</zorder>
+   <widget class="QPushButton" name="backButton_2">
+    <property name="geometry">
+     <rect>
+      <x>970</x>
+      <y>660</y>
+      <width>131</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+    background: #004094;
+    background-image : url(resources/back.png);
+	background-repeat: no-repeat;
+	background-position: center;
+    border-radius: 65px;
+}
+QPushButton:hover{
+    background: rgb(0, 71, 163);
+    background-image : url(resources/back.png);
+	background-repeat: no-repeat;
+	background-position: center;
+    border-radius: 65px;
+}
+QPushButton:pressed{
+    background: #004094;
+    background-image : url(resources/back.png);
+	background-repeat: no-repeat;
+	background-position: center;
+    border-radius: 65px;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
    <zorder>outscrollArea</zorder>
    <zorder>inScrollArea</zorder>
    <zorder>logoLabel</zorder>
@@ -1729,6 +1728,7 @@ QDateTimeEdit::drop-down {
    <zorder>toDate_2</zorder>
    <zorder>fromDate_2</zorder>
    <zorder>TimeLabel_8</zorder>
+   <zorder>backButton_2</zorder>
   </widget>
  </widget>
  <resources/>

@@ -307,7 +307,7 @@ QScrollBar::sub-line:horizontal {
      </property>
     </item>
    </widget>
-   <widget class="QWidget" name="HKDWidge" native="true">
+   <widget class="QWidget" name="balanceWidge" native="true">
     <property name="geometry">
      <rect>
       <x>800</x>
@@ -347,7 +347,7 @@ QScrollBar::sub-line:horizontal {
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="hkdAmountLabel">
+    <widget class="QLabel" name="balanceAmountLabel">
      <property name="geometry">
       <rect>
        <x>0</x>

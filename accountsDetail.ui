@@ -121,7 +121,7 @@ QScrollBar::sub-line:horizon {
      <rect>
       <x>80</x>
       <y>240</y>
-      <width>591</width>
+      <width>607</width>
       <height>191</height>
      </rect>
     </property>
@@ -238,7 +238,7 @@ QScrollBar::sub-line:horizontal {
     </column>
     <column>
      <property name="text">
-      <string>Transaction Time</string>
+      <string>Time</string>
      </property>
     </column>
     <column>
@@ -380,7 +380,7 @@ QScrollBar::sub-line:horizontal {
      <rect>
       <x>80</x>
       <y>500</y>
-      <width>591</width>
+      <width>607</width>
       <height>191</height>
      </rect>
     </property>
@@ -450,7 +450,7 @@ QScrollBar::sub-line:horizontal {
      <enum>QAbstractItemView::ScrollPerItem</enum>
     </property>
     <property name="rowCount">
-     <number>5</number>
+     <number>3</number>
     </property>
     <attribute name="horizontalHeaderDefaultSectionSize">
      <number>114</number>
@@ -458,16 +458,6 @@ QScrollBar::sub-line:horizontal {
     <attribute name="verticalHeaderDefaultSectionSize">
      <number>38</number>
     </attribute>
-    <row>
-     <property name="text">
-      <string/>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string/>
-     </property>
-    </row>
     <row>
      <property name="text">
       <string/>
@@ -486,7 +476,7 @@ QScrollBar::sub-line:horizontal {
     </column>
     <column>
      <property name="text">
-      <string>Transaction Time</string>
+      <string>Time</string>
      </property>
     </column>
     <column>

@@ -156,10 +156,10 @@ class FaceWindow(StackedWindow):
             self.stop()
             winList[HOME] = HomeWindow(self.user_id)
             winList[PROFILE] = ProfileWindow(self.user_id)
-            # winList[ACCOUNT] = AccountWindow(self.user_id)
+            winList[ACCOUNT] = AccountWindow(self.user_id)
             winList[TRANSFER] = TransferWindow(self.user_id)
             winList[TRANSACTION] = TransactionWindow(self.user_id)
-            # winList[LOAN] = LoanWindow(self.user_id)
+            winList[LOAN] = LoanWindow(self.user_id)
             switch_to(HOME)
         else:
             self.hintLabel.setText(

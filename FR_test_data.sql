@@ -5,13 +5,13 @@ DROP DATABASE IF EXISTS `project`;
 CREATE DATABASE `project`;
 USE `project`;
 
+
 # Create TABLE 'User'
 CREATE TABLE `User` (
   `user_id` int NOT NULL,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (user_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 
 LOCK TABLES `User` WRITE;
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
@@ -23,14 +23,13 @@ INSERT INTO `User` VALUES (5, "Tim");
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 UNLOCK TABLES;
 
+
 # Create TABLE 'LoginTime'
 CREATE TABLE `LoginTime` (
   `user_id` int NOT NULL,
   `login_time` DATETIME NOT NULL,
   FOREIGN KEY (user_id) REFERENCES User(user_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
 
 LOCK TABLES `LoginTime` WRITE;
 /*!40000 ALTER TABLE `LoginTime` DISABLE KEYS */;
@@ -44,6 +43,7 @@ INSERT INTO `LoginTime` VALUES (2, '2021-10-27 22:52:51');
 INSERT INTO `LoginTime` VALUES (5, '2021-10-28 19:43:09');
 /*!40000 ALTER TABLE `LoginTime` ENABLE KEYS */;
 UNLOCK TABLES;
+
 
 # Create TABLE 'Account'
 CREATE TABLE `Account` (
@@ -79,6 +79,7 @@ INSERT INTO `Account` VALUES (4, 5, 'CNY', 1050);
 /*!40000 ALTER TABLE `Account` ENABLE KEYS */;
 UNLOCK TABLES;
 
+
 # Create TABLE 'Transaction'
 CREATE TABLE `Transaction` (
   `transaction_id` int NOT NULL,
@@ -109,10 +110,9 @@ INSERT INTO `Transaction` VALUES (8, 5, 3, 1, 1, 'HKD', 500, '2021-10-24 18:05:3
 INSERT INTO `Transaction` VALUES (9, 1, 5, 4, 4, 'CNY', 500, '2021-09-28 06:15:30');
 INSERT INTO `Transaction` VALUES (10, 2, 3, 1, 1, 'HKD', 500, '2021-10-13 08:05:34');
 INSERT INTO `Transaction` VALUES (11, 3, 1, 3, 3, 'USD', 20, '2021-10-30 06:25:39');
-
-
 /*!40000 ALTER TABLE `Transaction` ENABLE KEYS */;
 UNLOCK TABLES;
+
 
 # Create TABLE 'Loan'
 CREATE TABLE `Loan` (
@@ -133,7 +133,6 @@ INSERT INTO `Loan` VALUES (1, 4, 2000, '2021-10-25');
 INSERT INTO `Loan` VALUES (1, 2, 4000, '2021-11-09');
 INSERT INTO `Loan` VALUES (3, 8, 380, '2021-10-28');
 INSERT INTO `Loan` VALUES (5, 7, 5500, '2021-09-25');
-
 /*!40000 ALTER TABLE `Loan` ENABLE KEYS */;
 UNLOCK TABLES;
 

@@ -86,7 +86,7 @@ CREATE TABLE `Transaction` (
   `to_user` int NOT NULL,
   `from_account` int NOT NULL,
   `to_account` int NOT NULL,
-  `current_type` varchar(10) NOT NULL,
+  `currency_type` varchar(10) NOT NULL,
   `amount` int NOT NULL,
   `transaction_time` DATETIME NOT NULL,
 

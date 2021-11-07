@@ -474,6 +474,11 @@
   <property name="autoFillBackground">
    <bool>false</bool>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow{
+	background-color: rgb(247, 246, 251);
+}</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="transferTitleLabel">
     <property name="geometry">
@@ -499,11 +504,11 @@
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QScrollArea" name="outscrollArea">
+   <widget class="QScrollArea" name="outScrollArea">
     <property name="geometry">
      <rect>
       <x>290</x>
-      <y>250</y>
+      <y>240</y>
       <width>810</width>
       <height>160</height>
      </rect>
@@ -556,8 +561,8 @@ QScrollBar::sub-line:vertical {
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>800</width>
-       <height>631</height>
+       <width>810</width>
+       <height>160</height>
       </rect>
      </property>
      <property name="autoFillBackground">
@@ -565,210 +570,7 @@ QScrollBar::sub-line:vertical {
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_4">
       <item>
-       <widget class="QLabel" name="label_26">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;1 Guo Ruo Xuan 12:00:00 01-01-1970 HKD600&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_27">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;1 Guo Ruo Xuan 12:00:00 01-01-1970 HKD600&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_28">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;1 Guo Ruo Xuan 12:00:00 01-01-1970 HKD600&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_30">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;1 Guo Ruo Xuan 12:00:00 01-01-1970 HKD600&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_31">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;1 Guo Ruo Xuan 12:00:00 01-01-1970 HKD600&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_32">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;1 Guo Ruo Xuan 12:00:00 01-01-1970 HKD600&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_33">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;1 Guo Ruo Xuan 12:00:00 01-01-1970 HKD600&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_34">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;1 Guo Ruo Xuan 12:00:00 01-01-1970 HKD600&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
+       <widget class="QListWidget" name="listWidget"/>
       </item>
      </layout>
     </widget>
@@ -777,7 +579,7 @@ QScrollBar::sub-line:vertical {
     <property name="geometry">
      <rect>
       <x>290</x>
-      <y>490</y>
+      <y>480</y>
       <width>810</width>
       <height>151</height>
      </rect>
@@ -831,8 +633,8 @@ QScrollBar::sub-line:vertical {
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>800</width>
-       <height>631</height>
+       <width>810</width>
+       <height>151</height>
       </rect>
      </property>
      <property name="autoFillBackground">
@@ -840,210 +642,7 @@ QScrollBar::sub-line:vertical {
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_5">
       <item>
-       <widget class="QLabel" name="label_29">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;1 Guo Ruo Xuan 12:00:00 01-01-1970 HKD600&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_35">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;1 Guo Ruo Xuan 12:00:00 01-01-1970 HKD600&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_36">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;1 Guo Ruo Xuan 12:00:00 01-01-1970 HKD600&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_37">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;1 Guo Ruo Xuan 12:00:00 01-01-1970 HKD600&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_38">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;1 Guo Ruo Xuan 12:00:00 01-01-1970 HKD600&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_39">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;1 Guo Ruo Xuan 12:00:00 01-01-1970 HKD600&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_40">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;1 Guo Ruo Xuan 12:00:00 01-01-1970 HKD600&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_41">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>70</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI</family>
-          <pointsize>12</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;1 Guo Ruo Xuan 12:00:00 01-01-1970 HKD600&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
+       <widget class="QListWidget" name="listWidget_2"/>
       </item>
      </layout>
     </widget>
@@ -1070,8 +669,8 @@ QScrollBar::sub-line:vertical {
    <widget class="QLabel" name="TimeLabel">
     <property name="geometry">
      <rect>
-      <x>440</x>
-      <y>110</y>
+      <x>470</x>
+      <y>100</y>
       <width>81</width>
       <height>91</height>
      </rect>
@@ -1094,8 +693,8 @@ QScrollBar::sub-line:vertical {
    <widget class="QLabel" name="TimeLabel_2">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>192</y>
+      <x>290</x>
+      <y>182</y>
       <width>81</width>
       <height>41</height>
      </rect>
@@ -1109,7 +708,7 @@ QScrollBar::sub-line:vertical {
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; color:#003780;&quot;&gt;From: &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; color:#003780;&quot;&gt;from: &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -1118,8 +717,8 @@ QScrollBar::sub-line:vertical {
    <widget class="QLabel" name="TimeLabel_3">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>192</y>
+      <x>520</x>
+      <y>180</y>
       <width>31</width>
       <height>41</height>
      </rect>
@@ -1142,8 +741,8 @@ QScrollBar::sub-line:vertical {
    <widget class="QLabel" name="Income">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>270</y>
+      <x>120</x>
+      <y>260</y>
       <width>131</width>
       <height>91</height>
      </rect>
@@ -1160,14 +759,14 @@ QScrollBar::sub-line:vertical {
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:20pt; color:#003780;&quot;&gt;Income&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
-     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="TimeLabel_5">
     <property name="geometry">
      <rect>
-      <x>840</x>
-      <y>110</y>
+      <x>830</x>
+      <y>100</y>
       <width>131</width>
       <height>91</height>
      </rect>
@@ -1191,7 +790,7 @@ QScrollBar::sub-line:vertical {
     <property name="geometry">
      <rect>
       <x>730</x>
-      <y>192</y>
+      <y>182</y>
       <width>81</width>
       <height>41</height>
      </rect>
@@ -1205,7 +804,7 @@ QScrollBar::sub-line:vertical {
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; color:#003780;&quot;&gt;From: &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; color:#003780;&quot;&gt;from: &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -1215,7 +814,7 @@ QScrollBar::sub-line:vertical {
     <property name="geometry">
      <rect>
       <x>900</x>
-      <y>192</y>
+      <y>182</y>
       <width>31</width>
       <height>41</height>
      </rect>
@@ -1239,7 +838,7 @@ QScrollBar::sub-line:vertical {
     <property name="geometry">
      <rect>
       <x>800</x>
-      <y>200</y>
+      <y>190</y>
       <width>80</width>
       <height>30</height>
      </rect>
@@ -1255,7 +854,7 @@ QScrollBar::sub-line:vertical {
     <property name="geometry">
      <rect>
       <x>940</x>
-      <y>200</y>
+      <y>190</y>
       <width>80</width>
       <height>30</height>
      </rect>
@@ -1267,11 +866,11 @@ QScrollBar::sub-line:vertical {
 }</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="transferButton">
+   <widget class="QPushButton" name="tickButton">
     <property name="geometry">
      <rect>
       <x>1050</x>
-      <y>190</y>
+      <y>180</y>
       <width>50</width>
       <height>50</height>
      </rect>
@@ -1298,16 +897,18 @@ QScrollBar::sub-line:vertical {
 }
 QPushButton:hover{
     background: rgb(133, 221, 243);
+	background-image: url(resources/tick.png);
 	background-repeat: no-repeat;
 	background-position: center;
-    border-radius: 15px;
+    border-radius: 25px;
 	color:rgb(0, 55, 128);
 }
 QPushButton:pressed{
     background: rgb(128, 212, 233);
+	background-image: url(resources/tick.png);
 	background-repeat: no-repeat;
 	background-position: center;
-    border-radius: 15px;
+    border-radius: 25px;
 	color:rgb(0, 55, 128);
 }</string>
     </property>
@@ -1318,9 +919,9 @@ QPushButton:pressed{
    <widget class="QLabel" name="Income_2">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>510</y>
-      <width>181</width>
+      <x>60</x>
+      <y>500</y>
+      <width>191</width>
       <height>91</height>
      </rect>
     </property>
@@ -1336,14 +937,14 @@ QPushButton:pressed{
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:20pt; color:#003780;&quot;&gt;Expenditure&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
-     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="TimeLabel_4">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>430</y>
+      <x>290</x>
+      <y>420</y>
       <width>81</width>
       <height>41</height>
      </rect>
@@ -1357,17 +958,17 @@ QPushButton:pressed{
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; color:#003780;&quot;&gt;From: &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; color:#003780;&quot;&gt;from: &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QLineEdit" name="toAmount2">
+   <widget class="QLineEdit" name="toAmount_2">
     <property name="geometry">
      <rect>
       <x>940</x>
-      <y>438</y>
+      <y>428</y>
       <width>80</width>
       <height>30</height>
      </rect>
@@ -1382,8 +983,8 @@ QPushButton:pressed{
    <widget class="QLabel" name="TimeLabel_9">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>430</y>
+      <x>520</x>
+      <y>420</y>
       <width>31</width>
       <height>41</height>
      </rect>
@@ -1403,11 +1004,11 @@ QPushButton:pressed{
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="transferButton_2">
+   <widget class="QPushButton" name="tickButton_2">
     <property name="geometry">
      <rect>
       <x>1050</x>
-      <y>430</y>
+      <y>420</y>
       <width>50</width>
       <height>50</height>
      </rect>
@@ -1434,16 +1035,18 @@ QPushButton:pressed{
 }
 QPushButton:hover{
     background: rgb(133, 221, 243);
+	background-image: url(resources/tick.png);
 	background-repeat: no-repeat;
 	background-position: center;
-    border-radius: 15px;
+    border-radius: 25px;
 	color:rgb(0, 55, 128);
 }
 QPushButton:pressed{
     background: rgb(128, 212, 233);
+	background-image: url(resources/tick.png);
 	background-repeat: no-repeat;
 	background-position: center;
-    border-radius: 15px;
+    border-radius: 25px;
 	color:rgb(0, 55, 128);
 }</string>
     </property>
@@ -1451,11 +1054,11 @@ QPushButton:pressed{
      <string/>
     </property>
    </widget>
-   <widget class="QLineEdit" name="fromAmount2">
+   <widget class="QLineEdit" name="fromAmount_2">
     <property name="geometry">
      <rect>
       <x>800</x>
-      <y>438</y>
+      <y>428</y>
       <width>80</width>
       <height>30</height>
      </rect>
@@ -1471,7 +1074,7 @@ QPushButton:pressed{
     <property name="geometry">
      <rect>
       <x>730</x>
-      <y>430</y>
+      <y>420</y>
       <width>81</width>
       <height>41</height>
      </rect>
@@ -1485,7 +1088,7 @@ QPushButton:pressed{
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; color:#003780;&quot;&gt;From: &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; color:#003780;&quot;&gt;from: &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -1494,9 +1097,9 @@ QPushButton:pressed{
    <widget class="QDateTimeEdit" name="fromDate">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>200</y>
-      <width>130</width>
+      <x>360</x>
+      <y>190</y>
+      <width>141</width>
       <height>30</height>
      </rect>
     </property>
@@ -1529,9 +1132,9 @@ QDateTimeEdit::drop-down {
    <widget class="QDateTimeEdit" name="toDate">
     <property name="geometry">
      <rect>
-      <x>570</x>
-      <y>200</y>
-      <width>130</width>
+      <x>560</x>
+      <y>190</y>
+      <width>141</width>
       <height>30</height>
      </rect>
     </property>
@@ -1564,9 +1167,9 @@ QDateTimeEdit::drop-down {
    <widget class="QDateTimeEdit" name="toDate_2">
     <property name="geometry">
      <rect>
-      <x>570</x>
-      <y>440</y>
-      <width>130</width>
+      <x>560</x>
+      <y>430</y>
+      <width>141</width>
       <height>30</height>
      </rect>
     </property>
@@ -1599,9 +1202,9 @@ QDateTimeEdit::drop-down {
    <widget class="QDateTimeEdit" name="fromDate_2">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>440</y>
-      <width>130</width>
+      <x>360</x>
+      <y>430</y>
+      <width>141</width>
       <height>30</height>
      </rect>
     </property>
@@ -1635,7 +1238,7 @@ QDateTimeEdit::drop-down {
     <property name="geometry">
      <rect>
       <x>900</x>
-      <y>430</y>
+      <y>420</y>
       <width>31</width>
       <height>41</height>
      </rect>
@@ -1658,10 +1261,10 @@ QDateTimeEdit::drop-down {
    <widget class="QPushButton" name="backButton">
     <property name="geometry">
      <rect>
-      <x>970</x>
-      <y>660</y>
-      <width>131</width>
-      <height>131</height>
+      <x>930</x>
+      <y>650</y>
+      <width>200</width>
+      <height>200</height>
      </rect>
     </property>
     <property name="font">
@@ -1681,28 +1284,28 @@ QDateTimeEdit::drop-down {
     background-image : url(resources/back.png);
 	background-repeat: no-repeat;
 	background-position: center;
-    border-radius: 65px;
+    border-radius: 100px;
 }
 QPushButton:hover{
     background: rgb(0, 71, 163);
-    background-image : url(resources/back.png);
+	background-image : url(resources/back.png);
 	background-repeat: no-repeat;
 	background-position: center;
-    border-radius: 65px;
+    border-radius: 100px;
 }
 QPushButton:pressed{
     background: #004094;
     background-image : url(resources/back.png);
 	background-repeat: no-repeat;
 	background-position: center;
-    border-radius: 65px;
+    border-radius: 100px;
 }</string>
     </property>
     <property name="text">
      <string/>
     </property>
    </widget>
-   <zorder>outscrollArea</zorder>
+   <zorder>outScrollArea</zorder>
    <zorder>inScrollArea</zorder>
    <zorder>logoLabel</zorder>
    <zorder>TimeLabel</zorder>
@@ -1715,13 +1318,13 @@ QPushButton:pressed{
    <zorder>TimeLabel_7</zorder>
    <zorder>fromAmount</zorder>
    <zorder>toAmount</zorder>
-   <zorder>transferButton</zorder>
+   <zorder>tickButton</zorder>
    <zorder>Income_2</zorder>
    <zorder>TimeLabel_4</zorder>
-   <zorder>toAmount2</zorder>
+   <zorder>toAmount_2</zorder>
    <zorder>TimeLabel_9</zorder>
-   <zorder>transferButton_2</zorder>
-   <zorder>fromAmount2</zorder>
+   <zorder>tickButton_2</zorder>
+   <zorder>fromAmount_2</zorder>
    <zorder>TimeLabel_11</zorder>
    <zorder>fromDate</zorder>
    <zorder>toDate</zorder>

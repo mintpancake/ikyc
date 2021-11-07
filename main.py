@@ -155,10 +155,10 @@ class FaceWindow(StackedWindow):
             # TODO
             self.stop()
             winList[HOME] = HomeWindow(self.user_id)
-            # winList[PROFILE] = ProfileWindow(self.user_id)
+            winList[PROFILE] = ProfileWindow(self.user_id)
             # winList[ACCOUNT] = AccountWindow(self.user_id)
             # winList[TRANSFER] = TransferWindow(self.user_id)
-            # winList[TRANSACTION] = TransactionWindow(self.user_id)
+            winList[TRANSACTION] = TransactionWindow(self.user_id)
             # winList[LOAN] = LoanWindow(self.user_id)
             switch_to(HOME)
         else:
@@ -213,7 +213,7 @@ class HomeWindow(StackedWindow):
         cursor.execute(sql)
         result = cursor.fetchall()
         self.login_history = result
-        if len(result > 1):
+        if len(result) > 1:
             self.last_login_time = result[1][0]
         else:
             self.last_login_time = 'No record'
@@ -290,7 +290,10 @@ class ProfileWindow(StackedWindow):
         sql = "SELECT login_time FROM LoginTime WHERE user_id='%s' ORDER BY login_time DESC" % self.user_id
         cursor.execute(sql)
         result = cursor.fetchall()
-        self.last_login_time = result[1][0]
+        if len(result) > 1:
+            self.last_login_time = result[1][0]
+        else:
+            self.last_login_time = 'No record'
 
     def set_content(self):
         self.uid_value.setText(
@@ -523,12 +526,46 @@ class TransactionWindow(StackedWindow):
     def __init__(self, user_id):
         super(TransactionWindow, self).__init__()
         loadUi('transaction.ui', self)
+        self.fromAmount.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("[0-9]*")))
+        self.fromAmount_2.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("[0-9]*")))
+        self.toAmount.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("[0-9]*")))
+        self.toAmount_2.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("[0-9]*")))
         self.user_id = user_id
-
+        self.income_labels = []
+        self.expenditure_labels = []
         self.slot_init()
 
     def slot_init(self):
-        self.backButton_2.clicked.connect(lambda: switch_to(HOME))
+        self.backButton.clicked.connect(lambda: switch_to(HOME))
+        self.tickButton.clicked.connect(self.search_income)
+        self.tickButton_2.clicked.connect(self.search_expenditure)
+
+    def search_income(self):
+        from_date = self.fromDate.dateTime().toString('yyyy-MM-dd hh:mm:ss')
+        to_date = self.toDate.dateTime().toString('yyyy-MM-dd hh:mm:ss')
+        from_amount = int(self.fromAmount.text().zfill(1))
+        to_amount = int(self.toAmount.text().zfill(1))
+        sql = "SELECT user_id, account_id, balance FROM account WHERE user_id='%s' ORDER BY account_id" % self.user_id
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        self.transfers = result
+
+    def search_expenditure(self):
+        pass
+
+    def create_label(self, height):
+        new_label = QtWidgets.QLabel(self.transferScrollAreaWidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(new_label.sizePolicy().hasHeightForWidth())
+        new_label.setSizePolicy(sizePolicy)
+        new_label.setMinimumSize(QtCore.QSize(0, height))
+        font = QtGui.QFont()
+        font.setFamily("Yu Gothic UI")
+        font.setPointSize(12)
+        new_label.setFont(font)
+        return new_label
 
 
 class LoanWindow(StackedWindow):

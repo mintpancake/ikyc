@@ -370,7 +370,7 @@ class AccountDetailWindow(StackedWindow):
             self.remittanceLabel.setVisible(False)
             self.receivedLabel.setVisible(False)
             self.balanceWidge.setGeometry(500,230,200,200)
-        
+
         self.remittanceTable.setShowGrid(False)
         self.receivedTable.setShowGrid(False)
         self.remittanceTable.verticalHeader().setVisible(False)

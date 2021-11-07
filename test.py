@@ -8,7 +8,8 @@ cursor = conn.cursor()
 # cursor.execute(sql, val)
 # conn.commit()
 
-sql = "SELECT login_time FROM LoginTime WHERE user_id='%s' ORDER BY login_time DESC" % 1
-cursor.execute(sql)
-result = cursor.fetchall()
-print(result[1][0])
+# sql = "SELECT login_time FROM LoginTime WHERE user_id='%s' ORDER BY login_time DESC" % 1
+# cursor.execute(sql)
+# result = cursor.fetchall()
+result = [1]
+print(result[1])

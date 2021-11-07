@@ -155,11 +155,11 @@ class FaceWindow(StackedWindow):
             # TODO
             self.stop()
             winList[HOME] = HomeWindow(self.user_id)
-            winList[PROFILE] = ProfileWindow(self.user_id)
-            winList[ACCOUNT] = AccountWindow(self.user_id)
-            winList[TRANSFER] = TransferWindow(self.user_id)
-            winList[TRANSACTION] = TransactionWindow(self.user_id)
-            winList[LOAN] = LoanWindow(self.user_id)
+            # winList[PROFILE] = ProfileWindow(self.user_id)
+            # winList[ACCOUNT] = AccountWindow(self.user_id)
+            # winList[TRANSFER] = TransferWindow(self.user_id)
+            # winList[TRANSACTION] = TransactionWindow(self.user_id)
+            # winList[LOAN] = LoanWindow(self.user_id)
             switch_to(HOME)
         else:
             self.hintLabel.setText(
@@ -183,7 +183,6 @@ class HomeWindow(StackedWindow):
 
     def slot_init(self):
         self.logoutButton.clicked.connect(lambda: switch_to(WELCOME))
-        # TODO
         self.profileButton.clicked.connect(lambda: switch_to(PROFILE))
         self.accountButton.clicked.connect(lambda: switch_to(ACCOUNT))
         self.transferButton.clicked.connect(lambda: switch_to(TRANSFER))
@@ -213,8 +212,11 @@ class HomeWindow(StackedWindow):
         sql = "SELECT login_time FROM LoginTime WHERE user_id='%s' ORDER BY login_time DESC" % self.user_id
         cursor.execute(sql)
         result = cursor.fetchall()
-        self.last_login_time = result[1][0]
         self.login_history = result
+        if len(result > 1):
+            self.last_login_time = result[1][0]
+        else:
+            self.last_login_time = 'No record'
 
         # TODO: get loans
         sql = "SELECT loan_id, loan_amount, due_date FROM Loan WHERE user_id='%s' ORDER BY due_date DESC" % self.user_id
@@ -362,14 +364,14 @@ class AccountDetailWindow(StackedWindow):
         self.depositButton.clicked.connect(self.deposit_clicked)
         self.USDButton.clicked.connect(self.usd_clicked)
         self.CNYButton.clicked.connect(self.cny_clicked)
-        self.titleLabel.setText(CURRENCY[self.account_id-1]+' Account')
+        self.titleLabel.setText(CURRENCY[self.account_id - 1] + ' Account')
 
-        if self.account_id==2:
+        if self.account_id == 2:
             self.remittanceTable.setVisible(False)
             self.receivedTable.setVisible(False)
             self.remittanceLabel.setVisible(False)
             self.receivedLabel.setVisible(False)
-            self.balanceWidge.setGeometry(500,230,200,200)
+            self.balanceWidge.setGeometry(500, 230, 200, 200)
 
         self.remittanceTable.setShowGrid(False)
         self.receivedTable.setShowGrid(False)
@@ -392,44 +394,45 @@ class AccountDetailWindow(StackedWindow):
         else:
             self.balanceAmountLabel.setText("$" + str(balance))
 
-        sql = "SELECT to_user, amount, transaction_time FROM transaction WHERE from_user='"+str(self.user_id)+"' AND current_type='"+CURRENCY[self.account_id-1]+"'"
+        sql = "SELECT to_user, amount, transaction_time FROM transaction WHERE from_user='" + str(
+            self.user_id) + "' AND current_type='" + CURRENCY[self.account_id - 1] + "'"
         cursor.execute(sql)
         result = cursor.fetchall()
         for i in range(len(result)):
-            newItem=QTableWidgetItem(str(i))
-            self.remittanceTable.setItem(i,0,newItem)
-            newItem=QTableWidgetItem(str(result[i][2]))
-            self.remittanceTable.setItem(i,1,newItem)
-            newItem=QTableWidgetItem(str(result[i][1]))
-            self.remittanceTable.setItem(i,2,newItem)
-            newItem=QTableWidgetItem(CURRENCY[self.account_id-1])
-            self.remittanceTable.setItem(i,3,newItem)
+            newItem = QTableWidgetItem(str(i))
+            self.remittanceTable.setItem(i, 0, newItem)
+            newItem = QTableWidgetItem(str(result[i][2]))
+            self.remittanceTable.setItem(i, 1, newItem)
+            newItem = QTableWidgetItem(str(result[i][1]))
+            self.remittanceTable.setItem(i, 2, newItem)
+            newItem = QTableWidgetItem(CURRENCY[self.account_id - 1])
+            self.remittanceTable.setItem(i, 3, newItem)
             uid = result[i][0]
-            sql = "SELECT name FROM user WHERE user_id='"+str(uid)+"'"
+            sql = "SELECT name FROM user WHERE user_id='" + str(uid) + "'"
             cursor.execute(sql)
             name_result = cursor.fetchall()
-            newItem=QTableWidgetItem(name_result[0][0])
-            self.remittanceTable.setItem(i,4,newItem)
+            newItem = QTableWidgetItem(name_result[0][0])
+            self.remittanceTable.setItem(i, 4, newItem)
 
-        sql = "SELECT from_user, amount, transaction_time FROM transaction WHERE to_user='"+str(self.user_id)+"' AND current_type='"+CURRENCY[self.account_id-1]+"'"
+        sql = "SELECT from_user, amount, transaction_time FROM transaction WHERE to_user='" + str(
+            self.user_id) + "' AND current_type='" + CURRENCY[self.account_id - 1] + "'"
         cursor.execute(sql)
         result = cursor.fetchall()
         for i in range(len(result)):
-            newItem=QTableWidgetItem(str(i))
-            self.receivedTable.setItem(i,0,newItem)
-            newItem=QTableWidgetItem(str(result[i][2]))
-            self.receivedTable.setItem(i,1,newItem)
-            newItem=QTableWidgetItem(str(result[i][1]))
-            self.receivedTable.setItem(i,2,newItem)
-            newItem=QTableWidgetItem(CURRENCY[self.account_id-1])
-            self.receivedTable.setItem(i,3,newItem)
+            newItem = QTableWidgetItem(str(i))
+            self.receivedTable.setItem(i, 0, newItem)
+            newItem = QTableWidgetItem(str(result[i][2]))
+            self.receivedTable.setItem(i, 1, newItem)
+            newItem = QTableWidgetItem(str(result[i][1]))
+            self.receivedTable.setItem(i, 2, newItem)
+            newItem = QTableWidgetItem(CURRENCY[self.account_id - 1])
+            self.receivedTable.setItem(i, 3, newItem)
             uid = result[i][0]
-            sql = "SELECT name FROM user WHERE user_id='"+str(uid)+"'"
+            sql = "SELECT name FROM user WHERE user_id='" + str(uid) + "'"
             cursor.execute(sql)
             name_result = cursor.fetchall()
-            newItem=QTableWidgetItem(name_result[0][0])
-            self.receivedTable.setItem(i,4,newItem)
-
+            newItem = QTableWidgetItem(name_result[0][0])
+            self.receivedTable.setItem(i, 4, newItem)
 
     def hkd_clicked(self):
         winList[ACCOUNT_DETAIL] = AccountDetailWindow(self.user_id, 1)

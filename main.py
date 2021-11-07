@@ -416,8 +416,7 @@ class TransferWindow(StackedWindow):
         self.to_id = -1
         self.account = ''
         self.amount = 0
-        # TODO
-        self.transfers = [('apple', 'banana'), ('cat', 'dog')]
+        self.transfers = []
         self.transfer_labels = []
         self.slot_init()
 
@@ -445,12 +444,11 @@ class TransferWindow(StackedWindow):
         return new_label
 
     def get_data(self):
-        pass
-        # TODO: get transfers
-        # sql = "" % self.user_id
-        # cursor.execute(sql)
-        # result = cursor.fetchall()
-        # self.transfers = result
+        return
+        sql = "SELECT user_id, account_id, balance FROM account WHERE user_id='%s' ORDER BY account_id" % self.user_id
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        self.transfers = result
 
     def set_content(self):
         for label in self.transfer_labels:

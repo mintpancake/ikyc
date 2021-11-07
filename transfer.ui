@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1200</width>
-    <height>800</height>
+    <height>799</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -524,7 +524,7 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>630</y>
+      <y>600</y>
       <width>150</width>
       <height>71</height>
      </rect>
@@ -878,7 +878,7 @@ QPushButton:pressed{
     <property name="geometry">
      <rect>
       <x>340</x>
-      <y>630</y>
+      <y>600</y>
       <width>150</width>
       <height>71</height>
      </rect>
@@ -955,10 +955,34 @@ QPushButton:pressed{
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#003780;&quot;&gt;Recent Transfer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#003780;&quot;&gt;Recent Payees&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="hintLabel">
+    <property name="geometry">
+     <rect>
+      <x>-10</x>
+      <y>690</y>
+      <width>661</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>24</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; color:#003780;&quot;&gt;Failed: User does not exist&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <zorder>label</zorder>
@@ -975,6 +999,7 @@ QPushButton:pressed{
    <zorder>amountEdit</zorder>
    <zorder>clearButton</zorder>
    <zorder>recentLabel</zorder>
+   <zorder>hintLabel</zorder>
   </widget>
  </widget>
  <resources/>

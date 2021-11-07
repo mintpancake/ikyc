@@ -8,7 +8,7 @@ cursor = conn.cursor()
 # cursor.execute(sql, val)
 # conn.commit()
 
-sql = "SELECT login_time FROM LoginTime WHERE user_id='%s' ORDER BY login_time DESC" % 1
+sql = "SELECT balance FROM Account WHERE user_id='1' AND account_id='1';"
 cursor.execute(sql)
-result = cursor.fetchall()
+result = cursor.fetchall()[0][0]
 print(result)

@@ -157,7 +157,7 @@ class FaceWindow(StackedWindow):
             winList[HOME] = HomeWindow(self.user_id)
             winList[PROFILE] = ProfileWindow(self.user_id)
             # winList[ACCOUNT] = AccountWindow(self.user_id)
-            # winList[TRANSFER] = TransferWindow(self.user_id)
+            winList[TRANSFER] = TransferWindow(self.user_id)
             winList[TRANSACTION] = TransactionWindow(self.user_id)
             # winList[LOAN] = LoanWindow(self.user_id)
             switch_to(HOME)
@@ -398,7 +398,7 @@ class AccountDetailWindow(StackedWindow):
             self.balanceAmountLabel.setText("$" + str(balance))
 
         sql = "SELECT to_user, amount, transaction_time FROM transaction WHERE from_user='" + str(
-            self.user_id) + "' AND current_type='" + CURRENCY[self.account_id - 1] + "'"
+            self.user_id) + "' AND currency_type='" + CURRENCY[self.account_id - 1] + "'"
         cursor.execute(sql)
         result = cursor.fetchall()
         for i in range(len(result)):
@@ -418,7 +418,7 @@ class AccountDetailWindow(StackedWindow):
             self.remittanceTable.setItem(i, 4, newItem)
 
         sql = "SELECT from_user, amount, transaction_time FROM transaction WHERE to_user='" + str(
-            self.user_id) + "' AND current_type='" + CURRENCY[self.account_id - 1] + "'"
+            self.user_id) + "' AND currency_type='" + CURRENCY[self.account_id - 1] + "'"
         cursor.execute(sql)
         result = cursor.fetchall()
         for i in range(len(result)):
@@ -458,6 +458,7 @@ class TransferWindow(StackedWindow):
     def __init__(self, user_id):
         super(TransferWindow, self).__init__()
         loadUi('transfer.ui', self)
+        self.hintLabel.setText('')
         self.idEdit.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("[0-9]*")))
         self.amountEdit.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("[1-9][0-9]*")))
         self.user_id = user_id
@@ -474,6 +475,8 @@ class TransferWindow(StackedWindow):
         self.transferButton.clicked.connect(self.transfer)
 
     def activate(self):
+        self.hintLabel.setText('')
+        self.clear()
         self.get_data()
         self.set_content()
 
@@ -492,8 +495,16 @@ class TransferWindow(StackedWindow):
         return new_label
 
     def get_data(self):
-        return
-        sql = "SELECT user_id, account_id, balance FROM account WHERE user_id='%s' ORDER BY account_id" % self.user_id
+        sql = "SELECT T.currency_type,\
+            T.amount,\
+            T.transaction_time,\
+            U.name,\
+            U.user_id\
+            FROM Transaction T,\
+            User U\
+            WHERE T.to_user = U.user_id\
+            AND T.from_user = '%s'\
+            ORDER BY T.transaction_time DESC;" % self.user_id
         cursor.execute(sql)
         result = cursor.fetchall()
         self.transfers = result
@@ -503,8 +514,11 @@ class TransferWindow(StackedWindow):
             self.verticalLayout_4.removeWidget(label)
         self.transfer_labels = []
         for i, transfer in enumerate(self.transfers):
-            label = self.create_label(height=40)
-            label.setText(f'<html><head/><body><p>{transfer[0]} {transfer[1]}</p></body></html>')
+            label = self.create_label(height=70)
+            label.setText(
+                f'<html><head/><body><p><span style=" font-weight:600;">To:</span> {transfer[3]} ({transfer[4]})&nbsp;&nbsp;&nbsp;&nbsp;<span style=" '
+                f'font-weight:600;">Amount:</span> {transfer[0]} {transfer[1]}<br/><span style=" '
+                f'font-weight:600;">Time:</span> {transfer[2]}</p></body></html>')
             self.verticalLayout_4.insertWidget(i, label)
             self.transfer_labels.append(label)
 
@@ -515,11 +529,79 @@ class TransferWindow(StackedWindow):
 
     def transfer(self):
         self.to_id = int(self.idEdit.text().zfill(1))
-        self.account = self.accountBox.currentText()
+        currency = self.accountBox.currentText()
+        if currency == 'HKD':
+            self.account = 1
+        elif currency == 'USD':
+            self.account = 3
+        elif currency == 'CNY':
+            self.account = 4
         self.amount = int(self.amountEdit.text().zfill(1))
-        # TODO: Do more on transfer
+
+        if self.to_id == self.user_id:
+            self.hintLabel.setText('<html><head/><body><p><span style=" font-size:16pt; color:#003780;">Failed: '
+                                   'Cannot transfer to yourself</span></p></body></html>')
+            self.clear()
+            return
+
+        sql = "SELECT user_id FROM User;"
+        cursor.execute(sql)
+        ids = cursor.fetchall()
+        not_in = True
+        for i in ids:
+            if self.to_id == i[0]:
+                not_in = False
+                break
+        if not_in:
+            self.hintLabel.setText(
+                '<html><head/><body><p><span style=" font-size:16pt; color:#003780;">Failed: User does not '
+                'exist</span></p></body></html>')
+            self.clear()
+            return
+
+        sql = "SELECT balance FROM Account WHERE user_id='%s' AND account_id='%s';" % (self.user_id, self.account)
+        cursor.execute(sql)
+        my_balance = cursor.fetchall()[0][0]
+        if self.amount > int(my_balance):
+            self.hintLabel.setText(
+                '<html><head/><body><p><span style=" font-size:16pt; color:#003780;">Failed: Insufficient '
+                'balance</span></p></body></html>')
+            self.clear()
+            return
+
+        sql = "UPDATE account SET balance=balance-'%s' WHERE user_id='%s' AND account_id='%s';"
+        val = (self.amount, self.user_id, self.account)
+        cursor.execute(sql, val)
+        conn.commit()
+
+        sql = "UPDATE account SET balance=balance+'%s' WHERE user_id='%s' AND account_id='%s';"
+        val = (self.amount, self.to_id, self.account)
+        cursor.execute(sql, val)
+        conn.commit()
+
+        sql = "SELECT MAX(transaction_id) FROM Transaction"
+        cursor.execute(sql)
+        max_trans_id = cursor.fetchall()[0][0]
+
+        now = time.localtime()
+        year = str(now.tm_year).zfill(4)
+        mon = str(now.tm_mon).zfill(2)
+        mday = str(now.tm_mday).zfill(2)
+        hour = str(now.tm_hour).zfill(2)
+        min = str(now.tm_min).zfill(2)
+        sec = str(now.tm_sec).zfill(2)
+        now_str = f'{year}-{mon}-{mday} {hour}:{min}:{sec}'
+
+        sql = "INSERT INTO Transaction VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+        val = (max_trans_id + 1, self.user_id, self.to_id, self.account, self.account, currency, self.amount, now_str)
+        cursor.execute(sql, val)
+        conn.commit()
+
+        self.hintLabel.setText(
+            '<html><head/><body><p><span style=" font-size:16pt; color:#003780;">Transferred!</span></p></body></html>')
         self.clear()
-        self.activate()
+        self.get_data()
+        self.set_content()
 
 
 class TransactionWindow(StackedWindow):
@@ -539,22 +621,196 @@ class TransactionWindow(StackedWindow):
         self.backButton.clicked.connect(lambda: switch_to(HOME))
         self.tickButton.clicked.connect(self.search_income)
         self.tickButton_2.clicked.connect(self.search_expenditure)
+        self.refreshButton.clicked.connect(self.activate)
+
+    def activate(self):
+        self.hintLabel.setText('')
+        self.hintLabel_2.setText('')
+        self.fromAmount.setText('')
+        self.fromAmount_2.setText('')
+        self.toAmount.setText('')
+        self.toAmount_2.setText('')
+        self.get_data()
+
+    def get_data(self):
+        sql = "SELECT T.to_account,\
+                    T.currency_type,\
+                    T.amount,\
+                    T.transaction_time,\
+                    U.name\
+                    FROM Transaction T,\
+                    User U\
+                    WHERE T.to_user = '%s'\
+                    AND T.from_user = U.user_id\
+                    ORDER BY T.transaction_time DESC;" % self.user_id
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        for label in self.income_labels:
+            self.verticalLayout_4.removeWidget(label)
+        self.income_labels = []
+        if len(result) == 0:
+            self.hintLabel.setText(
+                '<html><head/><body><p><span style=" font-weight:600; color:#003780;">No record!</span></p></body></html>')
+        else:
+            for i, trans in enumerate(result):
+                label = self.create_label(area=self.outScrollArea, height=40)
+                if trans[0] == 1:
+                    account = 'Current'
+                elif trans[0] == 2:
+                    account = 'Deposit'
+                elif trans[0] == 3:
+                    account = 'USD'
+                else:
+                    account = 'CNY'
+                label.setText(
+                    f'<html><head/><body><p><span style=" font-weight:600;">Account:</span> {account}&nbsp;&nbsp;&nbsp'
+                    f';&nbsp;<span style=" font-weight:600;">Amount:</span> {trans[1]} '
+                    f'{trans[2]}&nbsp;&nbsp;&nbsp;&nbsp;<span style=" font-weight:600;">Time:</span> '
+                    f'{trans[3]}&nbsp;&nbsp;&nbsp;&nbsp;<span style=" font-weight:600;">From:</span> '
+                    f'{trans[4]}</p></body></html>')
+                self.verticalLayout_4.insertWidget(i, label)
+                self.income_labels.append(label)
+
+        sql = "SELECT T.from_account,\
+                            T.currency_type,\
+                            T.amount,\
+                            T.transaction_time,\
+                            U.name\
+                            FROM Transaction T,\
+                            User U\
+                            WHERE T.from_user = '%s'\
+                            AND T.to_user = U.user_id\
+                            ORDER BY T.transaction_time DESC;" % self.user_id
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        for label in self.expenditure_labels:
+            self.verticalLayout_5.removeWidget(label)
+        self.expenditure_labels = []
+        if len(result) == 0:
+            self.hintLabel_2.setText(
+                '<html><head/><body><p><span style=" font-weight:600; color:#003780;">No record!</span></p></body></html>')
+        else:
+            for i, trans in enumerate(result):
+                label = self.create_label(area=self.inScrollArea, height=40)
+                if trans[0] == 1:
+                    account = 'Current'
+                elif trans[0] == 2:
+                    account = 'Deposit'
+                elif trans[0] == 3:
+                    account = 'USD'
+                else:
+                    account = 'CNY'
+                label.setText(
+                    f'<html><head/><body><p><span style=" font-weight:600;">Account:</span> {account}&nbsp;&nbsp;&nbsp'
+                    f';&nbsp;<span style=" font-weight:600;">Amount:</span> {trans[1]} '
+                    f'{trans[2]}&nbsp;&nbsp;&nbsp;&nbsp;<span style=" font-weight:600;">Time:</span> '
+                    f'{trans[3]}&nbsp;&nbsp;&nbsp;&nbsp;<span style=" font-weight:600;">To:</span> '
+                    f'{trans[4]}</p></body></html>')
+                self.verticalLayout_5.insertWidget(i, label)
+                self.expenditure_labels.append(label)
 
     def search_income(self):
+        self.hintLabel.setText('')
         from_date = self.fromDate.dateTime().toString('yyyy-MM-dd hh:mm:ss')
         to_date = self.toDate.dateTime().toString('yyyy-MM-dd hh:mm:ss')
         from_amount = int(self.fromAmount.text().zfill(1))
         to_amount = int(self.toAmount.text().zfill(1))
-        sql = "SELECT user_id, account_id, balance FROM account WHERE user_id='%s' ORDER BY account_id" % self.user_id
+
+        sql = "SELECT T.to_account,\
+            T.currency_type,\
+            T.amount,\
+            T.transaction_time,\
+            U.name\
+            FROM Transaction T,\
+            User U\
+            WHERE T.to_user = '%s'\
+            AND T.from_user = U.user_id\
+            AND T.amount >= %s\
+            AND T.amount <= %s\
+            AND T.transaction_time >= '%s'\
+            AND T.transaction_time <= '%s'\
+            ORDER BY T.transaction_time DESC;" % (self.user_id, from_amount, to_amount, from_date, to_date)
         cursor.execute(sql)
         result = cursor.fetchall()
-        self.transfers = result
+
+        for label in self.income_labels:
+            self.verticalLayout_4.removeWidget(label)
+        self.income_labels = []
+        if len(result) == 0:
+            self.hintLabel.setText(
+                '<html><head/><body><p><span style=" font-weight:600; color:#003780;">No record!</span></p></body></html>')
+        else:
+            for i, trans in enumerate(result):
+                label = self.create_label(area=self.outScrollArea, height=40)
+                if trans[0] == 1:
+                    account = 'Current'
+                elif trans[0] == 2:
+                    account = 'Deposit'
+                elif trans[0] == 3:
+                    account = 'USD'
+                else:
+                    account = 'CNY'
+                label.setText(
+                    f'<html><head/><body><p><span style=" font-weight:600;">Account:</span> {account}&nbsp;&nbsp;&nbsp'
+                    f';&nbsp;<span style=" font-weight:600;">Amount:</span> {trans[1]} '
+                    f'{trans[2]}&nbsp;&nbsp;&nbsp;&nbsp;<span style=" font-weight:600;">Time:</span> '
+                    f'{trans[3]}&nbsp;&nbsp;&nbsp;&nbsp;<span style=" font-weight:600;">From:</span> '
+                    f'{trans[4]}</p></body></html>')
+                self.verticalLayout_4.insertWidget(i, label)
+                self.income_labels.append(label)
 
     def search_expenditure(self):
-        pass
+        self.hintLabel_2.setText('')
+        from_date = self.fromDate_2.dateTime().toString('yyyy-MM-dd hh:mm:ss')
+        to_date = self.toDate_2.dateTime().toString('yyyy-MM-dd hh:mm:ss')
+        from_amount = int(self.fromAmount_2.text().zfill(1))
+        to_amount = int(self.toAmount_2.text().zfill(1))
 
-    def create_label(self, height):
-        new_label = QtWidgets.QLabel(self.transferScrollAreaWidget)
+        sql = "SELECT T.from_account,\
+                    T.currency_type,\
+                    T.amount,\
+                    T.transaction_time,\
+                    U.name\
+                    FROM Transaction T,\
+                    User U\
+                    WHERE T.from_user = '%s'\
+                    AND T.to_user = U.user_id\
+                    AND T.amount >= %s\
+                    AND T.amount <= %s\
+                    AND T.transaction_time >= '%s'\
+                    AND T.transaction_time <= '%s'\
+                    ORDER BY T.transaction_time DESC;" % (self.user_id, from_amount, to_amount, from_date, to_date)
+        cursor.execute(sql)
+        result = cursor.fetchall()
+
+        for label in self.expenditure_labels:
+            self.verticalLayout_5.removeWidget(label)
+        self.expenditure_labels = []
+        if len(result) == 0:
+            self.hintLabel_2.setText(
+                '<html><head/><body><p><span style=" font-weight:600; color:#003780;">No record!</span></p></body></html>')
+        else:
+            for i, trans in enumerate(result):
+                label = self.create_label(area=self.inScrollArea, height=40)
+                if trans[0] == 1:
+                    account = 'Current'
+                elif trans[0] == 2:
+                    account = 'Deposit'
+                elif trans[0] == 3:
+                    account = 'USD'
+                else:
+                    account = 'CNY'
+                label.setText(
+                    f'<html><head/><body><p><span style=" font-weight:600;">Account:</span> {account}&nbsp;&nbsp;&nbsp'
+                    f';&nbsp;<span style=" font-weight:600;">Amount:</span> {trans[1]} '
+                    f'{trans[2]}&nbsp;&nbsp;&nbsp;&nbsp;<span style=" font-weight:600;">Time:</span> '
+                    f'{trans[3]}&nbsp;&nbsp;&nbsp;&nbsp;<span style=" font-weight:600;">To:</span> '
+                    f'{trans[4]}</p></body></html>')
+                self.verticalLayout_5.insertWidget(i, label)
+                self.expenditure_labels.append(label)
+
+    def create_label(self, area, height):
+        new_label = QtWidgets.QLabel(area)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)

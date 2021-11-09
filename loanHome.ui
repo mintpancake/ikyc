@@ -575,7 +575,7 @@ QPushButton:pressed{
    <widget class="QLabel" name="small_logo">
     <property name="geometry">
      <rect>
-      <x>110</x>
+      <x>0</x>
       <y>-110</y>
       <width>1200</width>
       <height>1200</height>

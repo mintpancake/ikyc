@@ -738,7 +738,7 @@ QPushButton:pressed{
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="profileLabel_4">
+   <widget class="QLabel" name="hintLabel">
     <property name="geometry">
      <rect>
       <x>250</x>
@@ -756,7 +756,7 @@ QPushButton:pressed{
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; color:#003780;&quot;&gt;The total loan amount you apply for cannot exceed 50,000 HKD.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -815,7 +815,7 @@ QPushButton:pressed{
    <zorder>profileLabel_3</zorder>
    <zorder>clearButton</zorder>
    <zorder>amount</zorder>
-   <zorder>profileLabel_4</zorder>
+   <zorder>hintLabel</zorder>
    <zorder>dateEdit</zorder>
   </widget>
  </widget>

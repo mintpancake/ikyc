@@ -631,7 +631,7 @@ QPushButton:pressed{
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="backButton_2">
+   <widget class="QPushButton" name="applyButton">
     <property name="geometry">
      <rect>
       <x>320</x>
@@ -678,7 +678,7 @@ QPushButton:pressed{
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="backButton_3">
+   <widget class="QPushButton" name="payButton">
     <property name="geometry">
      <rect>
       <x>680</x>
@@ -804,8 +804,8 @@ QPushButton:pressed{
    <zorder>label</zorder>
    <zorder>ProfileTitleLabel</zorder>
    <zorder>uid_value</zorder>
-   <zorder>backButton_2</zorder>
-   <zorder>backButton_3</zorder>
+   <zorder>applyButton</zorder>
+   <zorder>payButton</zorder>
    <zorder>ProfileTitleLabel_3</zorder>
    <zorder>ProfileTitleLabel_4</zorder>
    <zorder>backButton</zorder>

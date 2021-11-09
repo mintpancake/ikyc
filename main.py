@@ -160,6 +160,8 @@ class FaceWindow(StackedWindow):
             winList[TRANSFER] = TransferWindow(self.user_id)
             winList[TRANSACTION] = TransactionWindow(self.user_id)
             winList[LOAN] = LoanWindow(self.user_id)
+            winList[APPLY_LOAN] = ApplyLoanWindow(self.user_id)
+            winList[PAY_LOAN] = PayLoanWindow(self.user_id)
             switch_to(HOME)
         else:
             self.hintLabel.setText(
@@ -829,6 +831,46 @@ class LoanWindow(StackedWindow):
         super(LoanWindow, self).__init__()
         loadUi('loanHome.ui', self)
         self.user_id = user_id
+        self.slot_init()
+
+    def slot_init(self):
+        self.applyButton.clicked.connect(lambda: switch_to(APPLY_LOAN))
+        self.payButton.clicked.connect(lambda: switch_to(PAY_LOAN))
+        self.backButton.clicked.connect(lambda: switch_to(HOME))
+
+
+class ApplyLoanWindow(StackedWindow):
+    def __init__(self, user_id):
+        super(ApplyLoanWindow, self).__init__()
+        loadUi('loanApplication.ui', self)
+        self.user_id = user_id
+        self.slot_init()
+
+    def slot_init(self):
+        self.backButton.clicked.connect(lambda: switch_to(LOAN))
+
+    def activate(self):
+        self.hintLabel.setText('')
+        self.dateEdit.setDateTime(QtCore.QDateTime.currentDateTime())
+
+        # The
+        # total
+        # loan
+        # amount
+        # you
+        # apply
+        # for cannot exceed 50, 000 HKD.
+
+
+class PayLoanWindow(StackedWindow):
+    def __init__(self, user_id):
+        super(PayLoanWindow, self).__init__()
+        loadUi('loanPayBack.ui', self)
+        self.user_id = user_id
+        self.slot_init()
+
+    def slot_init(self):
+        self.backButton.clicked.connect(lambda: switch_to(LOAN))
 
 
 if __name__ == "__main__":

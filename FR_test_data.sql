@@ -1,10 +1,31 @@
+-- phpMyAdmin SQL Dump
+-- version 4.6.6deb5
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:3306
+-- Generation Time: Feb 17, 2020 at 09:41 PM
+-- Server version: 5.7.28-0ubuntu0.18.04.4
+-- PHP Version: 7.2.24-0ubuntu0.18.04.1
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
-DROP DATABASE IF EXISTS `project`;
-CREATE DATABASE `project`;
-USE `project`;
 
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `facerecognition`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Customer`
+--
+DROP TABLE IF EXISTS `Customer`;
 
 # Create TABLE 'User'
 CREATE TABLE `User` (
@@ -12,6 +33,7 @@ CREATE TABLE `User` (
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (user_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 LOCK TABLES `User` WRITE;
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
@@ -23,13 +45,14 @@ INSERT INTO `User` VALUES (5, "Tim");
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 UNLOCK TABLES;
 
-
 # Create TABLE 'LoginTime'
 CREATE TABLE `LoginTime` (
   `user_id` int NOT NULL,
   `login_time` DATETIME NOT NULL,
   FOREIGN KEY (user_id) REFERENCES User(user_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
 
 LOCK TABLES `LoginTime` WRITE;
 /*!40000 ALTER TABLE `LoginTime` DISABLE KEYS */;
@@ -43,7 +66,6 @@ INSERT INTO `LoginTime` VALUES (2, '2021-10-27 22:52:51');
 INSERT INTO `LoginTime` VALUES (5, '2021-10-28 19:43:09');
 /*!40000 ALTER TABLE `LoginTime` ENABLE KEYS */;
 UNLOCK TABLES;
-
 
 # Create TABLE 'Account'
 CREATE TABLE `Account` (
@@ -79,7 +101,6 @@ INSERT INTO `Account` VALUES (4, 5, 'CNY', 1050);
 /*!40000 ALTER TABLE `Account` ENABLE KEYS */;
 UNLOCK TABLES;
 
-
 # Create TABLE 'Transaction'
 CREATE TABLE `Transaction` (
   `transaction_id` int NOT NULL,
@@ -87,7 +108,7 @@ CREATE TABLE `Transaction` (
   `to_user` int NOT NULL,
   `from_account` int NOT NULL,
   `to_account` int NOT NULL,
-  `currency_type` varchar(10) NOT NULL,
+  `current_type` varchar(10) NOT NULL,
   `amount` int NOT NULL,
   `transaction_time` DATETIME NOT NULL,
 
@@ -110,29 +131,34 @@ INSERT INTO `Transaction` VALUES (8, 5, 3, 1, 1, 'HKD', 500, '2021-10-24 18:05:3
 INSERT INTO `Transaction` VALUES (9, 1, 5, 4, 4, 'CNY', 500, '2021-09-28 06:15:30');
 INSERT INTO `Transaction` VALUES (10, 2, 3, 1, 1, 'HKD', 500, '2021-10-13 08:05:34');
 INSERT INTO `Transaction` VALUES (11, 3, 1, 3, 3, 'USD', 20, '2021-10-30 06:25:39');
+
+
 /*!40000 ALTER TABLE `Transaction` ENABLE KEYS */;
 UNLOCK TABLES;
-
 
 # Create TABLE 'Loan'
 CREATE TABLE `Loan` (
   `user_id` int NOT NULL,
   `loan_id` int NOT NULL,
   `loan_amount` int NOT NULL,
-  `due_date` DATE NOT NULL ,
-  PRIMARY KEY (loan_id),
+  `due_date` DATE NOT NULL,
+  `is_settled` INT,
+  `settled_date` DATE,
   FOREIGN KEY (user_id) REFERENCES User(user_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `Loan` WRITE;
 /*!40000 ALTER TABLE `Loan` DISABLE KEYS */;
-INSERT INTO `Loan` VALUES (1, 1, 5200, '2021-10-24');
-INSERT INTO `Loan` VALUES (2, 3, 13000, '2021-10-24');
-INSERT INTO `Loan` VALUES (2, 5, 400, '2021-10-28');
-INSERT INTO `Loan` VALUES (1, 4, 2000, '2021-10-25');
-INSERT INTO `Loan` VALUES (1, 2, 4000, '2021-11-09');
-INSERT INTO `Loan` VALUES (3, 8, 380, '2021-10-28');
-INSERT INTO `Loan` VALUES (5, 7, 5500, '2021-09-25');
+INSERT INTO `Loan` VALUES (1, 1, 5200, '2021-10-24', 1, '2021-10-22');
+INSERT INTO `Loan` VALUES (2, 1, 13000, '2021-10-24', 1, '2021-10-24');
+INSERT INTO `Loan` VALUES (2, 2, 400, '2021-10-28', 0, NULL);
+INSERT INTO `Loan` VALUES (1, 2, 2000, '2021-10-25', 1, '2021-10-24');
+INSERT INTO `Loan` VALUES (1, 3, 4000, '2021-11-09', 0, NULL);
+INSERT INTO `Loan` VALUES (3, 1, 380, '2021-10-28', 1, '2021-10-28');
+INSERT INTO `Loan` VALUES (5, 1, 5500, '2021-09-25', 0, NULL);
+
 /*!40000 ALTER TABLE `Loan` ENABLE KEYS */;
 UNLOCK TABLES;
-
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

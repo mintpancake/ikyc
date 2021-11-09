@@ -7,6 +7,11 @@
 -- Server version: 5.7.28-0ubuntu0.18.04.4
 -- PHP Version: 7.2.24-0ubuntu0.18.04.1
 
+DROP DATABASE IF EXISTS `project`;
+CREATE DATABASE `project`;
+USE `project`;
+
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 

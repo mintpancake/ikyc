@@ -32,21 +32,39 @@ SET time_zone = "+00:00";
 --
 DROP TABLE IF EXISTS `Customer`;
 
+# Create TABLE 'Credit_levels'
+CREATE TABLE `Credit_levels` (
+  `credit_level` int NOT NULL,
+  `loan_amount` int NOT NULL,
+  PRIMARY KEY (credit_level)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+LOCK TABLES `Credit_levels` WRITE;
+/*!40000 ALTER TABLE `Credit_levels` DISABLE KEYS */;
+INSERT INTO `Credit_levels` VALUES (1, 5000);
+INSERT INTO `Credit_levels` VALUES (2, 10000);
+INSERT INTO `Credit_levels` VALUES (3, 15000);
+/*!40000 ALTER TABLE `Credit_levels` ENABLE KEYS */;
+UNLOCK TABLES;
+
 # Create TABLE 'User'
 CREATE TABLE `User` (
   `user_id` int NOT NULL,
   `name` varchar(50) NOT NULL,
-  PRIMARY KEY (user_id)
+  `credit_level` int NOT NULL,
+  PRIMARY KEY (user_id),
+  FOREIGN KEY (credit_level) REFERENCES Credit_levels(credit_level)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 LOCK TABLES `User` WRITE;
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
-INSERT INTO `User` VALUES (1, "Dennis");
-INSERT INTO `User` VALUES (2, "Lisa");
-INSERT INTO `User` VALUES (3, "Joe");
-INSERT INTO `User` VALUES (4, "Rick");
-INSERT INTO `User` VALUES (5, "Tim");
+INSERT INTO `User` VALUES (1, "Dennis", 3);
+INSERT INTO `User` VALUES (2, "Lisa", 2);
+INSERT INTO `User` VALUES (3, "Joe", 1);
+INSERT INTO `User` VALUES (4, "Rick", 2);
+INSERT INTO `User` VALUES (5, "Tim", 3);
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -164,6 +182,8 @@ INSERT INTO `Loan` VALUES (5, 1, 5500, '2021-09-25', 0, NULL);
 
 /*!40000 ALTER TABLE `Loan` ENABLE KEYS */;
 UNLOCK TABLES;
+
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

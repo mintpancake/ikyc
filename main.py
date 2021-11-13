@@ -853,13 +853,13 @@ class ApplyLoanWindow(StackedWindow):
         self.hintLabel.setText('')
         self.dateEdit.setDateTime(QtCore.QDateTime.currentDateTime())
 
-        # The
-        # total
-        # loan
-        # amount
-        # you
-        # apply
-        # for cannot exceed 50, 000 HKD.
+    def apply_load(self):
+        amount = int(self.amount.text().zfill(1))
+        pay_date = self.dateEdit.dateTime().toString('yyyy-MM-dd hh:mm:ss')
+        if amount > int(5000):
+            self.hintLabel.setText(
+                '<html><head/><body><p><span style=" font-size:16pt; color:#003780;">Failed: The total loan amount you apply for cannot exceed 50000 HKD.</span></p></body></html>')
+
 
 
 class PayLoanWindow(StackedWindow):

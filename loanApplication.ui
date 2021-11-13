@@ -520,7 +520,7 @@
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="transferButton">
+   <widget class="QPushButton" name="applyButton">
     <property name="geometry">
      <rect>
       <x>430</x>
@@ -809,7 +809,7 @@ QPushButton:pressed{
    <zorder>label</zorder>
    <zorder>small_logo</zorder>
    <zorder>transferTitleLabel</zorder>
-   <zorder>transferButton</zorder>
+   <zorder>applyButton</zorder>
    <zorder>backButton</zorder>
    <zorder>profileLabel_2</zorder>
    <zorder>profileLabel_3</zorder>

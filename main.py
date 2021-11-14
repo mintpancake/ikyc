@@ -1,9 +1,9 @@
+import pickle
 import sys
 import time
 
 import cv2
 import mysql.connector
-import pickle
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUi
@@ -11,7 +11,7 @@ from PyQt5.uic import loadUi
 WIDTH = 1200
 HEIGHT = 800
 
-CONF = 40
+CONF = 50
 
 WELCOME = 0
 FACE = 1
@@ -47,6 +47,12 @@ class StackedWindow(QMainWindow):
         pass
 
 
+def leave():
+    cursor.close()
+    conn.close()
+    exit(0)
+
+
 class WelcomeWindow(StackedWindow):
     def __init__(self):
         super(WelcomeWindow, self).__init__()
@@ -56,7 +62,7 @@ class WelcomeWindow(StackedWindow):
 
     def slot_init(self):
         self.loginButton.clicked.connect(lambda: switch_to(FACE))
-        self.leaveButton.clicked.connect(self.leave)
+        self.leaveButton.clicked.connect(leave)
 
     def activate(self):
         self.set_greeting()
@@ -76,11 +82,6 @@ class WelcomeWindow(StackedWindow):
             self.greetingLabel.setText(
                 "<html><head/><body><p><span style=\" color:#003780;\">Good Evening!</span></p></body></html>")
 
-    def leave(self):
-        cursor.close()
-        conn.close()
-        exit(0)
-
 
 class FaceWindow(StackedWindow):
     def __init__(self):
@@ -97,8 +98,8 @@ class FaceWindow(StackedWindow):
         self.recognizer.read("train.yml")
         self.labels = {"user_id": 1}
         with open("labels.pickle", "rb") as f:
-           self.labels = pickle.load(f)
-           self.labels = {v: k for k, v in self.labels.items()}
+            self.labels = pickle.load(f)
+            self.labels = {v: k for k, v in self.labels.items()}
         self.face_cascade = cv2.CascadeClassifier('haarcascade/haarcascade_frontalface_default.xml')
 
         self.slot_init()
@@ -146,11 +147,10 @@ class FaceWindow(StackedWindow):
                 roi_gray = gray[y:y + h, x:x + w]
                 id_, conf = self.recognizer.predict(roi_gray)
                 if conf >= CONF:
-                    self.user_id = self.labels[id_]
+                    self.user_id = int(self.labels[id_])
 
     def verify(self):
         if self.user_id != -1:
-            # TODO
             self.stop()
             winList[HOME] = HomeWindow(self.user_id)
             winList[PROFILE] = ProfileWindow(self.user_id)
@@ -271,6 +271,7 @@ class ProfileWindow(StackedWindow):
         loadUi('profile.ui', self)
         self.user_id = user_id
         self.name = ''
+        self.level = -1
         self.last_login_time = ''
         self.slot_init()
 
@@ -295,11 +296,17 @@ class ProfileWindow(StackedWindow):
         else:
             self.last_login_time = 'No record'
 
+        sql = "SELECT credit_level FROM User WHERE user_id='%s'" % self.user_id
+        cursor.execute(sql)
+        self.level = cursor.fetchall()[0][0]
+
     def set_content(self):
         self.uid_value.setText(
             f'<html><head/><body><p><span style=" font-size:22pt; font-weight:400; color:#476089;">{self.user_id}</span></p></body></html>')
         self.name_value.setText(
             f'<html><head/><body><p><span style=" font-size:22pt; font-weight:400; color:#476089;">{self.name}</span></p></body></html>')
+        self.level_value.setText(
+            f'<html><head/><body><p><span style=" font-size:22pt; font-weight:400; color:#476089;">{self.level}</span></p></body></html>')
         self.log_value.setText(
             f'<html><head/><body><p><span style=" font-size:22pt; font-weight:400; color:#476089;">{self.last_login_time}</span></p></body></html>')
 
@@ -356,6 +363,10 @@ class AccountDetailWindow(StackedWindow):
     def __init__(self, user_id, account_id):
         super(AccountDetailWindow, self).__init__()
         loadUi('accountsDetail.ui', self)
+        self.fromAmount.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("[0-9]*")))
+        self.toAmount.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("[0-9]*")))
+        self.fromAmount_2.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("[0-9]*")))
+        self.toAmount_2.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("[0-9]*")))
         self.user_id = user_id
         self.account_id = account_id
 
@@ -413,6 +424,10 @@ class AccountDetailWindow(StackedWindow):
         # self.receivedTable.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
     def activate(self):
+        self.fromAmount.setText('')
+        self.toAmount.setText('')
+        self.fromAmount_2.setText('')
+        self.toAmount_2.setText('')
         self.get_data()
 
     def get_data(self):
@@ -464,7 +479,7 @@ class AccountDetailWindow(StackedWindow):
                     f'<html><head/><body><p><span style=" font-weight:600;">Account:</span> {account}&nbsp;&nbsp;&nbsp'
                     f';&nbsp;<span style=" font-weight:600;">Amount:</span> {trans[1]} '
                     f'{trans[2]}&nbsp;&nbsp;&nbsp;&nbsp;<span style=" font-weight:600;">Time:</span> '
-                    f'{trans[3]}&nbsp;&nbsp;&nbsp;&nbsp;<span style=" font-weight:600;">From:</span> '
+                    f'{trans[3]}&nbsp;&nbsp;&nbsp;&nbsp;<span style=" font-weight:600;">To:</span> '
                     f'{trans[4]}</p></body></html>')
                 self.verticalLayout_4.insertWidget(i, label)
                 self.expenditure_labels.append(label)
@@ -522,7 +537,7 @@ class AccountDetailWindow(StackedWindow):
                     f'<html><head/><body><p><span style=" font-weight:600;">Account:</span> {account}&nbsp;&nbsp;&nbsp'
                     f';&nbsp;<span style=" font-weight:600;">Amount:</span> {trans[1]} '
                     f'{trans[2]}&nbsp;&nbsp;&nbsp;&nbsp;<span style=" font-weight:600;">Time:</span> '
-                    f'{trans[3]}&nbsp;&nbsp;&nbsp;&nbsp;<span style=" font-weight:600;">To:</span> '
+                    f'{trans[3]}&nbsp;&nbsp;&nbsp;&nbsp;<span style=" font-weight:600;">From:</span> '
                     f'{trans[4]}</p></body></html>')
                 self.verticalLayout_5.insertWidget(i, label)
                 self.income_labels.append(label)
@@ -563,7 +578,7 @@ class AccountDetailWindow(StackedWindow):
                     AND T.transaction_time <= '%s'\
                     AND T.currency_type='%s'\
                     ORDER BY T.transaction_time DESC;" % (
-        str(self.user_id), from_amount, to_amount, from_date, to_date, CURRENCY[self.account_id - 1])
+            str(self.user_id), from_amount, to_amount, from_date, to_date, CURRENCY[self.account_id - 1])
         cursor.execute(sql)
         result = cursor.fetchall()
 
@@ -616,7 +631,7 @@ class AccountDetailWindow(StackedWindow):
             AND T.transaction_time <= '%s'\
             AND T.currency_type='%s'\
             ORDER BY T.transaction_time DESC;" % (
-        str(self.user_id), from_amount, to_amount, from_date, to_date, CURRENCY[self.account_id - 1])
+            str(self.user_id), from_amount, to_amount, from_date, to_date, CURRENCY[self.account_id - 1])
         cursor.execute(sql)
         result = cursor.fetchall()
 
@@ -764,6 +779,7 @@ class TransferWindow(StackedWindow):
         self.amount = int(self.amountEdit.text().zfill(1))
 
         if self.to_id == self.user_id:
+            print('true')
             self.hintLabel.setText('<html><head/><body><p><span style=" font-size:16pt; color:#003780;">Failed: '
                                    'Cannot transfer to yourself</span></p></body></html>')
             self.clear()
@@ -880,16 +896,20 @@ class TransactionWindow(StackedWindow):
             for i, trans in enumerate(result):
                 label = self.create_label(area=self.outScrollArea, height=40)
                 if trans[0] == 1:
+                    symbol = '$'
                     account = 'HKD'
                 elif trans[0] == 2:
+                    symbol = '$'
                     account = 'Deposit'
                 elif trans[0] == 3:
+                    symbol = '$'
                     account = 'USD'
                 else:
+                    symbol = '￥'
                     account = 'CNY'
                 label.setText(
                     f'<html><head/><body><p><span style=" font-weight:600;">Account:</span> {account}&nbsp;&nbsp;&nbsp'
-                    f';&nbsp;<span style=" font-weight:600;">Amount:</span> {trans[1]} '
+                    f';&nbsp;<span style=" font-weight:600;">Amount:</span> {symbol}'
                     f'{trans[2]}&nbsp;&nbsp;&nbsp;&nbsp;<span style=" font-weight:600;">Time:</span> '
                     f'{trans[3]}&nbsp;&nbsp;&nbsp;&nbsp;<span style=" font-weight:600;">From:</span> '
                     f'{trans[4]}</p></body></html>')
@@ -918,16 +938,20 @@ class TransactionWindow(StackedWindow):
             for i, trans in enumerate(result):
                 label = self.create_label(area=self.inScrollArea, height=40)
                 if trans[0] == 1:
+                    symbol = '$'
                     account = 'HKD'
                 elif trans[0] == 2:
+                    symbol = '$'
                     account = 'Deposit'
                 elif trans[0] == 3:
+                    symbol = '$'
                     account = 'USD'
                 else:
+                    symbol = '￥'
                     account = 'CNY'
                 label.setText(
                     f'<html><head/><body><p><span style=" font-weight:600;">Account:</span> {account}&nbsp;&nbsp;&nbsp'
-                    f';&nbsp;<span style=" font-weight:600;">Amount:</span> {trans[1]} '
+                    f';&nbsp;<span style=" font-weight:600;">Amount:</span> {symbol}'
                     f'{trans[2]}&nbsp;&nbsp;&nbsp;&nbsp;<span style=" font-weight:600;">Time:</span> '
                     f'{trans[3]}&nbsp;&nbsp;&nbsp;&nbsp;<span style=" font-weight:600;">To:</span> '
                     f'{trans[4]}</p></body></html>')
@@ -968,16 +992,20 @@ class TransactionWindow(StackedWindow):
             for i, trans in enumerate(result):
                 label = self.create_label(area=self.outScrollArea, height=40)
                 if trans[0] == 1:
+                    symbol = '$'
                     account = 'HKD'
                 elif trans[0] == 2:
+                    symbol = '$'
                     account = 'Deposit'
                 elif trans[0] == 3:
+                    symbol = '$'
                     account = 'USD'
                 else:
+                    symbol = '￥'
                     account = 'CNY'
                 label.setText(
                     f'<html><head/><body><p><span style=" font-weight:600;">Account:</span> {account}&nbsp;&nbsp;&nbsp'
-                    f';&nbsp;<span style=" font-weight:600;">Amount:</span> {trans[1]} '
+                    f';&nbsp;<span style=" font-weight:600;">Amount:</span> {symbol}'
                     f'{trans[2]}&nbsp;&nbsp;&nbsp;&nbsp;<span style=" font-weight:600;">Time:</span> '
                     f'{trans[3]}&nbsp;&nbsp;&nbsp;&nbsp;<span style=" font-weight:600;">From:</span> '
                     f'{trans[4]}</p></body></html>')
@@ -1099,18 +1127,24 @@ class ApplyLoanWindow(StackedWindow):
 
         sql = "SELECT SUM(loan_amount) FROM Loan WHERE user_id='%s' AND is_settled=0 GROUP BY user_id;" % self.user_id
         cursor.execute(sql)
-        self.used_amount = int(cursor.fetchall()[0][0])
+        result = cursor.fetchall()
+        if len(result) == 0:
+            self.used_amount = 0
+        else:
+            self.used_amount = int(result[0][0])
         self.usable_amount = self.loan_amount - self.used_amount
 
         if amount > self.usable_amount:
-            self.hintLabel.setText(f'<html><head><body><p><span style="font-size:16pt; color:#003780;">Failed: EXCEED! (Remaining amount: {self.usable_amount})</span></p></body></html>')
+            self.hintLabel.setText(
+                f'<html><head><body><p><span style="font-size:16pt; color:#003780;">Failed: Remaining quota ${self.usable_amount})</span></p></body></html>')
             self.clear_amount()
             if pay_date < current_date:
                 self.clear_date()
             return
 
         if pay_date < current_date:
-            self.hintLabel.setText('<html><head/><body><p><span style="font-size:16pt; color:#003780;"> Failed: Incorrect due date.</span></p></body></html>')
+            self.hintLabel.setText(
+                '<html><head/><body><p><span style="font-size:16pt; color:#003780;"> Failed: Incorrect due date</span></p></body></html>')
             self.clear_date()
             return
 
@@ -1139,7 +1173,7 @@ class ApplyLoanWindow(StackedWindow):
         self.set_content()
 
         self.hintLabel.setText(
-            '<html><head/><body><p><span style="font-size:16pt; color:#003780;"> Successful!</span></p></body></html>')
+            '<html><head/><body><p><span style="font-size:16pt; color:#003780;">Granted!</span></p></body></html>')
         self.clear_date()
         self.clear_amount()
 
@@ -1154,10 +1188,14 @@ class ApplyLoanWindow(StackedWindow):
 
         sql = "SELECT SUM(loan_amount) FROM Loan WHERE user_id='%s' AND is_settled=0 GROUP BY user_id;" % self.user_id
         cursor.execute(sql)
-        used_amount = int(cursor.fetchall()[0][0])
+        result = cursor.fetchall()
+        if len(result) == 0:
+            used_amount = 0
+        else:
+            used_amount = int(result[0][0])
         self.usable_amount = self.loan_amount - used_amount
         self.infoLabel.setText(
-            f'<html><head/><body><p><span style="font-size:16pt; color:#B0C4DE;">Your credit level: {self.credit_level}&nbsp;&nbsp;&nbsp;&nbsp;Total loan amount: {self.loan_amount}&nbsp;&nbsp;&nbsp;&nbsp;Used: {used_amount}  </span></p></body></html>')
+            f'<html><head/><body><p><span style="font-size:16pt; color:#B0C4DE;">Credit level: {self.credit_level}&nbsp;&nbsp;&nbsp;&nbsp;Loan limit: ${self.loan_amount}&nbsp;&nbsp;&nbsp;&nbsp;Used quota: ${used_amount}</span></p></body></html>')
 
     def clear_amount(self):
         self.amount.setText('')
@@ -1175,7 +1213,7 @@ class PayLoanWindow(StackedWindow):
     def __init__(self, user_id):
         super(PayLoanWindow, self).__init__()
         loadUi('loanPayBack.ui', self)
-        self.idEdit.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("[1-9][0-9]*")))
+        self.idEdit.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("[0-9]*")))
         self.user_id = user_id
         self.loan_id = 0
         self.loan_amount = 0
@@ -1240,7 +1278,7 @@ class PayLoanWindow(StackedWindow):
 
         if not is_valid:
             self.hintLabel.setText(
-                '<html><head/><body><p><span style="font-size:16pt; color:#003780;">Failed: Incorrect loan id.</span></p></body></html>')
+                '<html><head/><body><p><span style="font-size:16pt; color:#003780;">Failed: Incorrect loan ID</span></p></body></html>')
             return
 
         sql = "SELECT loan_amount from Loan WHERE user_id='%s' AND loan_id='%s'" % (self.user_id, self.loan_id)
@@ -1253,13 +1291,12 @@ class PayLoanWindow(StackedWindow):
 
         if self.loan_amount > self.balance:
             self.hintLabel.setText(
-                '<html><head/><body><p><span style="font-size:16pt; color:#003780;">Failed: Insufficient balance.</span></p></body></html>')
+                '<html><head/><body><p><span style="font-size:16pt; color:#003780;">Failed: Insufficient balance</span></p></body></html>')
             return
 
         self.hintLabel.setText(
-            '<html><head/><body><p><span style="font-size:16pt; color:#003780;">Successful!</span></p></body></html>')
+            '<html><head/><body><p><span style="font-size:16pt; color:#003780;">Repaid!</span></p></body></html>')
         self.idEdit.setText('')
-
 
         sql = "UPDATE Loan SET is_settled=1 WHERE user_id='%s' AND loan_id='%s';"
         val = (self.user_id, self.loan_id)

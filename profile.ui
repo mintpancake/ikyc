@@ -511,7 +511,7 @@
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>280</y>
+      <y>260</y>
       <width>151</width>
       <height>71</height>
      </rect>
@@ -534,7 +534,7 @@
     <property name="geometry">
      <rect>
       <x>200</x>
-      <y>420</y>
+      <y>360</y>
       <width>171</width>
       <height>71</height>
      </rect>
@@ -576,7 +576,7 @@
     <property name="geometry">
      <rect>
       <x>470</x>
-      <y>420</y>
+      <y>360</y>
       <width>601</width>
       <height>71</height>
      </rect>
@@ -700,7 +700,7 @@ QPushButton:pressed{
     <property name="geometry">
      <rect>
       <x>470</x>
-      <y>280</y>
+      <y>260</y>
       <width>601</width>
       <height>71</height>
      </rect>
@@ -714,6 +714,45 @@ QPushButton:pressed{
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
+   <widget class="QLabel" name="level_value">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>460</y>
+      <width>601</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="level_key">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>460</y>
+      <width>241</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:22pt; font-weight:600; color:#476089;&quot;&gt;Credit level:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
    <zorder>small_logo</zorder>
    <zorder>uid_key</zorder>
    <zorder>name_key</zorder>
@@ -724,6 +763,8 @@ QPushButton:pressed{
    <zorder>label</zorder>
    <zorder>ProfileTitleLabel</zorder>
    <zorder>uid_value</zorder>
+   <zorder>level_value</zorder>
+   <zorder>level_key</zorder>
   </widget>
  </widget>
  <resources/>

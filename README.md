@@ -3,9 +3,7 @@
 Know Your Customer (iKYC) system with facial ID login function.
 ## Requirements
 ### Packages
-* `pyqt5`
-* `pyqt5-tools`
-* `opencv-python`
+* See `requirements.txt`
 ### Configuration procedures (with `anaconda3`)
 1. `conda create -n 3278 python=3.8`
 2. `conda activate 3278`

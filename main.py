@@ -3,6 +3,7 @@ import time
 
 import cv2
 import mysql.connector
+import pickle
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUi
@@ -10,7 +11,7 @@ from PyQt5.uic import loadUi
 WIDTH = 1200
 HEIGHT = 800
 
-CONF = 50
+CONF = 40
 
 WELCOME = 0
 FACE = 1
@@ -93,11 +94,11 @@ class FaceWindow(StackedWindow):
         self.cap = cv2.VideoCapture()
 
         self.recognizer = cv2.face.LBPHFaceRecognizer_create()
-        # self.recognizer.read("train.yml")
+        self.recognizer.read("train.yml")
         self.labels = {"user_id": 1}
-        # with open("labels.pickle", "rb") as f:
-        #    self.labels = pickle.load(f)
-        #    self.labels = {v: k for k, v in self.labels.items()}
+        with open("labels.pickle", "rb") as f:
+           self.labels = pickle.load(f)
+           self.labels = {v: k for k, v in self.labels.items()}
         self.face_cascade = cv2.CascadeClassifier('haarcascade/haarcascade_frontalface_default.xml')
 
         self.slot_init()
@@ -138,17 +139,14 @@ class FaceWindow(StackedWindow):
         pixmap = QtGui.QPixmap.fromImage(show_image)
         self.camera.setPixmap(pixmap)
 
-        # TODO: for debug
-        self.user_id = 1
-
-        # if self.user_id == -1:
-        #     gray = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
-        #     faces = self.face_cascade.detectMultiScale(gray, scaleFactor=1.5, minNeighbors=3)
-        #     for (x, y, w, h) in faces:
-        #         roi_gray = gray[y:y + h, x:x + w]
-        #         id_, conf = self.recognizer.predict(roi_gray)
-        #         if conf >= CONF:
-        #             self.user_id = self.labels[id_]
+        if self.user_id == -1:
+            gray = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
+            faces = self.face_cascade.detectMultiScale(gray, scaleFactor=1.5, minNeighbors=3)
+            for (x, y, w, h) in faces:
+                roi_gray = gray[y:y + h, x:x + w]
+                id_, conf = self.recognizer.predict(roi_gray)
+                if conf >= CONF:
+                    self.user_id = self.labels[id_]
 
     def verify(self):
         if self.user_id != -1:

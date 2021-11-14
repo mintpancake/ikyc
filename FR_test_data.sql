@@ -32,20 +32,20 @@ SET time_zone = "+00:00";
 --
 DROP TABLE IF EXISTS `Customer`;
 
-# Create TABLE 'Credit_levels'
-CREATE TABLE `Credit_levels` (
+# Create TABLE 'CreditLevels'
+CREATE TABLE `CreditLevels` (
   `credit_level` int NOT NULL,
   `loan_amount` int NOT NULL,
   PRIMARY KEY (credit_level)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-LOCK TABLES `Credit_levels` WRITE;
-/*!40000 ALTER TABLE `Credit_levels` DISABLE KEYS */;
-INSERT INTO `Credit_levels` VALUES (1, 5000);
-INSERT INTO `Credit_levels` VALUES (2, 10000);
-INSERT INTO `Credit_levels` VALUES (3, 15000);
-/*!40000 ALTER TABLE `Credit_levels` ENABLE KEYS */;
+LOCK TABLES `CreditLevels` WRITE;
+/*!40000 ALTER TABLE `CreditLevels` DISABLE KEYS */;
+INSERT INTO `CreditLevels` VALUES (1, 5000);
+INSERT INTO `CreditLevels` VALUES (2, 10000);
+INSERT INTO `CreditLevels` VALUES (3, 15000);
+/*!40000 ALTER TABLE `CreditLevels` ENABLE KEYS */;
 UNLOCK TABLES;
 
 # Create TABLE 'User'
@@ -54,12 +54,13 @@ CREATE TABLE `User` (
   `name` varchar(50) NOT NULL,
   `credit_level` int NOT NULL,
   PRIMARY KEY (user_id),
-  FOREIGN KEY (credit_level) REFERENCES Credit_levels(credit_level)
+  FOREIGN KEY (credit_level) REFERENCES CreditLevels(credit_level)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 LOCK TABLES `User` WRITE;
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
+INSERT INTO `User` VALUES (-1, "Bank", 3);
 INSERT INTO `User` VALUES (1, "Dennis", 3);
 INSERT INTO `User` VALUES (2, "Lisa", 2);
 INSERT INTO `User` VALUES (3, "Joe", 1);
@@ -101,6 +102,7 @@ CREATE TABLE `Account` (
 
 LOCK TABLES `Account` WRITE;
 /*!40000 ALTER TABLE `Account` DISABLE KEYS */;
+INSERT INTO `Account` VALUES (1, -1, 'HKD', -1);
 INSERT INTO `Account` VALUES (1, 1, 'HKD', 55000);
 INSERT INTO `Account` VALUES (2, 1, 'HKD', 2500);
 INSERT INTO `Account` VALUES (3, 1, 'USD', 800);
@@ -164,6 +166,7 @@ CREATE TABLE `Loan` (
   `user_id` int NOT NULL,
   `loan_id` int NOT NULL,
   `loan_amount` int NOT NULL,
+  `apply_date` DATE NOT NULL,
   `due_date` DATE NOT NULL,
   `is_settled` INT,
   `settled_date` DATE,
@@ -172,13 +175,13 @@ CREATE TABLE `Loan` (
 
 LOCK TABLES `Loan` WRITE;
 /*!40000 ALTER TABLE `Loan` DISABLE KEYS */;
-INSERT INTO `Loan` VALUES (1, 1, 5200, '2021-10-24', 1, '2021-10-22');
-INSERT INTO `Loan` VALUES (2, 1, 13000, '2021-10-24', 1, '2021-10-24');
-INSERT INTO `Loan` VALUES (2, 2, 400, '2021-10-28', 0, NULL);
-INSERT INTO `Loan` VALUES (1, 2, 2000, '2021-10-25', 1, '2021-10-24');
-INSERT INTO `Loan` VALUES (1, 3, 4000, '2021-11-09', 0, NULL);
-INSERT INTO `Loan` VALUES (3, 1, 380, '2021-10-28', 1, '2021-10-28');
-INSERT INTO `Loan` VALUES (5, 1, 5500, '2021-09-25', 0, NULL);
+INSERT INTO `Loan` VALUES (1, 1, 5200, '2021-10-14', '2021-10-24', 1, '2021-10-22');
+INSERT INTO `Loan` VALUES (2, 1, 3000, '2021-09-24', '2021-10-24', 1, '2021-10-24');
+INSERT INTO `Loan` VALUES (2, 2, 400, '2021-11-08', '2021-12-28', 0, NULL);
+INSERT INTO `Loan` VALUES (1, 2, 2000, '2021-10-10', '2021-10-25', 1, '2021-10-24');
+INSERT INTO `Loan` VALUES (1, 3, 4000, '2021-11-09', '2021-11-29', 0, NULL);
+INSERT INTO `Loan` VALUES (3, 1, 380, '2021-10-20', '2021-10-28', 1, '2021-10-28');
+INSERT INTO `Loan` VALUES (5, 1, 5500, '2021-10-25', '2021-12-25', 0, NULL);
 
 /*!40000 ALTER TABLE `Loan` ENABLE KEYS */;
 UNLOCK TABLES;

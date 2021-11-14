@@ -221,7 +221,7 @@ class HomeWindow(StackedWindow):
             self.last_login_time = 'No record'
 
         # TODO: get loans
-        sql = "SELECT loan_id, loan_amount, due_date FROM Loan WHERE user_id='%s AND is_settled=0' ORDER BY due_date DESC" % self.user_id
+        sql = "SELECT loan_id, loan_amount, due_date FROM Loan WHERE user_id='%s' AND is_settled=0 ORDER BY due_date ASC" % self.user_id
         cursor.execute(sql)
         self.loans = cursor.fetchall()
 
@@ -407,12 +407,12 @@ class AccountDetailWindow(StackedWindow):
             self.refreshButton.setVisible(False)
             self.balanceWidge.setGeometry(500, 230, 200, 200)
 
-        #self.remittanceTable.setShowGrid(False)
-        #self.receivedTable.setShowGrid(False)
-        #self.remittanceTable.verticalHeader().setVisible(False)
-        #self.receivedTable.verticalHeader().setVisible(False)
-        #self.remittanceTable.setEditTriggers(QAbstractItemView.NoEditTriggers)
-        #self.receivedTable.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        # self.remittanceTable.setShowGrid(False)
+        # self.receivedTable.setShowGrid(False)
+        # self.remittanceTable.verticalHeader().setVisible(False)
+        # self.receivedTable.verticalHeader().setVisible(False)
+        # self.remittanceTable.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        # self.receivedTable.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
     def activate(self):
         self.get_data()
@@ -428,7 +428,7 @@ class AccountDetailWindow(StackedWindow):
         else:
             self.balanceAmountLabel.setText("$" + str(balance))
 
-        #sql = "SELECT to_user, amount, transaction_time FROM transaction WHERE from_user='" + str(
+        # sql = "SELECT to_user, amount, transaction_time FROM transaction WHERE from_user='" + str(
         #    self.user_id) + "' AND currency_type='" + CURRENCY[self.account_id - 1] + "'"
         sql = "SELECT T.to_account,\
                     T.currency_type,\
@@ -437,16 +437,16 @@ class AccountDetailWindow(StackedWindow):
                     U.name\
                     FROM Transaction T,\
                     User U\
-                    WHERE T.from_user = "+str(self.user_id) +"\
+                    WHERE T.from_user = " + str(self.user_id) + "\
                     AND T.to_user = U.user_id\
-                    AND T.currency_type='"+CURRENCY[self.account_id - 1]+"'\
+                    AND T.currency_type='" + CURRENCY[self.account_id - 1] + "'\
                     ORDER BY T.transaction_time DESC;"
         cursor.execute(sql)
         result = cursor.fetchall()
         for label in self.expenditure_labels:
             self.verticalLayout_4.removeWidget(label)
         self.expenditure_labels = []
-        if len(result) == 0 and self.account_id!=2:
+        if len(result) == 0 and self.account_id != 2:
             self.hintLabel.setVisible(True)
             self.hintLabel.setText(
                 '<html><head/><body><p><span style=" font-weight:600; color:#003780;">No record!</span></p></body></html>')
@@ -470,7 +470,7 @@ class AccountDetailWindow(StackedWindow):
                     f'{trans[4]}</p></body></html>')
                 self.verticalLayout_4.insertWidget(i, label)
                 self.expenditure_labels.append(label)
-        #for i in range(len(result)):
+        # for i in range(len(result)):
         #    newItem = QTableWidgetItem(str(i))
         #    self.remittanceTable.setItem(i, 0, newItem)
         #    newItem = QTableWidgetItem(str(result[i][2]))
@@ -486,7 +486,7 @@ class AccountDetailWindow(StackedWindow):
         #    newItem = QTableWidgetItem(name_result[0][0])
         #    self.remittanceTable.setItem(i, 4, newItem)
 
-        #sql = "SELECT from_user, amount, transaction_time FROM transaction WHERE to_user='" + str(
+        # sql = "SELECT from_user, amount, transaction_time FROM transaction WHERE to_user='" + str(
         #    self.user_id) + "' AND currency_type='" + CURRENCY[self.account_id - 1] + "'"
         sql = "SELECT T.to_account,\
                     T.currency_type,\
@@ -495,16 +495,16 @@ class AccountDetailWindow(StackedWindow):
                     U.name\
                     FROM Transaction T,\
                     User U\
-                    WHERE T.to_user = "+str(self.user_id) +"\
+                    WHERE T.to_user = " + str(self.user_id) + "\
                     AND T.from_user = U.user_id\
-                    AND T.currency_type='"+CURRENCY[self.account_id - 1]+"'\
+                    AND T.currency_type='" + CURRENCY[self.account_id - 1] + "'\
                     ORDER BY T.transaction_time DESC;"
         cursor.execute(sql)
         result = cursor.fetchall()
         for label in self.income_labels:
             self.verticalLayout_5.removeWidget(label)
         self.income_labels = []
-        if len(result) == 0 and self.account_id!=2:
+        if len(result) == 0 and self.account_id != 2:
             self.hintLabel_2.setVisible(True)
             self.hintLabel_2.setText(
                 '<html><head/><body><p><span style=" font-weight:600; color:#003780;">No record!</span></p></body></html>')
@@ -528,7 +528,7 @@ class AccountDetailWindow(StackedWindow):
                     f'{trans[4]}</p></body></html>')
                 self.verticalLayout_5.insertWidget(i, label)
                 self.income_labels.append(label)
-        #for i in range(len(result)):
+        # for i in range(len(result)):
         #    newItem = QTableWidgetItem(str(i))
         #    self.receivedTable.setItem(i, 0, newItem)
         #    newItem = QTableWidgetItem(str(result[i][2]))
@@ -564,7 +564,8 @@ class AccountDetailWindow(StackedWindow):
                     AND T.transaction_time >= '%s'\
                     AND T.transaction_time <= '%s'\
                     AND T.currency_type='%s'\
-                    ORDER BY T.transaction_time DESC;" % (str(self.user_id), from_amount, to_amount, from_date, to_date, CURRENCY[self.account_id - 1])
+                    ORDER BY T.transaction_time DESC;" % (
+        str(self.user_id), from_amount, to_amount, from_date, to_date, CURRENCY[self.account_id - 1])
         cursor.execute(sql)
         result = cursor.fetchall()
 
@@ -616,7 +617,8 @@ class AccountDetailWindow(StackedWindow):
             AND T.transaction_time >= '%s'\
             AND T.transaction_time <= '%s'\
             AND T.currency_type='%s'\
-            ORDER BY T.transaction_time DESC;" % (str(self.user_id), from_amount, to_amount, from_date, to_date, CURRENCY[self.account_id - 1])
+            ORDER BY T.transaction_time DESC;" % (
+        str(self.user_id), from_amount, to_amount, from_date, to_date, CURRENCY[self.account_id - 1])
         cursor.execute(sql)
         result = cursor.fetchall()
 
@@ -1066,9 +1068,11 @@ class ApplyLoanWindow(StackedWindow):
     def __init__(self, user_id):
         super(ApplyLoanWindow, self).__init__()
         loadUi('loanApplication.ui', self)
+        self.amount.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("[1-9][0-9]*")))
         self.user_id = user_id
         self.credit_level = 0
         self.loan_amount = 0
+        self.used_amount = 0
         self.usable_amount = 0
         self.slot_init()
 
@@ -1080,6 +1084,7 @@ class ApplyLoanWindow(StackedWindow):
     def activate(self):
         self.hintLabel.setText('')
         self.dateEdit.setDateTime(QtCore.QDateTime.currentDateTime())
+        self.set_content()
 
     def apply_loan(self):
         amount = int(self.amount.text().zfill(1))
@@ -1094,62 +1099,94 @@ class ApplyLoanWindow(StackedWindow):
         cursor.execute(sql)
         self.loan_amount = int(cursor.fetchall()[0][0])
 
-        sql = "SELECT SUM(loan_amount) " \
-              "FROM Loan" \
-              "WHERE user_id='%s'" \
-              "AND is_settled=0" \
-              "GROUP BY user_id;" % self.user_id
+        sql = "SELECT SUM(loan_amount) FROM Loan WHERE user_id='%s' AND is_settled=0 GROUP BY user_id;" % self.user_id
         cursor.execute(sql)
-        self.usable_amount = self.loan_amount - int(cursor.fetchall()[0][0])
+        self.used_amount = int(cursor.fetchall()[0][0])
+        self.usable_amount = self.loan_amount - self.used_amount
 
         if amount > self.usable_amount:
-            self.hintLabel.setText(
-                '<html><head/><body><p><s pan style=" font-size:16pt; color:#003780;">'
-                'Failed: The total loan amount you apply for cannot exceed "%s" HKD. (Remaining amount: "%s")'
-                '</span></p></body></html>') % (self.loan_amount, self.usable_amount)
+            self.hintLabel.setText(f'<html><head><body><p><span style="font-size:16pt; color:#003780;">Failed: EXCEED! (Remaining amount: {self.usable_amount})</span></p></body></html>')
             self.clear_amount()
+            if pay_date < current_date:
+                self.clear_date()
             return
 
-        if pay_date < QtCore.QDateTime.currentDateTime():
-            self.hintLabel.setText(
-                '<html><head/><body><p><s pan style=" font-size:16pt; color:#003780;">'
-                'Failed: You should enter a correct expected due date.")'
-                '</span></p></body></html>') % (self.loan_amount, self.usable_amount)
+        if pay_date < current_date:
+            self.hintLabel.setText('<html><head/><body><p><span style="font-size:16pt; color:#003780;"> Failed: Incorrect due date.</span></p></body></html>')
             self.clear_date()
             return
 
-        sql = "SELECT MAX(loan_id)" \
-              "FROM Loan" \
-              "WHERE user_id='%s'" \
-              "GROUP BY user_id;" % self.user_id
+        sql = "SELECT MAX(loan_id) FROM Loan WHERE user_id='%s' GROUP BY user_id;" % self.user_id
         cursor.execute(sql)
-        loan_num = int(cursor.fetchall()[0][0])
+        max_loan_id = cursor.fetchall()[0][0]
 
-        sql = "INSERT INTO `Loan` VALUES ('%s', '%s', '%s', '%s', 0, '%s');"
-        val = (self.user_id, loan_num+1, amount, current_date, pay_date)
+        sql = "INSERT INTO Loan VALUES (%s, %s, %s, %s, %s, 0, NULL);"
+        val = (self.user_id, max_loan_id + 1, amount, current_date, pay_date)
         cursor.execute(sql, val)
         conn.commit()
 
+        sql = "UPDATE account SET balance=balance+'%s' WHERE user_id='%s' AND account_id=1;"
+        val = (amount, self.user_id)
+        cursor.execute(sql, val)
+        conn.commit()
+
+        sql = "SELECT MAX(transaction_id) FROM Transaction"
+        cursor.execute(sql)
+        max_trans_id = cursor.fetchall()[0][0]
+
+        sql = "INSERT INTO Transaction VALUES (%s, -1, %s, 1, 1, 'HKD', %s, %s)"
+        val = (max_trans_id + 1, self.user_id, amount, current_date)
+        cursor.execute(sql, val)
+        conn.commit()
+        self.set_content()
+
+        self.hintLabel.setText(
+            '<html><head/><body><p><span style="font-size:16pt; color:#003780;"> Successful!</span></p></body></html>')
+        self.clear_date()
+        self.clear_amount()
+
+    def set_content(self):
+        sql = "SELECT credit_level FROM User WHERE user_id='%s';" % self.user_id
+        cursor.execute(sql)
+        self.credit_level = int(cursor.fetchall()[0][0])
+
+        sql = "SELECT loan_amount FROM CreditLevels WHERE credit_level='%s';" % self.credit_level
+        cursor.execute(sql)
+        self.loan_amount = int(cursor.fetchall()[0][0])
+
+        sql = "SELECT SUM(loan_amount) FROM Loan WHERE user_id='%s' AND is_settled=0 GROUP BY user_id;" % self.user_id
+        cursor.execute(sql)
+        used_amount = int(cursor.fetchall()[0][0])
+        self.usable_amount = self.loan_amount - used_amount
+        self.infoLabel.setText(
+            f'<html><head/><body><p><span style="font-size:16pt; color:#B0C4DE;">Your credit level: {self.credit_level}&nbsp;&nbsp;&nbsp;&nbsp;Total loan amount: {self.loan_amount}&nbsp;&nbsp;&nbsp;&nbsp;Used: {used_amount}  </span></p></body></html>')
+
     def clear_amount(self):
         self.amount.setText('')
-        self.hintLabel.setText('')
 
     def clear_date(self):
         self.dateEdit.setDateTime(QtCore.QDateTime.currentDateTime())
-        self.hintLabel.setText('')
 
     def clear(self):
         self.clear_amount()
         self.clear_date()
+        self.hintLabel.setText("")
 
 
 class PayLoanWindow(StackedWindow):
     def __init__(self, user_id):
         super(PayLoanWindow, self).__init__()
         loadUi('loanPayBack.ui', self)
+        self.idEdit.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("[1-9][0-9]*")))
         self.user_id = user_id
+        self.loan_id = 0
+        self.loan_amount = 0
+        self.balance = 0
+        self.credit_level = 0
+        self.loan_amount = 0
+        self.usable_amount = 0
         self.loans = None
-        self.loan_labels = None
+        self.loan_labels = []
         self.slot_init()
 
     def slot_init(self):
@@ -1160,10 +1197,11 @@ class PayLoanWindow(StackedWindow):
     def activate(self):
         self.hintLabel.setText('')
         self.clear()
+        self.get_data()
         self.set_content()
 
     def create_label(self, height):
-        new_label = QtWidgets.QLabel(self.historyScrollAreaWidget)
+        new_label = QtWidgets.QLabel(self.loanScrollAreaWidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -1177,111 +1215,88 @@ class PayLoanWindow(StackedWindow):
         return new_label
 
     def get_data(self):
-        sql = "SELECT loan_id, loan_amount, due_date FROM Loan WHERE user_id='%s AND is_settled=0' ORDER BY due_date DESC" % self.user_id
+        sql = "SELECT loan_id, loan_amount, due_date FROM Loan WHERE user_id='%s' AND is_settled=0 ORDER BY due_date ASC" % self.user_id
         cursor.execute(sql)
         self.loans = cursor.fetchall()
 
     def set_content(self):
+        for label in self.loan_labels:
+            self.verticalLayout_4.removeWidget(label)
         self.loan_labels = []
+
         for i, loan in enumerate(self.loans):
             label = self.create_label(height=70)
             label.setText(
-                f'<html><head/><body><p><span style=" font-weight:600;">Amount:</span> HKD {loan[1]}<br/><span style=" font-weight:600;">Due Date:</span> {loan[2]}</p></body></html>')
-            self.verticalLayout.insertWidget(i, label)
+                f'<html><head/><body><p><span style=" font-weight:600;">Loan ID:</span> {loan[0]}<br><span style=" font-weight:600;">Amount:</span> HKD {loan[1]} &nbsp;&nbsp;&nbsp;&nbsp;<span style=" font-weight:600;">Due Date:</span> {loan[2]}</p></body></html>')
+            self.verticalLayout_4.insertWidget(i, label)
             self.loan_labels.append(label)
 
     def pay(self):
-        return
+        current_date = QtCore.QDateTime.currentDateTime().toString('yyyy-MM-dd hh:mm:ss')
+        self.loan_id = int(self.idEdit.text().zfill(1))
+
+        is_valid = False
+        for loan in self.loans:
+            if self.loan_id == loan[0]:
+                is_valid = True
+
+        if not is_valid:
+            self.hintLabel.setText(
+                '<html><head/><body><p><span style="font-size:16pt; color:#003780;">Failed: Incorrect loan id.</span></p></body></html>')
+            return
+
+        sql = "SELECT loan_amount from Loan WHERE user_id='%s' AND loan_id='%s'" % (self.user_id, self.loan_id)
+        cursor.execute(sql)
+        self.loan_amount = int(cursor.fetchall()[0][0])
+
+        sql = "SELECT balance from Account WHERE user_id='%s' AND account_id=1" % self.user_id
+        cursor.execute(sql)
+        self.balance = int(cursor.fetchall()[0][0])
+
+        if self.loan_amount > self.balance:
+            self.hintLabel.setText(
+                '<html><head/><body><p><span style="font-size:16pt; color:#003780;">Failed: Insufficient balance.</span></p></body></html>')
+            return
+
+        self.hintLabel.setText(
+            '<html><head/><body><p><span style="font-size:16pt; color:#003780;">Successful!</span></p></body></html>')
+        self.idEdit.setText('')
+
+
+        sql = "UPDATE Loan SET is_settled=1 WHERE user_id='%s' AND loan_id='%s';"
+        val = (self.user_id, self.loan_id)
+        cursor.execute(sql, val)
+        conn.commit()
+
+        sql = "UPDATE Loan SET settled_date=%s WHERE user_id='%s' AND loan_id='%s';"
+        val = (current_date, self.user_id, self.loan_id)
+        cursor.execute(sql, val)
+        conn.commit()
+
+        sql = "UPDATE account SET balance=balance-'%s' WHERE user_id='%s' AND account_id=1;"
+        val = (self.loan_amount, self.user_id)
+        cursor.execute(sql, val)
+        conn.commit()
+
+        sql = "SELECT MAX(transaction_id) FROM Transaction"
+        cursor.execute(sql)
+        max_trans_id = cursor.fetchall()[0][0]
+
+        sql = "INSERT INTO Transaction VALUES (%s, %s, -1, 1, 1, 'HKD', %s, %s)"
+        val = (max_trans_id + 1, self.user_id, self.loan_amount, current_date)
+        cursor.execute(sql, val)
+        conn.commit()
+
+        self.get_data()
+        self.set_content()
 
     def clear(self):
         self.hintLabel.setText('')
-
-        # def clear(self):
-        #     self.idEdit.setText('')
-        #     self.accountBox.setCurrentIndex(0)
-        #     self.amountEdit.setText('')
-        #
-        # def transfer(self):
-        #     self.to_id = int(self.idEdit.text().zfill(1))
-        #     currency = self.accountBox.currentText()
-        #     if currency == 'HKD':
-        #         self.account = 1
-        #     elif currency == 'USD':
-        #         self.account = 3
-        #     elif currency == 'CNY':
-        #         self.account = 4
-        #     self.amount = int(self.amountEdit.text().zfill(1))
-        #
-        #     if self.to_id == self.user_id:
-        #         self.hintLabel.setText('<html><head/><body><p><span style=" font-size:16pt; color:#003780;">Failed: '
-        #                                'Cannot transfer to yourself</span></p></body></html>')
-        #         self.clear()
-        #         return
-        #
-        #     sql = "SELECT user_id FROM User;"
-        #     cursor.execute(sql)
-        #     ids = cursor.fetchall()
-        #     not_in = True
-        #     for i in ids:
-        #         if self.to_id == i[0]:
-        #             not_in = False
-        #             break
-        #     if not_in:
-        #         self.hintLabel.setText(
-        #             '<html><head/><body><p><span style=" font-size:16pt; color:#003780;">Failed: User does not '
-        #             'exist</span></p></body></html>')
-        #         self.clear()
-        #         return
-        #
-        #     sql = "SELECT balance FROM Account WHERE user_id='%s' AND account_id='%s';" % (self.user_id, self.account)
-        #     cursor.execute(sql)
-        #     my_balance = cursor.fetchall()[0][0]
-        #     if self.amount > int(my_balance):
-        #         self.hintLabel.setText(
-        #             '<html><head/><body><p><span style=" font-size:16pt; color:#003780;">Failed: Insufficient '
-        #             'balance</span></p></body></html>')
-        #         self.clear()
-        #         return
-        #
-        #     sql = "UPDATE account SET balance=balance-'%s' WHERE user_id='%s' AND account_id='%s';"
-        #     val = (self.amount, self.user_id, self.account)
-        #     cursor.execute(sql, val)
-        #     conn.commit()
-        #
-        #     sql = "UPDATE account SET balance=balance+'%s' WHERE user_id='%s' AND account_id='%s';"
-        #     val = (self.amount, self.to_id, self.account)
-        #     cursor.execute(sql, val)
-        #     conn.commit()
-        #
-        #     sql = "SELECT MAX(transaction_id) FROM Transaction"
-        #     cursor.execute(sql)
-        #     max_trans_id = cursor.fetchall()[0][0]
-        #
-        #     now = time.localtime()
-        #     year = str(now.tm_year).zfill(4)
-        #     mon = str(now.tm_mon).zfill(2)
-        #     mday = str(now.tm_mday).zfill(2)
-        #     hour = str(now.tm_hour).zfill(2)
-        #     min = str(now.tm_min).zfill(2)
-        #     sec = str(now.tm_sec).zfill(2)
-        #     now_str = f'{year}-{mon}-{mday} {hour}:{min}:{sec}'
-        #
-        #     sql = "INSERT INTO Transaction VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
-        #     val = (
-        #     max_trans_id + 1, self.user_id, self.to_id, self.account, self.account, currency, self.amount, now_str)
-        #     cursor.execute(sql, val)
-        #     conn.commit()
-        #
-        #     self.hintLabel.setText(
-        #         '<html><head/><body><p><span style=" font-size:16pt; color:#003780;">Transferred!</span></p></body></html>')
-        #     self.clear()
-        #     self.get_data()
-        #     self.set_content()
-
+        self.idEdit.setText('')
 
 
 if __name__ == "__main__":
-    conn = mysql.connector.connect(host="localhost", user="root", passwd="tamnjam",
+    conn = mysql.connector.connect(host="localhost", user="root", passwd="123456",
                                    database="project")  # Modify if needed
     cursor = conn.cursor()
     app = QApplication(sys.argv)

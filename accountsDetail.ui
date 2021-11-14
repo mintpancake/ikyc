@@ -89,9 +89,9 @@ QScrollBar::sub-line:horizon {
    <widget class="QLabel" name="titleLabel">
     <property name="geometry">
      <rect>
-      <x>400</x>
+      <x>350</x>
       <y>20</y>
-      <width>400</width>
+      <width>500</width>
       <height>101</height>
      </rect>
     </property>

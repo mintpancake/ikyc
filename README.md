@@ -2,7 +2,9 @@
 * This is an Intelligent
 Know Your Customer (iKYC) system with facial ID login function.
 ## Requirements
-### Packages
+### Files
+* Import `train.yml`
+### Dependencies
 * See `requirements.txt`
 ### Configuration procedures (with `anaconda3`)
 1. `conda create -n 3278 python=3.8`
@@ -13,7 +15,7 @@ Know Your Customer (iKYC) system with facial ID login function.
 2. `net start MySQL` (check MySQL service name in `services.msc`)
 3. `mysql -u root -p`
 4. `ALTER USER 'root'@'localhost' IDENTIFIED BY '123456'` (change password)
-5. `source FR_test_data.sql` (load database)
+5. `source database.sql` (load database)
 ## Development guidelines
 ### Documentations
 * https://www.figma.com/file/gKQlpgou7UHzjYl5jCZPiS/Customer-Journey

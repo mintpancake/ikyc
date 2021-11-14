@@ -416,13 +416,6 @@ class AccountDetailWindow(StackedWindow):
             self.refreshButton.setVisible(False)
             self.balanceWidge.setGeometry(500, 230, 200, 200)
 
-        # self.remittanceTable.setShowGrid(False)
-        # self.receivedTable.setShowGrid(False)
-        # self.remittanceTable.verticalHeader().setVisible(False)
-        # self.receivedTable.verticalHeader().setVisible(False)
-        # self.remittanceTable.setEditTriggers(QAbstractItemView.NoEditTriggers)
-        # self.receivedTable.setEditTriggers(QAbstractItemView.NoEditTriggers)
-
     def activate(self):
         self.fromAmount.setText('')
         self.toAmount.setText('')
@@ -441,8 +434,6 @@ class AccountDetailWindow(StackedWindow):
         else:
             self.balanceAmountLabel.setText("$" + str(balance))
 
-        # sql = "SELECT to_user, amount, transaction_time FROM transaction WHERE from_user='" + str(
-        #    self.user_id) + "' AND currency_type='" + CURRENCY[self.account_id - 1] + "'"
         sql = "SELECT T.to_account,\
                     T.currency_type,\
                     T.amount,\
@@ -483,24 +474,6 @@ class AccountDetailWindow(StackedWindow):
                     f'{trans[4]}</p></body></html>')
                 self.verticalLayout_4.insertWidget(i, label)
                 self.expenditure_labels.append(label)
-        # for i in range(len(result)):
-        #    newItem = QTableWidgetItem(str(i))
-        #    self.remittanceTable.setItem(i, 0, newItem)
-        #    newItem = QTableWidgetItem(str(result[i][2]))
-        #    self.remittanceTable.setItem(i, 1, newItem)
-        #    newItem = QTableWidgetItem(str(result[i][1]))
-        #    self.remittanceTable.setItem(i, 2, newItem)
-        #    newItem = QTableWidgetItem(CURRENCY[self.account_id - 1])
-        #    self.remittanceTable.setItem(i, 3, newItem)
-        #    uid = result[i][0]
-        #    sql = "SELECT name FROM user WHERE user_id='" + str(uid) + "'"
-        #    cursor.execute(sql)
-        #    name_result = cursor.fetchall()
-        #    newItem = QTableWidgetItem(name_result[0][0])
-        #    self.remittanceTable.setItem(i, 4, newItem)
-
-        # sql = "SELECT from_user, amount, transaction_time FROM transaction WHERE to_user='" + str(
-        #    self.user_id) + "' AND currency_type='" + CURRENCY[self.account_id - 1] + "'"
         sql = "SELECT T.to_account,\
                     T.currency_type,\
                     T.amount,\
@@ -541,21 +514,6 @@ class AccountDetailWindow(StackedWindow):
                     f'{trans[4]}</p></body></html>')
                 self.verticalLayout_5.insertWidget(i, label)
                 self.income_labels.append(label)
-        # for i in range(len(result)):
-        #    newItem = QTableWidgetItem(str(i))
-        #    self.receivedTable.setItem(i, 0, newItem)
-        #    newItem = QTableWidgetItem(str(result[i][2]))
-        #    self.receivedTable.setItem(i, 1, newItem)
-        #    newItem = QTableWidgetItem(str(result[i][1]))
-        #    self.receivedTable.setItem(i, 2, newItem)
-        #    newItem = QTableWidgetItem(CURRENCY[self.account_id - 1])
-        #    self.receivedTable.setItem(i, 3, newItem)
-        #    uid = result[i][0]
-        #    sql = "SELECT name FROM user WHERE user_id='" + str(uid) + "'"
-        #    cursor.execute(sql)
-        #    name_result = cursor.fetchall()
-        #    newItem = QTableWidgetItem(name_result[0][0])
-        #    self.receivedTable.setItem(i, 4, newItem)
 
     def search_expenditure(self):
         from_date = self.fromDate.dateTime().toString('yyyy-MM-dd hh:mm:ss')
@@ -711,7 +669,7 @@ class TransferWindow(StackedWindow):
 
     def slot_init(self):
         self.backButton.clicked.connect(lambda: switch_to(HOME))
-        self.clearButton.clicked.connect(self.clear)
+        self.clearButton.clicked.connect(self.clear_all)
         self.transferButton.clicked.connect(self.transfer)
 
     def activate(self):
@@ -753,21 +711,31 @@ class TransferWindow(StackedWindow):
         for label in self.transfer_labels:
             self.verticalLayout_4.removeWidget(label)
         self.transfer_labels = []
-        for i, transfer in enumerate(self.transfers):
-            label = self.create_label(height=70)
-            label.setText(
-                f'<html><head/><body><p><span style=" font-weight:600;">To:</span> {transfer[3]} ({transfer[4]})&nbsp;&nbsp;&nbsp;&nbsp;<span style=" '
-                f'font-weight:600;">Amount:</span> {transfer[0]} {transfer[1]}<br/><span style=" '
-                f'font-weight:600;">Time:</span> {transfer[2]}</p></body></html>')
-            self.verticalLayout_4.insertWidget(i, label)
-            self.transfer_labels.append(label)
+        insert_index = 0
+        for transfer in self.transfers:
+            if transfer[4] != -1:
+                label = self.create_label(height=70)
+                label.setText(
+                    f'<html><head/><body><p><span style=" font-weight:600;">To:</span> {transfer[3]} ({transfer[4]})&nbsp;&nbsp;&nbsp;&nbsp;<span style=" '
+                    f'font-weight:600;">Amount:</span> {transfer[0]} {transfer[1]}<br/><span style=" '
+                    f'font-weight:600;">Time:</span> {transfer[2]}</p></body></html>')
+                self.verticalLayout_4.insertWidget(insert_index, label)
+                self.transfer_labels.append(label)
+                insert_index += 1
+
+    def clear_all(self):
+        self.clear()
+        self.hintLabel.setText('')
 
     def clear(self):
         self.idEdit.setText('')
+
         self.accountBox.setCurrentIndex(0)
         self.amountEdit.setText('')
 
     def transfer(self):
+        if self.idEdit.text() == '' or self.amountEdit.text() == '':
+            return
         self.to_id = int(self.idEdit.text().zfill(1))
         currency = self.accountBox.currentText()
         if currency == 'HKD':
@@ -779,7 +747,6 @@ class TransferWindow(StackedWindow):
         self.amount = int(self.amountEdit.text().zfill(1))
 
         if self.to_id == self.user_id:
-            print('true')
             self.hintLabel.setText('<html><head/><body><p><span style=" font-size:16pt; color:#003780;">Failed: '
                                    'Cannot transfer to yourself</span></p></body></html>')
             self.clear()
@@ -1113,9 +1080,11 @@ class ApplyLoanWindow(StackedWindow):
         self.set_content()
 
     def apply_loan(self):
+        if self.amount.text() == '':
+            return
         amount = int(self.amount.text().zfill(1))
-        pay_date = self.dateEdit.dateTime().toString('yyyy-MM-dd hh:mm:ss')
-        current_date = QtCore.QDateTime.currentDateTime().toString('yyyy-MM-dd hh:mm:ss')
+        pay_date = self.dateEdit.dateTime().toString('yyyy-MM-dd')
+        current_date = QtCore.QDateTime.currentDateTime().toString('yyyy-MM-dd')
 
         sql = "SELECT credit_level FROM User WHERE user_id='%s';" % self.user_id
         cursor.execute(sql)
@@ -1136,13 +1105,13 @@ class ApplyLoanWindow(StackedWindow):
 
         if amount > self.usable_amount:
             self.hintLabel.setText(
-                f'<html><head><body><p><span style="font-size:16pt; color:#003780;">Failed: Remaining quota ${self.usable_amount})</span></p></body></html>')
+                f'<html><head><body><p><span style="font-size:16pt; color:#003780;">Failed: Remaining quota ${self.usable_amount}</span></p></body></html>')
             self.clear_amount()
-            if pay_date < current_date:
+            if pay_date <= current_date:
                 self.clear_date()
             return
 
-        if pay_date < current_date:
+        if pay_date <= current_date:
             self.hintLabel.setText(
                 '<html><head/><body><p><span style="font-size:16pt; color:#003780;"> Failed: Incorrect due date</span></p></body></html>')
             self.clear_date()
@@ -1166,8 +1135,9 @@ class ApplyLoanWindow(StackedWindow):
         cursor.execute(sql)
         max_trans_id = cursor.fetchall()[0][0]
 
+        current_time = QtCore.QDateTime.currentDateTime().toString('yyyy-MM-dd hh:mm:ss')
         sql = "INSERT INTO Transaction VALUES (%s, -1, %s, 1, 1, 'HKD', %s, %s)"
-        val = (max_trans_id + 1, self.user_id, amount, current_date)
+        val = (max_trans_id + 1, self.user_id, amount, current_time)
         cursor.execute(sql, val)
         conn.commit()
         self.set_content()
@@ -1268,6 +1238,9 @@ class PayLoanWindow(StackedWindow):
             self.loan_labels.append(label)
 
     def pay(self):
+        if self.idEdit.text() == '':
+            return
+
         current_date = QtCore.QDateTime.currentDateTime().toString('yyyy-MM-dd hh:mm:ss')
         self.loan_id = int(self.idEdit.text().zfill(1))
 
@@ -1279,6 +1252,7 @@ class PayLoanWindow(StackedWindow):
         if not is_valid:
             self.hintLabel.setText(
                 '<html><head/><body><p><span style="font-size:16pt; color:#003780;">Failed: Incorrect loan ID</span></p></body></html>')
+            self.idEdit.setText('')
             return
 
         sql = "SELECT loan_amount from Loan WHERE user_id='%s' AND loan_id='%s'" % (self.user_id, self.loan_id)
@@ -1292,6 +1266,7 @@ class PayLoanWindow(StackedWindow):
         if self.loan_amount > self.balance:
             self.hintLabel.setText(
                 '<html><head/><body><p><span style="font-size:16pt; color:#003780;">Failed: Insufficient balance</span></p></body></html>')
+            self.idEdit.setText('')
             return
 
         self.hintLabel.setText(

@@ -523,7 +523,7 @@
    <widget class="QPushButton" name="payButton">
     <property name="geometry">
      <rect>
-      <x>700</x>
+      <x>710</x>
       <y>550</y>
       <width>150</width>
       <height>71</height>
@@ -745,7 +745,7 @@ QPushButton:pressed{
    <widget class="QPushButton" name="clearButton">
     <property name="geometry">
      <rect>
-      <x>890</x>
+      <x>900</x>
       <y>550</y>
       <width>150</width>
       <height>71</height>

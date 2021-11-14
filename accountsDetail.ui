@@ -229,7 +229,7 @@ QPushButton:pressed{
    <widget class="QPushButton" name="depositButton">
     <property name="geometry">
      <rect>
-      <x>320</x>
+      <x>323</x>
       <y>730</y>
       <width>113</width>
       <height>32</height>
@@ -268,7 +268,7 @@ QPushButton:pressed{
    <widget class="QPushButton" name="USDButton">
     <property name="geometry">
      <rect>
-      <x>530</x>
+      <x>536</x>
       <y>730</y>
       <width>113</width>
       <height>32</height>
@@ -307,7 +307,7 @@ QPushButton:pressed{
    <widget class="QPushButton" name="CNYButton">
     <property name="geometry">
      <rect>
-      <x>730</x>
+      <x>749</x>
       <y>730</y>
       <width>113</width>
       <height>32</height>
@@ -394,7 +394,7 @@ QPushButton:pressed{
     <property name="geometry">
      <rect>
       <x>110</x>
-      <y>150</y>
+      <y>170</y>
       <width>191</width>
       <height>41</height>
      </rect>
@@ -454,7 +454,7 @@ QPushButton:pressed{
     <property name="geometry">
      <rect>
       <x>110</x>
-      <y>192</y>
+      <y>212</y>
       <width>81</width>
       <height>41</height>
      </rect>
@@ -478,7 +478,7 @@ QPushButton:pressed{
     <property name="geometry">
      <rect>
       <x>320</x>
-      <y>192</y>
+      <y>212</y>
       <width>31</width>
       <height>41</height>
      </rect>
@@ -501,8 +501,8 @@ QPushButton:pressed{
    <widget class="QLabel" name="TimeLabel_7">
     <property name="geometry">
      <rect>
-      <x>661</x>
-      <y>192</y>
+      <x>691</x>
+      <y>212</y>
       <width>31</width>
       <height>41</height>
      </rect>
@@ -526,8 +526,8 @@ QPushButton:pressed{
     <property name="geometry">
      <rect>
       <x>110</x>
-      <y>240</y>
-      <width>731</width>
+      <y>260</y>
+      <width>761</width>
       <height>160</height>
      </rect>
     </property>
@@ -579,7 +579,7 @@ QScrollBar::sub-line:vertical {
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>731</width>
+       <width>761</width>
        <height>160</height>
       </rect>
      </property>
@@ -631,8 +631,8 @@ QDateTimeEdit::drop-down {
    <widget class="QLabel" name="TimeLabel_6">
     <property name="geometry">
      <rect>
-      <x>521</x>
-      <y>192</y>
+      <x>551</x>
+      <y>212</y>
       <width>81</width>
       <height>41</height>
      </rect>
@@ -655,7 +655,7 @@ QDateTimeEdit::drop-down {
    <widget class="QLineEdit" name="toAmount_2">
     <property name="geometry">
      <rect>
-      <x>690</x>
+      <x>720</x>
       <y>478</y>
       <width>70</width>
       <height>30</height>
@@ -676,7 +676,7 @@ QDateTimeEdit::drop-down {
    <widget class="QLabel" name="TimeLabel_8">
     <property name="geometry">
      <rect>
-      <x>661</x>
+      <x>691</x>
       <y>470</y>
       <width>31</width>
       <height>41</height>
@@ -700,7 +700,7 @@ QDateTimeEdit::drop-down {
    <widget class="QPushButton" name="tickButton_2">
     <property name="geometry">
      <rect>
-      <x>780</x>
+      <x>810</x>
       <y>460</y>
       <width>50</width>
       <height>50</height>
@@ -750,8 +750,8 @@ QPushButton:pressed{
    <widget class="QLineEdit" name="toAmount">
     <property name="geometry">
      <rect>
-      <x>690</x>
-      <y>200</y>
+      <x>720</x>
+      <y>220</y>
       <width>70</width>
       <height>30</height>
      </rect>
@@ -772,7 +772,7 @@ QPushButton:pressed{
     <property name="geometry">
      <rect>
       <x>350</x>
-      <y>200</y>
+      <y>220</y>
       <width>141</width>
       <height>30</height>
      </rect>
@@ -806,8 +806,8 @@ QDateTimeEdit::drop-down {
    <widget class="QPushButton" name="tickButton">
     <property name="geometry">
      <rect>
-      <x>780</x>
-      <y>180</y>
+      <x>810</x>
+      <y>200</y>
       <width>50</width>
       <height>50</height>
      </rect>
@@ -856,7 +856,7 @@ QPushButton:pressed{
    <widget class="QLineEdit" name="fromAmount_2">
     <property name="geometry">
      <rect>
-      <x>581</x>
+      <x>611</x>
       <y>478</y>
       <width>70</width>
       <height>30</height>
@@ -903,7 +903,7 @@ QPushButton:pressed{
      <rect>
       <x>109</x>
       <y>520</y>
-      <width>731</width>
+      <width>761</width>
       <height>160</height>
      </rect>
     </property>
@@ -955,7 +955,7 @@ QScrollBar::sub-line:vertical {
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>731</width>
+       <width>761</width>
        <height>160</height>
       </rect>
      </property>
@@ -997,7 +997,7 @@ QScrollBar::sub-line:vertical {
     <property name="geometry">
      <rect>
       <x>170</x>
-      <y>200</y>
+      <y>220</y>
       <width>141</width>
       <height>30</height>
      </rect>
@@ -1031,8 +1031,8 @@ QDateTimeEdit::drop-down {
    <widget class="QLineEdit" name="fromAmount">
     <property name="geometry">
      <rect>
-      <x>581</x>
-      <y>200</y>
+      <x>611</x>
+      <y>220</y>
       <width>70</width>
       <height>30</height>
      </rect>
@@ -1052,7 +1052,7 @@ QDateTimeEdit::drop-down {
    <widget class="QLabel" name="TimeLabel_11">
     <property name="geometry">
      <rect>
-      <x>521</x>
+      <x>551</x>
       <y>470</y>
       <width>61</width>
       <height>41</height>
@@ -1153,7 +1153,7 @@ QPushButton:pressed{
     <property name="geometry">
      <rect>
       <x>110</x>
-      <y>240</y>
+      <y>260</y>
       <width>731</width>
       <height>50</height>
      </rect>

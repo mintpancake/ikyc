@@ -669,7 +669,7 @@ QScrollBar::sub-line:vertical {
    <widget class="QLabel" name="TimeLabel">
     <property name="geometry">
      <rect>
-      <x>470</x>
+      <x>480</x>
       <y>90</y>
       <width>81</width>
       <height>91</height>
@@ -717,8 +717,8 @@ QScrollBar::sub-line:vertical {
    <widget class="QLabel" name="TimeLabel_3">
     <property name="geometry">
      <rect>
-      <x>520</x>
-      <y>170</y>
+      <x>530</x>
+      <y>172</y>
       <width>31</width>
       <height>41</height>
      </rect>
@@ -765,7 +765,7 @@ QScrollBar::sub-line:vertical {
    <widget class="QLabel" name="TimeLabel_5">
     <property name="geometry">
      <rect>
-      <x>830</x>
+      <x>850</x>
       <y>90</y>
       <width>131</width>
       <height>91</height>
@@ -789,7 +789,7 @@ QScrollBar::sub-line:vertical {
    <widget class="QLabel" name="TimeLabel_6">
     <property name="geometry">
      <rect>
-      <x>730</x>
+      <x>750</x>
       <y>172</y>
       <width>81</width>
       <height>41</height>
@@ -813,7 +813,7 @@ QScrollBar::sub-line:vertical {
    <widget class="QLabel" name="TimeLabel_7">
     <property name="geometry">
      <rect>
-      <x>900</x>
+      <x>910</x>
       <y>172</y>
       <width>31</width>
       <height>41</height>
@@ -837,7 +837,7 @@ QScrollBar::sub-line:vertical {
    <widget class="QLineEdit" name="fromAmount">
     <property name="geometry">
      <rect>
-      <x>800</x>
+      <x>810</x>
       <y>180</y>
       <width>80</width>
       <height>30</height>
@@ -848,10 +848,14 @@ QScrollBar::sub-line:vertical {
       <family>Yu Gothic UI</family>
      </font>
     </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
     <property name="styleSheet">
      <string notr="true">QLineEdit {
 	border: 2px solid lightgray;
 	border-radius: 5px;
+	background: transparent;
 }</string>
     </property>
    </widget>
@@ -873,6 +877,7 @@ QScrollBar::sub-line:vertical {
      <string notr="true">QLineEdit {
 	border: 2px solid lightgray;
 	border-radius: 5px;
+	background: transparent;
 }</string>
     </property>
    </widget>
@@ -992,13 +997,14 @@ QPushButton:pressed{
      <string notr="true">QLineEdit {
 	border: 2px solid lightgray;
 	border-radius: 5px;
+	background: transparent;
 }</string>
     </property>
    </widget>
    <widget class="QLabel" name="TimeLabel_9">
     <property name="geometry">
      <rect>
-      <x>520</x>
+      <x>530</x>
       <y>410</y>
       <width>31</width>
       <height>41</height>
@@ -1072,7 +1078,7 @@ QPushButton:pressed{
    <widget class="QLineEdit" name="fromAmount_2">
     <property name="geometry">
      <rect>
-      <x>800</x>
+      <x>810</x>
       <y>418</y>
       <width>80</width>
       <height>30</height>
@@ -1087,13 +1093,14 @@ QPushButton:pressed{
      <string notr="true">QLineEdit {
 	border: 2px solid lightgray;
 	border-radius: 5px;
+	background: transparent;
 }</string>
     </property>
    </widget>
    <widget class="QLabel" name="TimeLabel_11">
     <property name="geometry">
      <rect>
-      <x>730</x>
+      <x>750</x>
       <y>410</y>
       <width>81</width>
       <height>41</height>
@@ -1117,9 +1124,9 @@ QPushButton:pressed{
    <widget class="QDateTimeEdit" name="fromDate">
     <property name="geometry">
      <rect>
-      <x>360</x>
+      <x>350</x>
       <y>180</y>
-      <width>141</width>
+      <width>160</width>
       <height>30</height>
      </rect>
     </property>
@@ -1133,6 +1140,7 @@ QPushButton:pressed{
     <property name="styleSheet">
      <string notr="true">QDateTimeEdit {
 	border: 2px solid lightgray;
+	background: transparent;
 	border-radius: 5px;
 }
  
@@ -1142,7 +1150,7 @@ QDateTimeEdit::drop-down {
 	width: 15px;
  
 	border-left-width: 1px;
-	border-left-color: darkgray;
+	border-left-color: rgb(0, 55, 128);
 	border-left-style: solid;
 	border-top-right-radius: 3px;
 	border-bottom-right-radius: 3px;
@@ -1154,7 +1162,7 @@ QDateTimeEdit::drop-down {
      <rect>
       <x>560</x>
       <y>180</y>
-      <width>141</width>
+      <width>160</width>
       <height>30</height>
      </rect>
     </property>
@@ -1169,6 +1177,7 @@ QDateTimeEdit::drop-down {
      <string notr="true">QDateTimeEdit {
 	border: 2px solid lightgray;
 	border-radius: 5px;
+	background: transparent;
 }
  
 QDateTimeEdit::drop-down {
@@ -1177,10 +1186,10 @@ QDateTimeEdit::drop-down {
 	width: 15px;
  
 	border-left-width: 1px;
-	border-left-color: darkgray;
 	border-left-style: solid;
 	border-top-right-radius: 3px;
 	border-bottom-right-radius: 3px;
+	background:transparent;
 }</string>
     </property>
    </widget>
@@ -1189,7 +1198,7 @@ QDateTimeEdit::drop-down {
      <rect>
       <x>560</x>
       <y>420</y>
-      <width>141</width>
+      <width>160</width>
       <height>30</height>
      </rect>
     </property>
@@ -1204,6 +1213,7 @@ QDateTimeEdit::drop-down {
      <string notr="true">QDateTimeEdit {
 	border: 2px solid lightgray;
 	border-radius: 5px;
+	background: transparent;
 }
  
 QDateTimeEdit::drop-down {
@@ -1222,9 +1232,9 @@ QDateTimeEdit::drop-down {
    <widget class="QDateTimeEdit" name="fromDate_2">
     <property name="geometry">
      <rect>
-      <x>360</x>
+      <x>350</x>
       <y>420</y>
-      <width>141</width>
+      <width>160</width>
       <height>30</height>
      </rect>
     </property>
@@ -1239,6 +1249,7 @@ QDateTimeEdit::drop-down {
      <string notr="true">QDateTimeEdit {
 	border: 2px solid lightgray;
 	border-radius: 5px;
+	background: transparent;
 }
  
 QDateTimeEdit::drop-down {
@@ -1257,7 +1268,7 @@ QDateTimeEdit::drop-down {
    <widget class="QLabel" name="TimeLabel_8">
     <property name="geometry">
      <rect>
-      <x>900</x>
+      <x>910</x>
       <y>410</y>
       <width>31</width>
       <height>41</height>

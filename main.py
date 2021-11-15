@@ -246,16 +246,25 @@ class HomeWindow(StackedWindow):
                 f'<html><head/><body><p><span style=" font-weight:600;">Amount:</span> HKD {loan[1]}<br/><span style=" font-weight:600;">Due Date:</span> {loan[2]}</p></body></html>')
             self.verticalLayout.insertWidget(i, label)
             self.loan_labels.append(label)
-        if len(self.loans) == 0:
+
+        sql = "SELECT MAX(loan_id) FROM Loan WHERE user_id='%s' GROUP BY user_id;" % self.user_id
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        if len(result) == 0:
             self.loanHintLabel.setText(
                 '<html><head/><body><p><span style=" font-weight:600; color:#003780;">No record!</span></p></body></html>')
         else:
-            self.loanHintLabel.setText('')
+            if len(self.loans) == 0:
+                self.loanHintLabel.setText(
+                    '<html><head/><body><p><span style=" font-weight:600; color:#003780;">All repaid!</span></p></body></html>')
+            else:
+                self.loanHintLabel.setText('')
         if len(self.login_history) == 1:
             self.loginHintLabel.setText(
                 '<html><head/><body><p><span style=" font-weight:600; color:#003780;">No record!</span></p></body></html>')
         else:
             self.loginHintLabel.setText('')
+
     def activate(self):
         self.loanHintLabel.setText('')
         self.loginHintLabel.setText('')
@@ -1159,7 +1168,11 @@ class ApplyLoanWindow(StackedWindow):
 
         sql = "SELECT MAX(loan_id) FROM Loan WHERE user_id='%s' GROUP BY user_id;" % self.user_id
         cursor.execute(sql)
-        max_loan_id = cursor.fetchall()[0][0]
+        result = cursor.fetchall()
+        if len(result) == 0:
+            max_loan_id = 0
+        else:
+            max_loan_id = result[0][0]
 
         sql = "INSERT INTO Loan VALUES (%s, %s, %s, %s, %s, 0, NULL);"
         val = (self.user_id, max_loan_id + 1, amount, current_date, pay_date)
@@ -1278,11 +1291,18 @@ class PayLoanWindow(StackedWindow):
             self.verticalLayout_4.insertWidget(i, label)
             self.loan_labels.append(label)
 
-        if len(self.loans) == 0:
+        sql = "SELECT MAX(loan_id) FROM Loan WHERE user_id='%s' GROUP BY user_id;" % self.user_id
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        if len(result) == 0:
             self.loanHintLabel.setText(
                 '<html><head/><body><p><span style=" font-weight:600; color:#003780;">No record!</span></p></body></html>')
         else:
-            self.loanHintLabel.setText('')
+            if len(self.loans) == 0:
+                self.loanHintLabel.setText(
+                    '<html><head/><body><p><span style=" font-weight:600; color:#003780;">All repaid!</span></p></body></html>')
+            else:
+                self.loanHintLabel.setText('')
 
     def pay(self):
         if self.idEdit.text() == '':

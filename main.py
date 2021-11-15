@@ -1,3 +1,4 @@
+import datetime
 import pickle
 import sys
 import time
@@ -245,8 +246,19 @@ class HomeWindow(StackedWindow):
                 f'<html><head/><body><p><span style=" font-weight:600;">Amount:</span> HKD {loan[1]}<br/><span style=" font-weight:600;">Due Date:</span> {loan[2]}</p></body></html>')
             self.verticalLayout.insertWidget(i, label)
             self.loan_labels.append(label)
-
+        if len(self.loans) == 0:
+            self.loanHintLabel.setText(
+                '<html><head/><body><p><span style=" font-weight:600; color:#003780;">No record!</span></p></body></html>')
+        else:
+            self.loanHintLabel.setText('')
+        if len(self.login_history) == 1:
+            self.loginHintLabel.setText(
+                '<html><head/><body><p><span style=" font-weight:600; color:#003780;">No record!</span></p></body></html>')
+        else:
+            self.loginHintLabel.setText('')
     def activate(self):
+        self.loanHintLabel.setText('')
+        self.loginHintLabel.setText('')
         self.get_data()
         self.set_content()
 
@@ -421,6 +433,10 @@ class AccountDetailWindow(StackedWindow):
         self.toAmount.setText('')
         self.fromAmount_2.setText('')
         self.toAmount_2.setText('')
+        self.set_time(self.fromDate, False)
+        self.set_time(self.fromDate_2, False)
+        self.set_time(self.toDate, True)
+        self.set_time(self.toDate_2, True)
         self.get_data()
 
     def get_data(self):
@@ -514,6 +530,12 @@ class AccountDetailWindow(StackedWindow):
                     f'{trans[4]}</p></body></html>')
                 self.verticalLayout_5.insertWidget(i, label)
                 self.income_labels.append(label)
+
+    def set_time(self, date_edit, curr):
+        if curr:
+            date_edit.setDateTime(datetime.datetime.now())
+        else:
+            date_edit.setDateTime(datetime.datetime.now() - datetime.timedelta(hours=720))
 
     def search_expenditure(self):
         from_date = self.fromDate.dateTime().toString('yyyy-MM-dd hh:mm:ss')
@@ -838,6 +860,10 @@ class TransactionWindow(StackedWindow):
         self.fromAmount_2.setText('')
         self.toAmount.setText('')
         self.toAmount_2.setText('')
+        self.set_time(self.fromDate, False)
+        self.set_time(self.fromDate_2, False)
+        self.set_time(self.toDate, True)
+        self.set_time(self.toDate_2, True)
         self.get_data()
 
     def get_data(self):
@@ -924,6 +950,12 @@ class TransactionWindow(StackedWindow):
                     f'{trans[4]}</p></body></html>')
                 self.verticalLayout_5.insertWidget(i, label)
                 self.expenditure_labels.append(label)
+
+    def set_time(self, date_edit, curr):
+        if curr:
+            date_edit.setDateTime(datetime.datetime.now())
+        else:
+            date_edit.setDateTime(datetime.datetime.now() - datetime.timedelta(hours=720))
 
     def search_income(self):
         self.hintLabel.setText('')
@@ -1202,6 +1234,7 @@ class PayLoanWindow(StackedWindow):
 
     def activate(self):
         self.hintLabel.setText('')
+        self.loanHintLabel.setText('')
         self.clear()
         self.get_data()
         self.set_content()
@@ -1236,6 +1269,12 @@ class PayLoanWindow(StackedWindow):
                 f'<html><head/><body><p><span style=" font-weight:600;">Loan ID:</span> {loan[0]}<br><span style=" font-weight:600;">Amount:</span> HKD {loan[1]} &nbsp;&nbsp;&nbsp;&nbsp;<span style=" font-weight:600;">Due Date:</span> {loan[2]}</p></body></html>')
             self.verticalLayout_4.insertWidget(i, label)
             self.loan_labels.append(label)
+
+        if len(self.loans) == 0:
+            self.loanHintLabel.setText(
+                '<html><head/><body><p><span style=" font-weight:600; color:#003780;">No record!</span></p></body></html>')
+        else:
+            self.loanHintLabel.setText('')
 
     def pay(self):
         if self.idEdit.text() == '':

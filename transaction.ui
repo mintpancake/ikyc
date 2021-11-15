@@ -843,6 +843,11 @@ QScrollBar::sub-line:vertical {
       <height>30</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">QLineEdit {
 	border: 2px solid lightgray;
@@ -858,6 +863,11 @@ QScrollBar::sub-line:vertical {
       <width>80</width>
       <height>30</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">QLineEdit {
@@ -973,6 +983,11 @@ QPushButton:pressed{
       <height>30</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">QLineEdit {
 	border: 2px solid lightgray;
@@ -1062,6 +1077,11 @@ QPushButton:pressed{
       <width>80</width>
       <height>30</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">QLineEdit {

@@ -175,6 +175,7 @@ class HomeWindow(StackedWindow):
         self.user_id = user_id
         self.name = ''
         self.last_login_time = ''
+        self.this_login_time = ''
         self.login_history = []
         self.loans = []
         self.login_history_labels = []
@@ -228,7 +229,7 @@ class HomeWindow(StackedWindow):
         self.homeTitleLabel.setText(
             f'<html><head/><body><p><span style=" color:#003780;">Welcome back, {self.name}!</span></p></body></html>')
         self.lastLoginTimeLabel.setText(
-            f'<html><head/><body><p><span style=" font-size:12pt; color:#646464;">Last login time:<br/>{self.last_login_time}</span></p></body></html>')
+            f'<html><head/><body><p><span style=" font-size:12pt; color:#646464;">Login time:<br/>{self.this_login_time}</span></p></body></html>')
         for label in self.login_history_labels:
             self.verticalLayout_4.removeWidget(label)
         self.login_history_labels = []
@@ -280,6 +281,7 @@ class HomeWindow(StackedWindow):
         min = str(now.tm_min).zfill(2)
         sec = str(now.tm_sec).zfill(2)
         now_str = f'{year}-{mon}-{mday} {hour}:{min}:{sec}'
+        self.this_login_time = now_str
         sql = "INSERT INTO LoginTime VALUES (%s, %s)"
         val = (self.user_id, now_str)
         cursor.execute(sql, val)
@@ -1139,7 +1141,7 @@ class ApplyLoanWindow(StackedWindow):
         cursor.execute(sql)
         self.credit_level = int(cursor.fetchall()[0][0])
 
-        sql = "SELECT loan_amount FROM CreditLevels WHERE credit_level='%s';" % self.credit_level
+        sql = "SELECT loan_amount FROM CreditLevel WHERE credit_level='%s';" % self.credit_level
         cursor.execute(sql)
         self.loan_amount = int(cursor.fetchall()[0][0])
 
@@ -1205,7 +1207,7 @@ class ApplyLoanWindow(StackedWindow):
         cursor.execute(sql)
         self.credit_level = int(cursor.fetchall()[0][0])
 
-        sql = "SELECT loan_amount FROM CreditLevels WHERE credit_level='%s';" % self.credit_level
+        sql = "SELECT loan_amount FROM CreditLevel WHERE credit_level='%s';" % self.credit_level
         cursor.execute(sql)
         self.loan_amount = int(cursor.fetchall()[0][0])
 
@@ -1345,7 +1347,7 @@ class PayLoanWindow(StackedWindow):
         cursor.execute(sql, val)
         conn.commit()
 
-        sql = "UPDATE Loan SET settled_date=%s WHERE user_id='%s' AND loan_id='%s';"
+        sql = "UPDATE Loan SET settle_date=%s WHERE user_id='%s' AND loan_id='%s';"
         val = (current_date, self.user_id, self.loan_id)
         cursor.execute(sql, val)
         conn.commit()

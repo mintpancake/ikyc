@@ -13,19 +13,19 @@ CREATE DATABASE `project`;
 USE `project`;
 
 
-# Create TABLE 'CreditLevels'
-CREATE TABLE `CreditLevels` (
+# Create TABLE 'CreditLevel'
+CREATE TABLE `CreditLevel` (
   `credit_level` int NOT NULL,
   `loan_amount` int NOT NULL,
   PRIMARY KEY (credit_level)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-LOCK TABLES `CreditLevels` WRITE;
-/*!40000 ALTER TABLE `CreditLevels` DISABLE KEYS */;
-INSERT INTO `CreditLevels` VALUES (1, 5000);
-INSERT INTO `CreditLevels` VALUES (2, 12000);
-INSERT INTO `CreditLevels` VALUES (3, 20000);
-/*!40000 ALTER TABLE `CreditLevels` ENABLE KEYS */;
+LOCK TABLES `CreditLevel` WRITE;
+/*!40000 ALTER TABLE `CreditLevel` DISABLE KEYS */;
+INSERT INTO `CreditLevel` VALUES (1, 5000);
+INSERT INTO `CreditLevel` VALUES (2, 12000);
+INSERT INTO `CreditLevel` VALUES (3, 20000);
+/*!40000 ALTER TABLE `CreditLevel` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
@@ -35,7 +35,7 @@ CREATE TABLE `User` (
   `name` varchar(50) NOT NULL,
   `credit_level` int NOT NULL,
   PRIMARY KEY (user_id),
-  FOREIGN KEY (credit_level) REFERENCES CreditLevels(credit_level)
+  FOREIGN KEY (credit_level) REFERENCES CreditLevel(credit_level)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `User` WRITE;
@@ -149,15 +149,13 @@ CREATE TABLE `Loan` (
   `apply_date` DATE NOT NULL,
   `due_date` DATE NOT NULL,
   `is_settled` INT,
-  `settled_date` DATE,
+  `settle_date` DATE,
   FOREIGN KEY (user_id) REFERENCES User(user_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `Loan` WRITE;
 /*!40000 ALTER TABLE `Loan` DISABLE KEYS */;
 INSERT INTO `Loan` VALUES (1, 1, 5200, '2021-10-14', '2021-10-24', 1, '2021-10-22');
-INSERT INTO `Loan` VALUES (2, 1, 3000, '2021-09-24', '2021-10-24', 1, '2021-10-24');
-INSERT INTO `Loan` VALUES (2, 2, 400, '2021-11-08', '2021-12-28', 0, NULL);
 INSERT INTO `Loan` VALUES (1, 2, 2000, '2021-10-10', '2021-10-25', 1, '2021-10-24');
 INSERT INTO `Loan` VALUES (1, 3, 4000, '2021-11-09', '2021-11-29', 0, NULL);
 INSERT INTO `Loan` VALUES (3, 1, 380, '2021-10-20', '2021-10-28', 1, '2021-10-28');

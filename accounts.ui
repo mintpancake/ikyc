@@ -171,7 +171,7 @@ QPushButton:pressed{
      <string notr="true">border: None; color: #003780; text-align: center; background:None</string>
     </property>
     <property name="text">
-     <string>HKD</string>
+     <string>1.HKD</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -232,7 +232,7 @@ QPushButton:pressed{
      <string notr="true">border: None; color: #003780; text-align: center; background:None</string>
     </property>
     <property name="text">
-     <string>Deposit</string>
+     <string>2.Deposit</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -293,7 +293,7 @@ QPushButton:pressed{
      <string notr="true">border: None; color: #003780; text-align: center; background:None</string>
     </property>
     <property name="text">
-     <string>USD</string>
+     <string>3.USD</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -320,7 +320,7 @@ QPushButton:pressed{
      <string notr="true">border: None; color: #003780; text-align: center; background:None</string>
     </property>
     <property name="text">
-     <string>CNY</string>
+     <string>4.CNY</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>

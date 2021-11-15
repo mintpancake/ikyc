@@ -833,7 +833,9 @@ class TransactionWindow(StackedWindow):
 
     def activate(self):
         self.hintLabel.setText('')
+        self.hintLabel.setGeometry(QtCore.QRect(290, 1200, 810, 50))
         self.hintLabel_2.setText('')
+        self.hintLabel_2.setGeometry(QtCore.QRect(290, 1200, 810, 50))
         self.fromAmount.setText('')
         self.fromAmount_2.setText('')
         self.toAmount.setText('')
@@ -857,6 +859,7 @@ class TransactionWindow(StackedWindow):
             self.verticalLayout_4.removeWidget(label)
         self.income_labels = []
         if len(result) == 0:
+            self.hintLabel.setGeometry(QtCore.QRect(290, 285, 810, 50))
             self.hintLabel.setText(
                 '<html><head/><body><p><span style=" font-weight:600; color:#003780;">No record!</span></p></body></html>')
         else:
@@ -899,6 +902,7 @@ class TransactionWindow(StackedWindow):
             self.verticalLayout_5.removeWidget(label)
         self.expenditure_labels = []
         if len(result) == 0:
+            self.hintLabel_2.setGeometry(QtCore.QRect(290, 525, 810, 50))
             self.hintLabel_2.setText(
                 '<html><head/><body><p><span style=" font-weight:600; color:#003780;">No record!</span></p></body></html>')
         else:
@@ -926,6 +930,7 @@ class TransactionWindow(StackedWindow):
                 self.expenditure_labels.append(label)
 
     def search_income(self):
+        self.hintLabel.setGeometry(QtCore.QRect(290, 1200, 810, 50))
         self.hintLabel.setText('')
         from_date = self.fromDate.dateTime().toString('yyyy-MM-dd hh:mm:ss')
         to_date = self.toDate.dateTime().toString('yyyy-MM-dd hh:mm:ss')
@@ -953,6 +958,7 @@ class TransactionWindow(StackedWindow):
             self.verticalLayout_4.removeWidget(label)
         self.income_labels = []
         if len(result) == 0:
+            self.hintLabel.setGeometry(QtCore.QRect(290, 285, 810, 50))
             self.hintLabel.setText(
                 '<html><head/><body><p><span style=" font-weight:600; color:#003780;">No record!</span></p></body></html>')
         else:
@@ -980,6 +986,7 @@ class TransactionWindow(StackedWindow):
                 self.income_labels.append(label)
 
     def search_expenditure(self):
+        self.hintLabel_2.setGeometry(QtCore.QRect(290, 1200, 810, 50))
         self.hintLabel_2.setText('')
         from_date = self.fromDate_2.dateTime().toString('yyyy-MM-dd hh:mm:ss')
         to_date = self.toDate_2.dateTime().toString('yyyy-MM-dd hh:mm:ss')
@@ -1007,6 +1014,7 @@ class TransactionWindow(StackedWindow):
             self.verticalLayout_5.removeWidget(label)
         self.expenditure_labels = []
         if len(result) == 0:
+            self.hintLabel_2.setGeometry(QtCore.QRect(290, 525, 810, 50))
             self.hintLabel_2.setText(
                 '<html><head/><body><p><span style=" font-weight:600; color:#003780;">No record!</span></p></body></html>')
         else:

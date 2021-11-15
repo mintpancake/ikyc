@@ -549,10 +549,23 @@ class AccountDetailWindow(StackedWindow):
             date_edit.setDateTime(datetime.datetime.now() - datetime.timedelta(hours=720))
 
     def search_expenditure(self):
+        sql = "SELECT MAX(amount) FROM Transaction WHERE from_user = '%s' GROUP BY from_user;" % self.user_id
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        if len(result) == 0:
+            max_amount = 0
+        else:
+            max_amount = int(result[0][0])
+
+        if self.toAmount.text() == '':
+            to_amount = max_amount
+
+        else:
+            to_amount = int(self.toAmount.text().zfill(1))
+
         from_date = self.fromDate.dateTime().toString('yyyy-MM-dd hh:mm:ss')
         to_date = self.toDate.dateTime().toString('yyyy-MM-dd hh:mm:ss')
         from_amount = int(self.fromAmount.text().zfill(1))
-        to_amount = int(self.toAmount.text().zfill(1))
 
         sql = "SELECT T.from_account,\
                     T.currency_type,\
@@ -602,10 +615,23 @@ class AccountDetailWindow(StackedWindow):
                 self.expenditure_labels.append(label)
 
     def search_income(self):
+        sql = "SELECT MAX(amount) FROM Transaction WHERE to_user = '%s' GROUP BY to_user;" % self.user_id
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        if len(result) == 0:
+            max_amount = 0
+        else:
+            max_amount = int(result[0][0])
+
+        if self.toAmount.text() == '':
+            to_amount = max_amount
+
+        else:
+            to_amount = int(self.toAmount.text().zfill(1))
+
         from_date = self.fromDate_2.dateTime().toString('yyyy-MM-dd hh:mm:ss')
         to_date = self.toDate_2.dateTime().toString('yyyy-MM-dd hh:mm:ss')
         from_amount = int(self.fromAmount_2.text().zfill(1))
-        to_amount = int(self.toAmount_2.text().zfill(1))
 
         sql = "SELECT T.to_account,\
             T.currency_type,\
@@ -973,12 +999,25 @@ class TransactionWindow(StackedWindow):
             date_edit.setDateTime(datetime.datetime.now() - datetime.timedelta(hours=720))
 
     def search_income(self):
+        sql = "SELECT MAX(amount) FROM Transaction WHERE to_user = '%s' GROUP BY to_user;" % self.user_id
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        if len(result) == 0:
+            max_amount = 0
+        else:
+            max_amount = int(result[0][0])
+
+        if self.toAmount.text() == '':
+            to_amount = max_amount
+
+        else:
+            to_amount = int(self.toAmount.text().zfill(1))
+
         self.hintLabel.setGeometry(QtCore.QRect(290, 1200, 810, 50))
         self.hintLabel.setText('')
         from_date = self.fromDate.dateTime().toString('yyyy-MM-dd hh:mm:ss')
         to_date = self.toDate.dateTime().toString('yyyy-MM-dd hh:mm:ss')
         from_amount = int(self.fromAmount.text().zfill(1))
-        to_amount = int(self.toAmount.text().zfill(1))
 
         sql = "SELECT T.to_account,\
             T.currency_type,\
@@ -1029,12 +1068,25 @@ class TransactionWindow(StackedWindow):
                 self.income_labels.append(label)
 
     def search_expenditure(self):
+        sql = "SELECT MAX(amount) FROM Transaction WHERE from_user = '%s' GROUP BY from_user;" % self.user_id
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        if len(result) == 0:
+            max_amount = 0
+        else:
+            max_amount = int(result[0][0])
+
+        if self.toAmount.text() == '':
+            to_amount = max_amount
+
+        else:
+            to_amount = int(self.toAmount.text().zfill(1))
+
         self.hintLabel_2.setGeometry(QtCore.QRect(290, 1200, 810, 50))
         self.hintLabel_2.setText('')
         from_date = self.fromDate_2.dateTime().toString('yyyy-MM-dd hh:mm:ss')
         to_date = self.toDate_2.dateTime().toString('yyyy-MM-dd hh:mm:ss')
         from_amount = int(self.fromAmount_2.text().zfill(1))
-        to_amount = int(self.toAmount_2.text().zfill(1))
 
         sql = "SELECT T.from_account,\
                     T.currency_type,\

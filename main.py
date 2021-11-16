@@ -559,7 +559,6 @@ class AccountDetailWindow(StackedWindow):
 
         if self.toAmount.text() == '':
             to_amount = max_amount
-
         else:
             to_amount = int(self.toAmount.text().zfill(1))
 
@@ -623,11 +622,10 @@ class AccountDetailWindow(StackedWindow):
         else:
             max_amount = int(result[0][0])
 
-        if self.toAmount.text() == '':
+        if self.toAmount_2.text() == '':
             to_amount = max_amount
-
         else:
-            to_amount = int(self.toAmount.text().zfill(1))
+            to_amount = int(self.toAmount_2.text().zfill(1))
 
         from_date = self.fromDate_2.dateTime().toString('yyyy-MM-dd hh:mm:ss')
         to_date = self.toDate_2.dateTime().toString('yyyy-MM-dd hh:mm:ss')
@@ -1009,7 +1007,6 @@ class TransactionWindow(StackedWindow):
 
         if self.toAmount.text() == '':
             to_amount = max_amount
-
         else:
             to_amount = int(self.toAmount.text().zfill(1))
 
@@ -1076,11 +1073,10 @@ class TransactionWindow(StackedWindow):
         else:
             max_amount = int(result[0][0])
 
-        if self.toAmount.text() == '':
+        if self.toAmount_2.text() == '':
             to_amount = max_amount
-
         else:
-            to_amount = int(self.toAmount.text().zfill(1))
+            to_amount = int(self.toAmount_2.text().zfill(1))
 
         self.hintLabel_2.setGeometry(QtCore.QRect(290, 1200, 810, 50))
         self.hintLabel_2.setText('')
@@ -1116,16 +1112,20 @@ class TransactionWindow(StackedWindow):
             for i, trans in enumerate(result):
                 label = self.create_label(area=self.inScrollArea, height=40)
                 if trans[0] == 1:
+                    symbol = '$'
                     account = 'HKD'
                 elif trans[0] == 2:
+                    symbol = '$'
                     account = 'Deposit'
                 elif trans[0] == 3:
+                    symbol = '$'
                     account = 'USD'
                 else:
+                    symbol = '￥'
                     account = 'CNY'
                 label.setText(
                     f'<html><head/><body><p><span style=" font-weight:600;">Account:</span> {account}&nbsp;&nbsp;&nbsp'
-                    f';&nbsp;<span style=" font-weight:600;">Amount:</span> {trans[1]} '
+                    f';&nbsp;<span style=" font-weight:600;">Amount:</span> {symbol}'
                     f'{trans[2]}&nbsp;&nbsp;&nbsp;&nbsp;<span style=" font-weight:600;">Time:</span> '
                     f'{trans[3]}&nbsp;&nbsp;&nbsp;&nbsp;<span style=" font-weight:600;">To:</span> '
                     f'{trans[4]}</p></body></html>')

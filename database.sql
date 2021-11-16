@@ -73,36 +73,36 @@ UNLOCK TABLES;
 
 # Create TABLE 'Account'
 CREATE TABLE `Account` (
-  `account_id` int NOT NULL,
   `user_id` int NOT NULL,
-  `type` varchar(10) NOT NULL,
+  `account_id` int NOT NULL,
+  `currency_type` varchar(10) NOT NULL,
   `balance` int NOT NULL,
   FOREIGN KEY (user_id) REFERENCES User(user_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `Account` WRITE;
 /*!40000 ALTER TABLE `Account` DISABLE KEYS */;
-INSERT INTO `Account` VALUES (1, -1, 'HKD', -1);
+INSERT INTO `Account` VALUES (-1, 1, 'HKD', -1);
 INSERT INTO `Account` VALUES (1, 1, 'HKD', 55000);
-INSERT INTO `Account` VALUES (2, 1, 'HKD', 2500);
-INSERT INTO `Account` VALUES (3, 1, 'USD', 800);
-INSERT INTO `Account` VALUES (4, 1, 'CNY', 1600);
-INSERT INTO `Account` VALUES (1, 2, 'HKD', 5200);
+INSERT INTO `Account` VALUES (1, 2, 'HKD', 2500);
+INSERT INTO `Account` VALUES (1, 3, 'USD', 800);
+INSERT INTO `Account` VALUES (1, 4, 'CNY', 1600);
+INSERT INTO `Account` VALUES (2, 1, 'HKD', 5200);
 INSERT INTO `Account` VALUES (2, 2, 'HKD', 100000);
-INSERT INTO `Account` VALUES (3, 2, 'USD', 50000);
-INSERT INTO `Account` VALUES (4, 2, 'CNY', 100000000);
-INSERT INTO `Account` VALUES (1, 3, 'HKD', 1000);
-INSERT INTO `Account` VALUES (2, 3, 'HKD', 5000);
+INSERT INTO `Account` VALUES (2, 3, 'USD', 50000);
+INSERT INTO `Account` VALUES (2, 4, 'CNY', 100000000);
+INSERT INTO `Account` VALUES (3, 1, 'HKD', 1000);
+INSERT INTO `Account` VALUES (3, 2, 'HKD', 5000);
 INSERT INTO `Account` VALUES (3, 3, 'USD', 5000);
-INSERT INTO `Account` VALUES (4, 3, 'CNY', 1490);
-INSERT INTO `Account` VALUES (1, 4, 'HKD', 5000);
-INSERT INTO `Account` VALUES (2, 4, 'HKD', 10000);
-INSERT INTO `Account` VALUES (3, 4, 'USD', 1500);
+INSERT INTO `Account` VALUES (3, 4, 'CNY', 1490);
+INSERT INTO `Account` VALUES (4, 1, 'HKD', 5000);
+INSERT INTO `Account` VALUES (4, 2, 'HKD', 10000);
+INSERT INTO `Account` VALUES (4, 3, 'USD', 1500);
 INSERT INTO `Account` VALUES (4, 4, 'CNY', 25000);
-INSERT INTO `Account` VALUES (1, 5, 'HKD', 5000);
-INSERT INTO `Account` VALUES (2, 5, 'HKD', 1600);
-INSERT INTO `Account` VALUES (3, 5, 'USD', 3000);
-INSERT INTO `Account` VALUES (4, 5, 'CNY', 1050);
+INSERT INTO `Account` VALUES (5, 1, 'HKD', 5000);
+INSERT INTO `Account` VALUES (5, 2, 'HKD', 1600);
+INSERT INTO `Account` VALUES (5, 3, 'USD', 3000);
+INSERT INTO `Account` VALUES (5, 4, 'CNY', 1050);
 /*!40000 ALTER TABLE `Account` ENABLE KEYS */;
 UNLOCK TABLES;
 

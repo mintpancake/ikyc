@@ -1,6 +1,5 @@
 # ikyc
-* This is an Intelligent
-Know Your Customer (iKYC) system with facial ID login function.
+* An Intelligent Know Your Customer (iKYC) banking system with database manipulation and facial ID login functions. 
 ## Requirements
 ### Files
 * Import `train.yml`
@@ -63,4 +62,3 @@ Know Your Customer (iKYC) system with facial ID login function.
 1. `winList.append(ExampleWindow())` (optional) 
 2. `switch_to(idx)`, where `idx` should be predefined as a constant
 * Caution: Do not create duplicate windows! 
-#### To be continued...

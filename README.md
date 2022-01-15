@@ -1,5 +1,9 @@
 # ikyc
 * An Intelligent Know Your Customer (iKYC) banking system with database manipulation and facial ID login functions. 
+## Intro
+
+<div align=center><img src="https://raw.githubusercontent.com/mintpancake/gallery/main/images/ikyc.png"/></div>
+
 ## Requirements
 ### Files
 * Import `train.yml`
